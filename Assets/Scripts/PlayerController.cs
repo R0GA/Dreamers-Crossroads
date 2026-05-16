@@ -1,20 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Source-engine inspired first-person player controller for Unity 6.
-///
-/// Movement is fully velocity-based using the Quake/Source Accelerate() function.
-/// This produces fluid, momentum-driven motion with proper air strafing.
-///
-/// Key concepts:
-///   - Ground movement: high acceleration + friction = responsive but not instant
-///   - Air movement:    low wishSpeed cap + very high acceleration = strafing works,
-///                      raw speed gain is capped (classic Quake/Source feel)
-///   - Bunny hop:       friction is skipped on the jump frame, preserving speed
-///   - Coyote time:     lets players jump slightly after walking off a ledge
-///   - Jump buffer:     queues a jump slightly before landing
-/// </summary>
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -24,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Camera playerCamera;
+
+    [Tooltip("Point the grapple beam visually fires from (e.g. a hand bone or weapon muzzle). "
+           + "Falls back to the camera position if left empty.")]
+    [SerializeField] private Transform grappleOrigin;
 
     // ── Look ──────────────────────────────────────────────────────────────────
 
@@ -37,26 +27,24 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Top horizontal speed while grounded (m/s).")]
     [SerializeField] private float maxGroundSpeed = 7f;
 
-    [Tooltip("How quickly horizontal speed builds up on the ground. Higher = snappier.")]
+    [Tooltip("How quickly horizontal speed builds on the ground. Higher = snappier.")]
     [SerializeField] private float groundAcceleration = 80f;
 
-    [Tooltip("How aggressively friction bleeds off horizontal speed. Higher = stops faster.")]
+    [Tooltip("How aggressively friction bleeds off horizontal speed.")]
     [SerializeField] private float friction = 8f;
 
     [Tooltip("Below this speed, friction treats the player as moving at stopSpeed so they "
-           + "fully stop instead of slowing to a crawl forever.")]
+           + "come to a complete stop rather than slowing forever.")]
     [SerializeField] private float stopSpeed = 1.5f;
 
     // ── Air Movement ──────────────────────────────────────────────────────────
 
     [Header("Air Movement")]
-    [Tooltip("Maximum wish-speed cap while airborne. Keep this LOW (Source uses ~0.85 m/s). "
-           + "Combined with the high airAcceleration this is what makes air-strafing work: "
-           + "you can nudge velocity sideways but cannot gain raw forward speed freely.")]
+    [Tooltip("Wish-speed cap in the air. Keep LOW (~0.85). High airAcceleration + low cap "
+           + "is what produces Source-style air strafing.")]
     [SerializeField] private float maxAirSpeed = 0.85f;
 
-    [Tooltip("Raw acceleration multiplier in the air. Must be very high to counteract the "
-           + "small maxAirSpeed cap and produce responsive strafing.")]
+    [Tooltip("Raw acceleration in the air. Must be high to work against the small maxAirSpeed.")]
     [SerializeField] private float airAcceleration = 800f;
 
     // ── Jump ──────────────────────────────────────────────────────────────────
@@ -64,40 +52,103 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private float jumpHeight = 2f;
 
-    [Tooltip("When enabled, holding jump fires again the instant the player lands, "
-           + "skipping the friction frame and preserving speed (bunny hopping).")]
+    [Tooltip("Holding jump fires again on landing, skipping friction and preserving speed.")]
     [SerializeField] private bool allowBunnyHop = false;
 
-    [Tooltip("Seconds after leaving a ledge during which the player can still jump.")]
+    [Tooltip("Seconds after leaving a ledge the player can still jump.")]
     [SerializeField][Range(0f, 0.3f)] private float coyoteTime = 0.12f;
 
-    [Tooltip("Seconds before landing that a jump press is queued and fired automatically.")]
+    [Tooltip("Seconds before landing a jump press is queued and fires automatically.")]
     [SerializeField][Range(0f, 0.3f)] private float jumpBufferTime = 0.15f;
 
     // ── Ground Detection ──────────────────────────────────────────────────────
 
     [Header("Ground Detection")]
-    [Tooltip("Extra distance below the capsule bottom the SphereCast checks for ground.")]
     [SerializeField] private float groundCheckDistance = 0.08f;
-
     [SerializeField] private LayerMask groundMask = ~0;
 
-    // ── Private State ─────────────────────────────────────────────────────────
+    // ── Grapple ───────────────────────────────────────────────────────────────
+
+    [Header("Grapple")]
+    [Tooltip("Maximum range of the grapple beam.")]
+    [SerializeField] private float maxGrappleDistance = 30f;
+
+    [Tooltip("Constant inward pull force applied along the rope. Higher = stronger magnetism "
+           + "toward the anchor; lower = looser, more pendulum-like swing.")]
+    [SerializeField] private float grapplePullForce = 18f;
+
+    [Tooltip("Damps velocity toward the anchor to prevent the player oscillating back and "
+           + "forth. Increase if swinging feels bouncy; decrease for a springier rope.")]
+    [SerializeField] private float grappleDamping = 4f;
+
+    [Tooltip("How fast the rope shortens while the Grapple button is held.")]
+    [SerializeField] private float reelSpeed = 10f;
+
+    [Tooltip("Rope cannot shorten below this length.")]
+    [SerializeField] private float minRopeLength = 1.5f;
+
+    [Tooltip("Extra upward velocity added on top of jumpHeight when releasing off a grapple.")]
+    [SerializeField] private float slingshotBoost = 4f;
+
+    [Tooltip("Wish-speed cap while swinging. A bit higher than normal air control so the "
+           + "player has meaningful directional input during a swing arc.")]
+    [SerializeField] private float grappleAirControl = 2f;
+
+    [SerializeField] private LayerMask grappleMask = ~0;
+
+    // ── Charge Launch ─────────────────────────────────────────────────────────
+
+    [Header("Charge Launch")]
+    [Tooltip("Launch speed on an instant release (zero charge).")]
+    [SerializeField] private float minLaunchSpeed = 8f;
+
+    [Tooltip("Launch speed at a full charge.")]
+    [SerializeField] private float maxLaunchSpeed = 35f;
+
+    [Tooltip("Seconds to reach a full charge.")]
+    [SerializeField] private float chargeTime = 1.2f;
+
+    [Tooltip("Movement speed multiplier while charging. Lower = more planted windup feel.")]
+    [SerializeField][Range(0f, 1f)] private float chargeMoveScale = 0.25f;
+
+    // ── Public State (read by UI / VFX) ──────────────────────────────────────
+    public float ChargeAmount => chargeAmount;
+    public bool IsCharging => isCharging;
+    public bool IsGrappling => grappleState == GrappleState.Attached;
+
+    // ── Private: Components / Input ───────────────────────────────────────────
 
     private CharacterController cc;
     private PlayerInput pi;
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
+    private InputAction grappleAction;
+    private InputAction chargeAction;
+    private LineRenderer grappleLine;
 
-    private Vector3 velocity;       // World-space velocity in m/s (the single source of truth)
-    private float pitch;            // Current camera up/down angle
+    // ── Private: Core Movement State ──────────────────────────────────────────
+
+    private Vector3 velocity;       
+    private float pitch;
     private bool isGrounded;
-    private float coyoteTimer;      // Counts down after leaving ground
-    private float jumpBufferTimer;  // Counts down after pressing jump
-    private float jumpGraceTimer;   // Suppresses ground detection immediately after jumping
+    private float coyoteTimer;
+    private float jumpBufferTimer;
+    private float jumpGraceTimer; 
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // ── Private: Grapple State ────────────────────────────────────────────────
+
+    private enum GrappleState { Idle, Attached }
+    private GrappleState grappleState = GrappleState.Idle;
+    private Vector3 grapplePoint;   
+    private float ropeLength;     
+
+    // ── Private: Charge Launch State ─────────────────────────────────────────
+
+    private float chargeAmount;    
+    private bool isCharging;
+
+    // ═════════════════════════════════════════════════════════════════════════
 
     private void Start()
     {
@@ -107,6 +158,10 @@ public class PlayerController : MonoBehaviour
         moveAction = pi.actions["Move"];
         lookAction = pi.actions["Look"];
         jumpAction = pi.actions["Jump"];
+        grappleAction = pi.actions["Grapple"];
+        chargeAction = pi.actions["ChargeLaunch"];
+
+        InitGrappleLine();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -117,14 +172,17 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleLook();
-        GroundCheck();
+        GroundCheck();          // Sets isGrounded / coyoteTimer
         TickJumpBuffer();
-        HandleMovement();
+        HandleGrappleInput();   // Toggle grapple state
+        HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
+        HandleMovement();       // Reads all state set above, writes velocity
+        UpdateGrappleLine();
 
-        // Single Move() call per frame — everything goes through velocity
+        // Single authoritative Move() call — all systems write to velocity, one read here
         CollisionFlags flags = cc.Move(velocity * Time.deltaTime);
 
-        // Kill upward velocity on ceiling hits so the player doesn't "float"
+        // Kill upward velocity on ceiling hits so the player drops immediately
         if ((flags & CollisionFlags.Above) != 0 && velocity.y > 0f)
             velocity.y = 0f;
     }
@@ -135,10 +193,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 look = lookAction.ReadValue<Vector2>() * lookSensitivity;
 
-        // Yaw: rotate the whole body left/right
         transform.Rotate(0f, look.x, 0f);
 
-        // Pitch: tilt only the camera pivot up/down
         pitch -= look.y;
         pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);
         cameraPivot.localEulerAngles = new Vector3(pitch, 0f, 0f);
@@ -148,8 +204,8 @@ public class PlayerController : MonoBehaviour
 
     private void GroundCheck()
     {
-        // Don't detect ground immediately after jumping — the player hasn't
-        // cleared the ground yet and would be snapped back down instantly.
+        // Skip detection for a few frames after jumping/launching so the player
+        // physically clears the surface before we can re-ground them
         if (jumpGraceTimer > 0f)
         {
             jumpGraceTimer -= Time.deltaTime;
@@ -158,22 +214,22 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Cast from just above the bottom sphere of the capsule so we never
-        // start inside geometry, then check a short distance below.
         float castRadius = cc.radius * 0.9f;
-        float halfHeight = cc.height * 0.5f;
-        Vector3 bottom = transform.position + cc.center + Vector3.down * (halfHeight - cc.radius);
+        Vector3 bottom = transform.position + cc.center + Vector3.down * (cc.height * 0.5f - cc.radius);
         Vector3 origin = bottom + Vector3.up * 0.1f;
-        float castDist = 0.1f + groundCheckDistance;
 
         bool hit = Physics.SphereCast(
             origin, castRadius, Vector3.down, out _,
-            castDist, groundMask, QueryTriggerInteraction.Ignore);
+            0.1f + groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);
 
         if (hit)
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
+
+            // Landing while grappling detaches the hook — prevents awkward sliding
+            if (grappleState == GrappleState.Attached)
+                ReleaseGrapple();
         }
         else
         {
@@ -192,16 +248,120 @@ public class PlayerController : MonoBehaviour
             jumpBufferTimer -= Time.deltaTime;
     }
 
-    /// <summary>
-    /// Returns true if the player has valid jump input AND is within the
-    /// coyote-time window of having been grounded.
-    /// </summary>
     private bool CanJump()
     {
-        bool hasJumpInput = jumpBufferTimer > 0f ||
-                           (allowBunnyHop && jumpAction.IsPressed());
+        bool hasInput = jumpBufferTimer > 0f || (allowBunnyHop && jumpAction.IsPressed());
         bool nearGround = coyoteTimer > 0f;
-        return hasJumpInput && nearGround;
+        return hasInput && nearGround;
+    }
+
+    // ── Grapple ───────────────────────────────────────────────────────────────
+
+    private void HandleGrappleInput()
+    {
+        if (grappleAction.WasPressedThisFrame() && grappleState == GrappleState.Idle)
+            TryFireGrapple();
+
+        if (grappleAction.WasReleasedThisFrame() && grappleState == GrappleState.Attached)
+            ReleaseGrapple();
+    }
+
+    private void TryFireGrapple()
+    {
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, maxGrappleDistance,
+                            grappleMask, QueryTriggerInteraction.Ignore))
+        {
+            grapplePoint = hit.point;
+            ropeLength = hit.distance;
+            grappleState = GrappleState.Attached;
+        }
+    }
+
+    private void ReleaseGrapple()
+    {
+        grappleState = GrappleState.Idle;
+    }
+
+    private void ApplyGrapplePhysics()
+    {
+        Vector3 toAnchor = grapplePoint - transform.position;
+        float dist = toAnchor.magnitude;
+
+        if (dist < 0.01f) { ReleaseGrapple(); return; }
+
+        Vector3 dir = toAnchor / dist; // Toward anchor
+
+        // Step 1 — Reel: always reel in while attached
+        ropeLength = Mathf.Max(ropeLength - reelSpeed * Time.deltaTime, minRopeLength);
+
+        // Step 2 — Constraint: cancel outward velocity when rope is taut
+        if (dist > ropeLength)
+        {
+            float awaySpeed = Vector3.Dot(velocity, -dir); // positive = moving away
+            if (awaySpeed > 0f)
+                velocity += awaySpeed * dir;               // zero the outward component
+        }
+
+        // Step 3 — Constant pull toward anchor
+        velocity += dir * grapplePullForce * Time.deltaTime;
+
+        // Step 4 — Damp inward velocity to prevent oscillation past the anchor
+        float inwardSpeed = Vector3.Dot(velocity, dir);
+        if (inwardSpeed > 0f)
+        {
+            float damp = inwardSpeed * grappleDamping * Time.deltaTime;
+            velocity -= dir * Mathf.Min(damp, inwardSpeed); // clamp so we never reverse
+        }
+
+        // Auto-detach when fully reeled in
+        if (dist <= minRopeLength * 0.5f)
+            ReleaseGrapple();
+    }
+
+    // ── Charge Launch ─────────────────────────────────────────────────────────
+
+    private void HandleChargeLaunch()
+    {
+        if (grappleState == GrappleState.Attached || !isGrounded)
+            return; // Can't start charging while grappling — prevents awkward edge cases)
+
+        if (chargeAction.WasPressedThisFrame())
+        {
+            isCharging = true;
+            chargeAmount = 0f;
+        }
+
+        if (!isCharging) return;
+
+        chargeAmount = Mathf.MoveTowards(chargeAmount, 1f, Time.deltaTime / chargeTime);
+
+        if (chargeAction.WasReleasedThisFrame())
+        {
+            ExecuteLaunch();
+            isCharging = false;
+            chargeAmount = 0f;
+        }
+    }
+
+    private void ExecuteLaunch()
+    {
+        // Grapple and launch together feels chaotic — release first
+        if (grappleState == GrappleState.Attached)
+            ReleaseGrapple();
+
+        Vector3 launchDir = playerCamera.transform.forward;
+        float launchSpeed = Mathf.Lerp(minLaunchSpeed, maxLaunchSpeed, chargeAmount);
+
+        // Preserve sideways/perpendicular momentum; only override the forward component.
+        // This means strafing mid-charge still carries through into the launch.
+        velocity = Vector3.ProjectOnPlane(velocity, launchDir) + launchDir * launchSpeed;
+
+        // Clear grounded state so HandleMovement doesn't snap velocity.y = -2 this frame
+        jumpGraceTimer = 0.2f;
+        isGrounded = false;
+        coyoteTimer = 0f;
     }
 
     // ── Movement ──────────────────────────────────────────────────────────────
@@ -209,96 +369,138 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
+        float moveScale = isCharging ? chargeMoveScale : 1f;
+
         Vector3 wishDir = transform.right * input.x + transform.forward * input.y;
         if (wishDir.sqrMagnitude > 1f) wishDir.Normalize();
 
-        if (isGrounded)
+        if (grappleState == GrappleState.Attached)
         {
-            if (CanJump())
-            {
-                // Skip friction this frame so horizontal speed carries into the jump.
-                // This is the core mechanic that makes bunny hopping possible.
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
-                coyoteTimer = 0f;
-                jumpBufferTimer = 0f;
-                jumpGraceTimer = 0.15f; // Ignore ground for this long so we clear it cleanly
-
-                // Treat this frame as airborne immediately
-                AirAccelerate(wishDir);
-                ApplyGravity();
-            }
-            else
-            {
-                ApplyFriction();
-                GroundAccelerate(wishDir);
-
-                // Small downward constant keeps the player seated on slopes and
-                // prevents micro-bouncing. Not a full gravity tick.
-                velocity.y = -2f;
-            }
+            HandleGrappledMovement(wishDir);
+        }
+        else if (isGrounded)
+        {
+            HandleGroundedMovement(wishDir, moveScale);
         }
         else
         {
-            ApplyGravity();
-            AirAccelerate(wishDir);
+            HandleAirborneMovement(wishDir, moveScale);
         }
     }
 
-    // ── Physics ───────────────────────────────────────────────────────────────
+    private void HandleGrappledMovement(Vector3 wishDir)
+    {
+        ApplyGravity();
+        ApplyGrapplePhysics();
 
-    /// <summary>
-    /// Bleeds off horizontal speed. Only applied when grounded and not jumping,
-    /// so momentum is preserved through jumps.
-    /// </summary>
+        // Light directional control so the player isn't helpless mid-swing
+        Accelerate(wishDir, grappleAirControl, airAcceleration);
+
+        // Slingshot jump — preserve swing speed and add vertical burst
+        if (jumpBufferTimer > 0f)
+        {
+            ReleaseGrapple();
+
+            float baseJump = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
+            velocity.y = Mathf.Max(velocity.y + slingshotBoost, baseJump);
+
+            jumpBufferTimer = 0f;
+            jumpGraceTimer = 0.15f;
+        }
+    }
+
+    private void HandleGroundedMovement(Vector3 wishDir, float moveScale)
+    {
+        if (CanJump())
+        {
+            // Friction is intentionally skipped so horizontal speed carries through the jump
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
+            coyoteTimer = 0f;
+            jumpBufferTimer = 0f;
+            jumpGraceTimer = 0.15f;
+
+            // Treat as airborne this frame so the jump velocity isn't overridden
+            Accelerate(wishDir, maxAirSpeed, airAcceleration);
+            ApplyGravity();
+        }
+        else
+        {
+            ApplyFriction();
+            Accelerate(wishDir, maxGroundSpeed * moveScale, groundAcceleration);
+
+            // Constant downward keeps the player seated on slopes and stops micro-bouncing
+            velocity.y = -2f;
+        }
+    }
+
+    private void HandleAirborneMovement(Vector3 wishDir, float moveScale)
+    {
+        ApplyGravity();
+        Accelerate(wishDir, maxAirSpeed * moveScale, airAcceleration);
+    }
+
+    // ── Grapple Line Renderer ─────────────────────────────────────────────────
+
+    private void InitGrappleLine()
+    {
+        grappleLine = GetComponent<LineRenderer>();
+        if (grappleLine == null)
+            grappleLine = gameObject.AddComponent<LineRenderer>();
+
+        grappleLine.positionCount = 2;
+        grappleLine.startWidth = 0.04f;
+        grappleLine.endWidth = 0.04f;
+        grappleLine.useWorldSpace = true;
+        grappleLine.enabled = false;
+        // Assign a material in the Inspector for the best look.
+        // Without one Unity will use a pink/magenta default — hard to miss!
+    }
+
+    private void UpdateGrappleLine()
+    {
+        if (grappleState != GrappleState.Attached)
+        {
+            grappleLine.enabled = false;
+            return;
+        }
+
+        Vector3 lineStart = grappleOrigin != null
+            ? grappleOrigin.position
+            : playerCamera.transform.position;
+
+        grappleLine.enabled = true;
+        grappleLine.SetPosition(0, lineStart);
+        grappleLine.SetPosition(1, grapplePoint);
+    }
+
+    // ── Physics Helpers ───────────────────────────────────────────────────────
+
+    private void Accelerate(Vector3 wishDir, float wishSpeed, float accel)
+    {
+        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0f, velocity.z), wishDir);
+        float addSpeed = wishSpeed - currentSpeed;
+        if (addSpeed <= 0f) return;
+
+        float accelSpeed = Mathf.Min(accel * wishSpeed * Time.deltaTime, addSpeed);
+        velocity.x += accelSpeed * wishDir.x;
+        velocity.z += accelSpeed * wishDir.z;
+    }
+
     private void ApplyFriction()
     {
         float speed = HorizontalSpeed();
         if (speed < 0.001f) return;
 
-        // "control" ensures friction fully stops the player rather than
-        // approaching zero asymptotically (matches Source engine behaviour).
         float control = Mathf.Max(speed, stopSpeed);
         float newSpeed = Mathf.Max(speed - control * friction * Time.deltaTime, 0f);
-
         float scale = newSpeed / speed;
+
         velocity.x *= scale;
         velocity.z *= scale;
     }
 
-    private void GroundAccelerate(Vector3 wishDir) =>
-        Accelerate(wishDir, maxGroundSpeed, groundAcceleration);
-
-    private void AirAccelerate(Vector3 wishDir) =>
-        Accelerate(wishDir, maxAirSpeed, airAcceleration);
-
-    /// <summary>
-    /// The Quake/Source Accelerate() function.
-    ///
-    /// Projects the current horizontal velocity onto wishDir to find how fast
-    /// we're already moving in that direction. We only add speed up to the
-    /// wishSpeed cap, which is what keeps this feel controlled while still
-    /// allowing meaningful directional influence (air strafing).
-    /// </summary>
-    private void Accelerate(Vector3 wishDir, float wishSpeed, float accel)
-    {
-        // How fast we're already moving in the desired direction
-        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0f, velocity.z), wishDir);
-
-        // How much headroom we have before hitting the wish-speed cap
-        float addSpeed = wishSpeed - currentSpeed;
-        if (addSpeed <= 0f) return;
-
-        // Clamp so we never overshoot the cap
-        float accelSpeed = Mathf.Min(accel * wishSpeed * Time.deltaTime, addSpeed);
-
-        velocity.x += accelSpeed * wishDir.x;
-        velocity.z += accelSpeed * wishDir.z;
-    }
-
-    private void ApplyGravity()
-    {
+    private void ApplyGravity() =>
         velocity.y += Physics.gravity.y * Time.deltaTime;
-    }
 
     private float HorizontalSpeed() =>
         new Vector3(velocity.x, 0f, velocity.z).magnitude;
