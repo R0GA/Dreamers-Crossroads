@@ -21,7 +21,7 @@ public class Billboard : MonoBehaviour
             // Finds the exact direction the camera is facing
             Vector3 cameraForward = mainCamera.transform.forward;
 
-            // Prevents upward tilting. Makes it a bit like that onemario papr game Rowynn was talking about
+            // Prevents upward tilting. Makes it a bit like that one paper mario game
             cameraForward.y = 0;
 
             // Apply the flattened rotation to the character sprite
