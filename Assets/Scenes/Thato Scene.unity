@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 11568854}
   - component: {fileID: 11568853}
   - component: {fileID: 11568852}
+  - component: {fileID: 11568856}
+  - component: {fileID: 11568855}
   m_Layer: 7
   m_Name: Pit Balls (17)
   m_TagString: Untagged
@@ -231,6 +233,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11568850}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11568855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11568850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &11568856
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11568850}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &16960338
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +503,8 @@ GameObject:
   - component: {fileID: 30621558}
   - component: {fileID: 30621557}
   - component: {fileID: 30621556}
+  - component: {fileID: 30621560}
+  - component: {fileID: 30621559}
   m_Layer: 7
   m_Name: Pit Balls (38)
   m_TagString: Untagged
@@ -483,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 30621554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.70586, y: 16.889307, z: 165.12897}
+  m_LocalPosition: {x: 67.70586, y: 16.889307, z: 150.8}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -567,6 +605,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30621554}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &30621559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30621554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &30621560
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30621554}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &34692917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1539,8 @@ GameObject:
   - component: {fileID: 103628916}
   - component: {fileID: 103628915}
   - component: {fileID: 103628914}
+  - component: {fileID: 103628918}
+  - component: {fileID: 103628917}
   m_Layer: 7
   m_Name: Pit Balls (35)
   m_TagString: Untagged
@@ -1567,6 +1641,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103628912}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &103628917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103628912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &103628918
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103628912}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &106942315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1911,8 @@ GameObject:
   - component: {fileID: 115197220}
   - component: {fileID: 115197219}
   - component: {fileID: 115197218}
+  - component: {fileID: 115197222}
+  - component: {fileID: 115197221}
   m_Layer: 7
   m_Name: Pit Balls (49)
   m_TagString: Untagged
@@ -1903,6 +2013,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115197216}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &115197221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115197216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &115197222
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115197216}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &115200756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,6 +2208,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &143270816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143270817}
+  - component: {fileID: 143270819}
+  - component: {fileID: 143270818}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &143270817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143270816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 690138615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &143270818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143270816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &143270819
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143270816}
+  m_CullTransparentMesh: 1
 --- !u!1 &143655017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2628,8 @@ GameObject:
   - component: {fileID: 165492852}
   - component: {fileID: 165492851}
   - component: {fileID: 165492850}
+  - component: {fileID: 165492854}
+  - component: {fileID: 165492853}
   m_Layer: 7
   m_Name: Pit Balls (26)
   m_TagString: Untagged
@@ -2512,6 +2730,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165492848}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &165492853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165492848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &165492854
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165492848}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &165846550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,6 +3112,8 @@ GameObject:
   - component: {fileID: 185273799}
   - component: {fileID: 185273798}
   - component: {fileID: 185273797}
+  - component: {fileID: 185273801}
+  - component: {fileID: 185273800}
   m_Layer: 7
   m_Name: Pit Balls (29)
   m_TagString: Untagged
@@ -2960,6 +3214,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185273795}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &185273800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185273795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &185273801
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185273795}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &208849889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,6 +3260,8 @@ GameObject:
   - component: {fileID: 208849893}
   - component: {fileID: 208849892}
   - component: {fileID: 208849891}
+  - component: {fileID: 208849895}
+  - component: {fileID: 208849894}
   m_Layer: 7
   m_Name: Pit Balls (40)
   m_TagString: Untagged
@@ -3072,6 +3362,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208849889}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &208849894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208849889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &208849895
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208849889}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &211285833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4390,8 @@ GameObject:
   - component: {fileID: 248793862}
   - component: {fileID: 248793861}
   - component: {fileID: 248793860}
+  - component: {fileID: 248793864}
+  - component: {fileID: 248793863}
   m_Layer: 7
   m_Name: Pit Balls (33)
   m_TagString: Untagged
@@ -4166,6 +4492,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248793858}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &248793863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248793858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &248793864
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248793858}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &268749364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,6 +5715,8 @@ GameObject:
   - component: {fileID: 355655322}
   - component: {fileID: 355655321}
   - component: {fileID: 355655320}
+  - component: {fileID: 355655324}
+  - component: {fileID: 355655323}
   m_Layer: 7
   m_Name: Pit Balls (48)
   m_TagString: Untagged
@@ -5455,6 +5817,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355655318}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &355655323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355655318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &355655324
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355655318}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &369346492
 GameObject:
   m_ObjectHideFlags: 0
@@ -7457,6 +7853,8 @@ GameObject:
   - component: {fileID: 473045048}
   - component: {fileID: 473045047}
   - component: {fileID: 473045046}
+  - component: {fileID: 473045050}
+  - component: {fileID: 473045049}
   m_Layer: 7
   m_Name: Pit Balls (45)
   m_TagString: Untagged
@@ -7557,6 +7955,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473045044}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &473045049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473045044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &473045050
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473045044}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &473389178
 GameObject:
   m_ObjectHideFlags: 0
@@ -7793,6 +8225,8 @@ GameObject:
   - component: {fileID: 505268076}
   - component: {fileID: 505268075}
   - component: {fileID: 505268074}
+  - component: {fileID: 505268078}
+  - component: {fileID: 505268077}
   m_Layer: 7
   m_Name: Pit Balls (34)
   m_TagString: Untagged
@@ -7893,6 +8327,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505268072}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &505268077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505268072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &505268078
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505268072}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &506301475
 GameObject:
   m_ObjectHideFlags: 0
@@ -8913,6 +9381,8 @@ GameObject:
   - component: {fileID: 536322894}
   - component: {fileID: 536322893}
   - component: {fileID: 536322892}
+  - component: {fileID: 536322896}
+  - component: {fileID: 536322895}
   m_Layer: 7
   m_Name: Pit Balls (44)
   m_TagString: Untagged
@@ -8929,7 +9399,7 @@ Transform:
   m_GameObject: {fileID: 536322890}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.64516, y: -5.744562, z: 143.64761}
+  m_LocalPosition: {x: 71.5, y: 5.5, z: 115.2}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9013,6 +9483,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536322890}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &536322895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536322890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &536322896
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536322890}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &537234530
 GameObject:
   m_ObjectHideFlags: 0
@@ -9361,6 +9865,8 @@ GameObject:
   - component: {fileID: 574791503}
   - component: {fileID: 574791502}
   - component: {fileID: 574791501}
+  - component: {fileID: 574791505}
+  - component: {fileID: 574791504}
   m_Layer: 7
   m_Name: Pit Balls (42)
   m_TagString: Untagged
@@ -9461,6 +9967,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574791499}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &574791504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574791499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &574791505
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574791499}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &580131221
 GameObject:
   m_ObjectHideFlags: 0
@@ -9697,6 +10237,8 @@ GameObject:
   - component: {fileID: 584531008}
   - component: {fileID: 584531007}
   - component: {fileID: 584531006}
+  - component: {fileID: 584531010}
+  - component: {fileID: 584531009}
   m_Layer: 7
   m_Name: Pit Balls (24)
   m_TagString: Untagged
@@ -9797,6 +10339,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584531004}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &584531009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584531004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &584531010
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584531004}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &603079461
 GameObject:
   m_ObjectHideFlags: 0
@@ -10369,6 +10945,8 @@ GameObject:
   - component: {fileID: 665575027}
   - component: {fileID: 665575026}
   - component: {fileID: 665575025}
+  - component: {fileID: 665575029}
+  - component: {fileID: 665575028}
   m_Layer: 7
   m_Name: Pit Balls (30)
   m_TagString: Untagged
@@ -10469,6 +11047,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665575023}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &665575028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665575023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &665575029
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665575023}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &668178658
 GameObject:
   m_ObjectHideFlags: 0
@@ -10481,6 +11093,8 @@ GameObject:
   - component: {fileID: 668178662}
   - component: {fileID: 668178661}
   - component: {fileID: 668178660}
+  - component: {fileID: 668178664}
+  - component: {fileID: 668178663}
   m_Layer: 7
   m_Name: Pit Balls (43)
   m_TagString: Untagged
@@ -10581,6 +11195,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668178658}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &668178663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668178658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &668178664
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668178658}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &676722339
 GameObject:
   m_ObjectHideFlags: 0
@@ -10593,6 +11241,8 @@ GameObject:
   - component: {fileID: 676722343}
   - component: {fileID: 676722342}
   - component: {fileID: 676722341}
+  - component: {fileID: 676722345}
+  - component: {fileID: 676722344}
   m_Layer: 7
   m_Name: Pit Balls (1)
   m_TagString: Untagged
@@ -10693,6 +11343,45 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676722339}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &676722344
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676722339}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &676722345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676722339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!224 &690138615 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 447624220866195336, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+  m_PrefabInstance: {fileID: 1834945750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &703703853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12192,6 +12881,8 @@ GameObject:
   - component: {fileID: 784187539}
   - component: {fileID: 784187538}
   - component: {fileID: 784187537}
+  - component: {fileID: 784187541}
+  - component: {fileID: 784187540}
   m_Layer: 7
   m_Name: Pit Balls (41)
   m_TagString: Untagged
@@ -12292,6 +12983,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784187535}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &784187540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784187535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &784187541
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784187535}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &784284286
 GameObject:
   m_ObjectHideFlags: 0
@@ -12304,6 +13029,8 @@ GameObject:
   - component: {fileID: 784284290}
   - component: {fileID: 784284289}
   - component: {fileID: 784284288}
+  - component: {fileID: 784284292}
+  - component: {fileID: 784284291}
   m_Layer: 7
   m_Name: Pit Balls (16)
   m_TagString: Untagged
@@ -12320,7 +13047,7 @@ Transform:
   m_GameObject: {fileID: 784284286}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.118835, y: 6.0458984, z: 217.82602}
+  m_LocalPosition: {x: -108, y: -11.2, z: 217.82602}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12404,6 +13131,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784284286}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &784284291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784284286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &784284292
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784284286}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &787293505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,6 +13177,8 @@ GameObject:
   - component: {fileID: 787293509}
   - component: {fileID: 787293508}
   - component: {fileID: 787293507}
+  - component: {fileID: 787293511}
+  - component: {fileID: 787293510}
   m_Layer: 7
   m_Name: Pit Balls (2)
   m_TagString: Untagged
@@ -12432,7 +13195,7 @@ Transform:
   m_GameObject: {fileID: 787293505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.869316, y: 64.65806, z: 193.95679}
+  m_LocalPosition: {x: 70.869316, y: -21.4, z: 404.9}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12516,6 +13279,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787293505}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &787293510
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787293505}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &787293511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787293505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
 --- !u!1 &795800723
 GameObject:
   m_ObjectHideFlags: 0
@@ -15029,6 +15826,8 @@ GameObject:
   - component: {fileID: 861111630}
   - component: {fileID: 861111629}
   - component: {fileID: 861111628}
+  - component: {fileID: 861111632}
+  - component: {fileID: 861111631}
   m_Layer: 7
   m_Name: Pit Balls (14)
   m_TagString: Untagged
@@ -15129,6 +15928,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861111626}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &861111631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861111626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &861111632
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861111626}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &863433723
 GameObject:
   m_ObjectHideFlags: 0
@@ -15477,6 +16310,8 @@ GameObject:
   - component: {fileID: 888695100}
   - component: {fileID: 888695099}
   - component: {fileID: 888695098}
+  - component: {fileID: 888695102}
+  - component: {fileID: 888695101}
   m_Layer: 7
   m_Name: Pit Balls (23)
   m_TagString: Untagged
@@ -15577,6 +16412,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888695096}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &888695101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888695096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &888695102
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888695096}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &894658929
 GameObject:
   m_ObjectHideFlags: 0
@@ -16373,6 +17242,8 @@ GameObject:
   - component: {fileID: 928060392}
   - component: {fileID: 928060391}
   - component: {fileID: 928060390}
+  - component: {fileID: 928060394}
+  - component: {fileID: 928060393}
   m_Layer: 7
   m_Name: Pit Balls (13)
   m_TagString: Untagged
@@ -16473,6 +17344,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928060388}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &928060393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928060388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &928060394
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928060388}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &937248261
 GameObject:
   m_ObjectHideFlags: 0
@@ -16485,6 +17390,8 @@ GameObject:
   - component: {fileID: 937248265}
   - component: {fileID: 937248264}
   - component: {fileID: 937248263}
+  - component: {fileID: 937248267}
+  - component: {fileID: 937248266}
   m_Layer: 7
   m_Name: Pit Balls (39)
   m_TagString: Untagged
@@ -16585,6 +17492,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937248261}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &937248266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937248261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &937248267
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937248261}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &948377255
 Mesh:
   m_ObjectHideFlags: 0
@@ -16887,6 +17828,8 @@ GameObject:
   - component: {fileID: 952771787}
   - component: {fileID: 952771786}
   - component: {fileID: 952771785}
+  - component: {fileID: 952771789}
+  - component: {fileID: 952771788}
   m_Layer: 7
   m_Name: Pit Balls (19)
   m_TagString: Untagged
@@ -16903,7 +17846,7 @@ Transform:
   m_GameObject: {fileID: 952771783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.8563, y: -9.584116, z: 175.61307}
+  m_LocalPosition: {x: -48.1, y: -9.584116, z: 272.9}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -16987,6 +17930,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952771783}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &952771788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952771783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &952771789
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952771783}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &954120349
 GameObject:
   m_ObjectHideFlags: 0
@@ -18177,6 +19154,8 @@ GameObject:
   - component: {fileID: 994024636}
   - component: {fileID: 994024635}
   - component: {fileID: 994024634}
+  - component: {fileID: 994024638}
+  - component: {fileID: 994024637}
   m_Layer: 7
   m_Name: Pit Balls (32)
   m_TagString: Untagged
@@ -18193,7 +19172,7 @@ Transform:
   m_GameObject: {fileID: 994024632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.693224, y: 61.22219, z: 121.61163}
+  m_LocalPosition: {x: -80.3, y: -6.1, z: 111.5}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -18277,6 +19256,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994024632}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &994024637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994024632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &994024638
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994024632}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1034973994
 GameObject:
   m_ObjectHideFlags: 0
@@ -20268,6 +21281,8 @@ GameObject:
   - component: {fileID: 1093283459}
   - component: {fileID: 1093283458}
   - component: {fileID: 1093283457}
+  - component: {fileID: 1093283461}
+  - component: {fileID: 1093283460}
   m_Layer: 7
   m_Name: Pit Balls (37)
   m_TagString: Untagged
@@ -20368,6 +21383,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093283455}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1093283460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093283455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1093283461
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093283455}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1100697999
 GameObject:
   m_ObjectHideFlags: 0
@@ -21008,6 +22057,8 @@ GameObject:
   - component: {fileID: 1152930011}
   - component: {fileID: 1152930010}
   - component: {fileID: 1152930009}
+  - component: {fileID: 1152930013}
+  - component: {fileID: 1152930012}
   m_Layer: 7
   m_Name: Pit Balls (5)
   m_TagString: Untagged
@@ -21024,7 +22075,7 @@ Transform:
   m_GameObject: {fileID: 1152930007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.588036, y: 7.747516, z: 154.9737}
+  m_LocalPosition: {x: 54.6, y: 16.2, z: 137.6}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -21108,6 +22159,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152930007}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1152930012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152930007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1152930013
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152930007}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1172586764
 GameObject:
   m_ObjectHideFlags: 0
@@ -21476,6 +22561,8 @@ GameObject:
   - component: {fileID: 1195040630}
   - component: {fileID: 1195040629}
   - component: {fileID: 1195040628}
+  - component: {fileID: 1195040632}
+  - component: {fileID: 1195040631}
   m_Layer: 7
   m_Name: Pit Balls (15)
   m_TagString: Untagged
@@ -21576,6 +22663,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195040626}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1195040631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195040626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1195040632
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195040626}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1205536117
 GameObject:
   m_ObjectHideFlags: 0
@@ -22550,6 +23671,8 @@ GameObject:
   - component: {fileID: 1284934218}
   - component: {fileID: 1284934217}
   - component: {fileID: 1284934216}
+  - component: {fileID: 1284934220}
+  - component: {fileID: 1284934219}
   m_Layer: 7
   m_Name: Pit Balls (28)
   m_TagString: Untagged
@@ -22566,7 +23689,7 @@ Transform:
   m_GameObject: {fileID: 1284934214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.782364, y: 28.981552, z: 66.85085}
+  m_LocalPosition: {x: 120.782364, y: 28.981552, z: 277.8}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22650,6 +23773,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284934214}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1284934219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284934214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1284934220
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284934214}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1304531084
 GameObject:
   m_ObjectHideFlags: 0
@@ -22886,6 +24043,8 @@ GameObject:
   - component: {fileID: 1309067422}
   - component: {fileID: 1309067421}
   - component: {fileID: 1309067420}
+  - component: {fileID: 1309067424}
+  - component: {fileID: 1309067423}
   m_Layer: 7
   m_Name: Pit Balls (6)
   m_TagString: Untagged
@@ -22902,7 +24061,7 @@ Transform:
   m_GameObject: {fileID: 1309067418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.216194, y: -24.57491, z: 107.14908}
+  m_LocalPosition: {x: 45.216194, y: -4.1, z: 89.3}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22986,6 +24145,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309067418}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1309067423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309067418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1309067424
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309067418}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1309742007
 GameObject:
   m_ObjectHideFlags: 0
@@ -23222,6 +24415,8 @@ GameObject:
   - component: {fileID: 1334584747}
   - component: {fileID: 1334584746}
   - component: {fileID: 1334584745}
+  - component: {fileID: 1334584749}
+  - component: {fileID: 1334584748}
   m_Layer: 7
   m_Name: Pit Balls (20)
   m_TagString: Untagged
@@ -23238,7 +24433,7 @@ Transform:
   m_GameObject: {fileID: 1334584743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.9, y: 22.1736, z: 128.61401}
+  m_LocalPosition: {x: -96.6, y: 22.1736, z: 74.3}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -23322,6 +24517,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334584743}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1334584748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334584743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1334584749
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334584743}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &1337663434
 Mesh:
   m_ObjectHideFlags: 0
@@ -25520,6 +26749,8 @@ GameObject:
   - component: {fileID: 1409730931}
   - component: {fileID: 1409730930}
   - component: {fileID: 1409730929}
+  - component: {fileID: 1409730933}
+  - component: {fileID: 1409730932}
   m_Layer: 7
   m_Name: Pit Balls (22)
   m_TagString: Untagged
@@ -25620,6 +26851,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409730927}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1409730932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409730927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1409730933
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409730927}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1412262947
 GameObject:
   m_ObjectHideFlags: 0
@@ -25744,6 +27009,8 @@ GameObject:
   - component: {fileID: 1415544262}
   - component: {fileID: 1415544261}
   - component: {fileID: 1415544260}
+  - component: {fileID: 1415544264}
+  - component: {fileID: 1415544263}
   m_Layer: 7
   m_Name: Pit Balls (8)
   m_TagString: Untagged
@@ -25844,6 +27111,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415544258}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1415544263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415544258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1415544264
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415544258}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1419892179
 GameObject:
   m_ObjectHideFlags: 0
@@ -25856,6 +27157,8 @@ GameObject:
   - component: {fileID: 1419892183}
   - component: {fileID: 1419892182}
   - component: {fileID: 1419892181}
+  - component: {fileID: 1419892185}
+  - component: {fileID: 1419892184}
   m_Layer: 7
   m_Name: Pit Balls (21)
   m_TagString: Untagged
@@ -25956,6 +27259,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419892179}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1419892184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419892179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1419892185
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419892179}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1423632429
 GameObject:
   m_ObjectHideFlags: 0
@@ -26654,6 +27991,7 @@ GameObject:
   - component: {fileID: 1448568077}
   - component: {fileID: 1448568076}
   - component: {fileID: 1448568075}
+  - component: {fileID: 1448568078}
   m_Layer: 7
   m_Name: Pit Balls (3)
   m_TagString: Untagged
@@ -26754,6 +28092,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448568073}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1448568078
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448568073}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1467431946
 GameObject:
   m_ObjectHideFlags: 0
@@ -26878,6 +28238,8 @@ GameObject:
   - component: {fileID: 1467835763}
   - component: {fileID: 1467835762}
   - component: {fileID: 1467835761}
+  - component: {fileID: 1467835765}
+  - component: {fileID: 1467835764}
   m_Layer: 7
   m_Name: Pit Balls (31)
   m_TagString: Untagged
@@ -26978,6 +28340,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467835759}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1467835764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467835759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1467835765
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467835759}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1476832561
 GameObject:
   m_ObjectHideFlags: 0
@@ -27550,6 +28946,8 @@ GameObject:
   - component: {fileID: 1516625668}
   - component: {fileID: 1516625667}
   - component: {fileID: 1516625666}
+  - component: {fileID: 1516625670}
+  - component: {fileID: 1516625669}
   m_Layer: 7
   m_Name: Pit Balls (18)
   m_TagString: Untagged
@@ -27566,7 +28964,7 @@ Transform:
   m_GameObject: {fileID: 1516625664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.490627, y: 11.794797, z: 87.63429}
+  m_LocalPosition: {x: 138, y: 11.794797, z: 87.63429}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -27650,6 +29048,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516625664}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1516625669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516625664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1516625670
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516625664}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1524088238
 GameObject:
   m_ObjectHideFlags: 0
@@ -27662,6 +29094,8 @@ GameObject:
   - component: {fileID: 1524088242}
   - component: {fileID: 1524088241}
   - component: {fileID: 1524088240}
+  - component: {fileID: 1524088244}
+  - component: {fileID: 1524088243}
   m_Layer: 7
   m_Name: Pit Balls
   m_TagString: Untagged
@@ -27762,6 +29196,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524088238}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1524088243
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524088238}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1524088244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524088238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
 --- !u!1 &1525369245
 GameObject:
   m_ObjectHideFlags: 0
@@ -27774,6 +29242,8 @@ GameObject:
   - component: {fileID: 1525369249}
   - component: {fileID: 1525369248}
   - component: {fileID: 1525369247}
+  - component: {fileID: 1525369251}
+  - component: {fileID: 1525369250}
   m_Layer: 7
   m_Name: Pit Balls (25)
   m_TagString: Untagged
@@ -27874,6 +29344,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525369245}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1525369250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525369245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1525369251
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525369245}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1528682616
 GameObject:
   m_ObjectHideFlags: 0
@@ -27886,6 +29390,8 @@ GameObject:
   - component: {fileID: 1528682620}
   - component: {fileID: 1528682619}
   - component: {fileID: 1528682618}
+  - component: {fileID: 1528682622}
+  - component: {fileID: 1528682621}
   m_Layer: 7
   m_Name: Pit Balls (36)
   m_TagString: Untagged
@@ -27986,6 +29492,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528682616}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1528682621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528682616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1528682622
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528682616}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1528741276
 GameObject:
   m_ObjectHideFlags: 0
@@ -29250,6 +30790,8 @@ GameObject:
   - component: {fileID: 1584169766}
   - component: {fileID: 1584169765}
   - component: {fileID: 1584169764}
+  - component: {fileID: 1584169768}
+  - component: {fileID: 1584169767}
   m_Layer: 7
   m_Name: Pit Balls (10)
   m_TagString: Untagged
@@ -29350,6 +30892,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584169762}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1584169767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584169762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1584169768
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584169762}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1611836129
 GameObject:
   m_ObjectHideFlags: 0
@@ -29586,6 +31162,8 @@ GameObject:
   - component: {fileID: 1617601470}
   - component: {fileID: 1617601469}
   - component: {fileID: 1617601468}
+  - component: {fileID: 1617601472}
+  - component: {fileID: 1617601471}
   m_Layer: 7
   m_Name: Pit Balls (12)
   m_TagString: Untagged
@@ -29686,6 +31264,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617601466}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1617601471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617601466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1617601472
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617601466}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1621227792
 GameObject:
   m_ObjectHideFlags: 0
@@ -30353,6 +31965,8 @@ GameObject:
   - component: {fileID: 1637709116}
   - component: {fileID: 1637709115}
   - component: {fileID: 1637709114}
+  - component: {fileID: 1637709118}
+  - component: {fileID: 1637709117}
   m_Layer: 7
   m_Name: Pit Balls (9)
   m_TagString: Untagged
@@ -30453,6 +32067,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637709112}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1637709117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637709112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1637709118
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637709112}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1647972036
 GameObject:
   m_ObjectHideFlags: 0
@@ -31539,6 +33187,8 @@ GameObject:
   - component: {fileID: 1706796262}
   - component: {fileID: 1706796261}
   - component: {fileID: 1706796260}
+  - component: {fileID: 1706796264}
+  - component: {fileID: 1706796263}
   m_Layer: 7
   m_Name: Pit Balls (47)
   m_TagString: Untagged
@@ -31639,6 +33289,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706796258}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1706796263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706796258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1706796264
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706796258}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1718003900
 GameObject:
   m_ObjectHideFlags: 0
@@ -32659,6 +34343,8 @@ GameObject:
   - component: {fileID: 1797686515}
   - component: {fileID: 1797686514}
   - component: {fileID: 1797686513}
+  - component: {fileID: 1797686517}
+  - component: {fileID: 1797686516}
   m_Layer: 7
   m_Name: Pit Balls (4)
   m_TagString: Untagged
@@ -32759,6 +34445,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797686511}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1797686516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797686511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1797686517
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797686511}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1800109151
 GameObject:
   m_ObjectHideFlags: 0
@@ -33156,6 +34876,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6336030211914798890, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336030211914798890, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336030211914798890, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.6685095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336030211914798890, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6457112885783394248, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -33202,7 +34938,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 447624220866195336, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 143270817}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
 --- !u!1 &1835708674
@@ -34179,6 +35918,8 @@ GameObject:
   - component: {fileID: 1895614634}
   - component: {fileID: 1895614633}
   - component: {fileID: 1895614632}
+  - component: {fileID: 1895614636}
+  - component: {fileID: 1895614635}
   m_Layer: 7
   m_Name: Pit Balls (27)
   m_TagString: Untagged
@@ -34279,6 +36020,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895614630}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1895614635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895614630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1895614636
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895614630}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1902173903
 GameObject:
   m_ObjectHideFlags: 0
@@ -34452,6 +36227,8 @@ GameObject:
   - component: {fileID: 1908027790}
   - component: {fileID: 1908027789}
   - component: {fileID: 1908027788}
+  - component: {fileID: 1908027792}
+  - component: {fileID: 1908027791}
   m_Layer: 7
   m_Name: Pit Balls (11)
   m_TagString: Untagged
@@ -34552,6 +36329,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908027786}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1908027791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908027786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1908027792
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908027786}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1912480513
 GameObject:
   m_ObjectHideFlags: 0
@@ -35236,6 +37047,8 @@ GameObject:
   - component: {fileID: 1943816974}
   - component: {fileID: 1943816973}
   - component: {fileID: 1943816972}
+  - component: {fileID: 1943816976}
+  - component: {fileID: 1943816975}
   m_Layer: 7
   m_Name: Pit Balls (50)
   m_TagString: Untagged
@@ -35252,7 +37065,7 @@ Transform:
   m_GameObject: {fileID: 1943816970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.968224, y: 66.18228, z: 175.72348}
+  m_LocalPosition: {x: -121.2, y: 4.4, z: 344}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -35336,6 +37149,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943816970}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1943816975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943816970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1943816976
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943816970}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1945774241
 GameObject:
   m_ObjectHideFlags: 0
@@ -35460,6 +37307,8 @@ GameObject:
   - component: {fileID: 1950953638}
   - component: {fileID: 1950953637}
   - component: {fileID: 1950953636}
+  - component: {fileID: 1950953640}
+  - component: {fileID: 1950953639}
   m_Layer: 7
   m_Name: Pit Balls (7)
   m_TagString: Untagged
@@ -35476,7 +37325,7 @@ Transform:
   m_GameObject: {fileID: 1950953634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.348742, y: -13, z: 567}
+  m_LocalPosition: {x: 23, y: -1.2, z: 422.8}
   m_LocalScale: {x: 7.0699997, y: 7.0699997, z: 7.0699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -35560,6 +37409,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950953634}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1950953639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950953634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1950953640
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950953634}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1957574468
 GameObject:
   m_ObjectHideFlags: 0
@@ -35572,6 +37455,8 @@ GameObject:
   - component: {fileID: 1957574472}
   - component: {fileID: 1957574471}
   - component: {fileID: 1957574470}
+  - component: {fileID: 1957574474}
+  - component: {fileID: 1957574473}
   m_Layer: 7
   m_Name: Pit Balls (46)
   m_TagString: Untagged
@@ -35672,6 +37557,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957574468}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1957574473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957574468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7adb9c1fce54444838c0f145378219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallRandom
+--- !u!95 &1957574474
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957574468}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4395ca483f85b2048b14020789b7bc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1958095308
 GameObject:
   m_ObjectHideFlags: 0
