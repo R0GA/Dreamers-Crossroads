@@ -1,0 +1,24 @@
+using UnityEngine;
+
+namespace PuzzlePlatformer.Puzzles
+{
+    /// <summary>
+    /// Hook this up to RingPuzzleController's onPuzzleSolved event in the Inspector.
+    /// Keeps the door completely decoupled from puzzle logic.
+    /// </summary>
+    public class PuzzleDoorController : MonoBehaviour
+    {
+        public Animator doorAnimator;
+        public string openTriggerName = "Open";
+
+        public AudioSource audioSource;
+        public AudioClip openSound;
+
+        public void OpenDoor()
+        {
+            Debug.Log("Puzzle solved! Opening door...");
+            if (doorAnimator != null) doorAnimator.SetTrigger(openTriggerName);
+            if (audioSource != null && openSound != null) audioSource.PlayOneShot(openSound);
+        }
+    }
+}

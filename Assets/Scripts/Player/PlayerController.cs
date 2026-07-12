@@ -111,10 +111,22 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Movement speed multiplier while charging. Lower = more planted windup feel.")]
     [SerializeField][Range(0f, 1f)] private float chargeMoveScale = 0.25f;
 
+    // ── Interaction ───────────────────────────────────────────────────────────
+
+    [Header("Interaction")]
+    [Tooltip("Max distance the player can interact with something.")]
+    [SerializeField] private float interactionRange = 3f;
+
+    [Tooltip("Which layers count as interactable. Keep this on its own layer, separate from groundMask/grappleMask.")]
+    [SerializeField] private LayerMask interactionMask = ~0;
+
     // ── Public State (read by UI / VFX) ──────────────────────────────────────
     public float ChargeAmount => chargeAmount;
     public bool IsCharging => isCharging;
     public bool IsGrappling => grappleState == GrappleState.Attached;
+
+    [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
+    public IInteractable CurrentInteractable => currentInteractable;
 
     // ── Private: Components / Input ───────────────────────────────────────────
 
@@ -125,27 +137,33 @@ public class PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction grappleAction;
     private InputAction chargeAction;
+    private InputAction interactAction;
+    private InputAction interactAltAction;
     private LineRenderer grappleLine;
+
+    // ── Private: Interaction State ────────────────────────────────────────────
+
+    private IInteractable currentInteractable;
 
     // ── Private: Core Movement State ──────────────────────────────────────────
 
-    private Vector3 velocity;       
+    private Vector3 velocity;
     private float pitch;
     private bool isGrounded;
     private float coyoteTimer;
     private float jumpBufferTimer;
-    private float jumpGraceTimer; 
+    private float jumpGraceTimer;
 
     // ── Private: Grapple State ────────────────────────────────────────────────
 
     private enum GrappleState { Idle, Attached }
     private GrappleState grappleState = GrappleState.Idle;
-    private Vector3 grapplePoint;   
-    private float ropeLength;     
+    private Vector3 grapplePoint;
+    private float ropeLength;
 
     // ── Private: Charge Launch State ─────────────────────────────────────────
 
-    private float chargeAmount;    
+    private float chargeAmount;
     private bool isCharging;
 
     // ═════════════════════════════════════════════════════════════════════════
@@ -161,6 +179,11 @@ public class PlayerController : MonoBehaviour
         grappleAction = pi.actions["Grapple"];
         chargeAction = pi.actions["ChargeLaunch"];
 
+        // InteractAlt is optional — FindAction (which the [] indexer wraps) returns null
+        // rather than throwing, so InteractAlt-less interactables still work fine.
+        interactAction = pi.actions["Interact"];
+        interactAltAction = pi.actions.FindAction("InteractAlt");
+
         InitGrappleLine();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -172,6 +195,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleLook();
+        HandleInteraction();    // Reads look-updated camera forward, so must run after HandleLook
         GroundCheck();          // Sets isGrounded / coyoteTimer
         TickJumpBuffer();
         HandleGrappleInput();   // Toggle grapple state
@@ -198,6 +222,35 @@ public class PlayerController : MonoBehaviour
         pitch -= look.y;
         pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);
         cameraPivot.localEulerAngles = new Vector3(pitch, 0f, 0f);
+    }
+
+    // ── Interaction ───────────────────────────────────────────────────────────
+
+    private void HandleInteraction()
+    {
+        currentInteractable = FindInteractable();
+
+        if (currentInteractable == null) return;
+
+        if (interactAction != null && interactAction.WasPressedThisFrame())
+            currentInteractable.Interact(gameObject);
+        else if (interactAltAction != null && interactAltAction.WasPressedThisFrame())
+            currentInteractable.InteractAlt(gameObject);
+    }
+
+    private IInteractable FindInteractable()
+    {
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionRange,
+                            interactionMask, QueryTriggerInteraction.Ignore))
+        {
+            // GetComponentInParent so the collider can live on a child mesh while the
+            // script lives on a pivot/root object — same pattern used elsewhere in this file.
+            return hit.collider.GetComponentInParent<IInteractable>();
+        }
+
+        return null;
     }
 
     // ── Ground Detection ──────────────────────────────────────────────────────
