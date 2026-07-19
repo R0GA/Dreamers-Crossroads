@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Point the grapple beam visually fires from (e.g. a hand bone or weapon muzzle). "
            + "Falls back to the camera position if left empty.")]
     [SerializeField] private Transform grappleOrigin;
+    [SerializeField] private UnityEngine.VFX.VisualEffect sandVFX;
 
     // ── Look ──────────────────────────────────────────────────────────────────
 
@@ -554,10 +555,11 @@ public class PlayerController : MonoBehaviour
             grappleLine = gameObject.AddComponent<LineRenderer>();
 
         grappleLine.positionCount = 2;
-        grappleLine.startWidth = 0.04f;
-        grappleLine.endWidth = 0.04f;
+        grappleLine.startWidth = 1f;
+        grappleLine.endWidth = 1f;
         grappleLine.useWorldSpace = true;
         grappleLine.enabled = false;
+        if (sandVFX != null) sandVFX.Stop();
         // Assign a material in the Inspector for the best look.
         // Without one Unity will use a pink/magenta default — hard to miss!
     }
@@ -567,6 +569,7 @@ public class PlayerController : MonoBehaviour
         if (grappleState != GrappleState.Attached)
         {
             grappleLine.enabled = false;
+            if (sandVFX != null && sandVFX.aliveParticleCount > 0) sandVFX.Stop(); // Stop spawning new sand
             return;
         }
 
@@ -577,6 +580,17 @@ public class PlayerController : MonoBehaviour
         grappleLine.enabled = true;
         grappleLine.SetPosition(0, lineStart);
         grappleLine.SetPosition(1, grapplePoint);
+
+        // Update the VFX Graph properties and ensure it's playing
+        if (sandVFX != null)
+        {
+            sandVFX.SetVector3("StartPoint", lineStart);
+            sandVFX.SetVector3("EndPoint", grapplePoint);
+
+            // Start playing if it was idle
+            if (!sandVFX.HasAnySystemAwake())
+                sandVFX.Play();
+        }
     }
 
     // ── Physics Helpers ───────────────────────────────────────────────────────
