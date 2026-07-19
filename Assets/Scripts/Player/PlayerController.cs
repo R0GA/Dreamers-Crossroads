@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
            + "Falls back to the camera position if left empty.")]
     [SerializeField] private Transform grappleOrigin;
     [SerializeField] private UnityEngine.VFX.VisualEffect sandVFX;
+    [SerializeField] private Animator viewmodelAnimator;
 
     // ── Look ──────────────────────────────────────────────────────────────────
 
@@ -253,6 +254,17 @@ public class PlayerController : MonoBehaviour
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
         UpdateGrappleLine();
+
+        if (viewmodelAnimator != null)
+        {
+            // Only play walk if grounded and moving horizontally
+            bool isMoving = HorizontalSpeed() > 0.1f;
+            viewmodelAnimator.SetBool("IsWalking", isGrounded && isMoving);
+
+            // Pass ability holding states directly to the animator
+            viewmodelAnimator.SetBool("IsGrappling", IsGrappling);
+            viewmodelAnimator.SetBool("IsCharging", IsCharging);
+        }
 
         // Single authoritative Move() call — all systems write to velocity, one read here
         CollisionFlags flags = cc.Move(velocity * Time.deltaTime);
