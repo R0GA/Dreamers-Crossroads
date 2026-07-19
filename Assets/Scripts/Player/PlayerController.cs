@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform grappleOrigin;
     [SerializeField] private UnityEngine.VFX.VisualEffect sandVFX;
     [SerializeField] private Animator viewmodelAnimator;
+    [Tooltip("Empty RectTransform childed to your UI Viewmodel at the firing point.")]
+    [SerializeField] private RectTransform uiGrappleEmitter;
+
+    [Tooltip("How far in front of the camera lens (in meters) the 3D beam should spawn.")]
+    [SerializeField] private float emitterForwardOffset = 0.5f;
 
     // ── Look ──────────────────────────────────────────────────────────────────
 
@@ -581,25 +586,36 @@ public class PlayerController : MonoBehaviour
         if (grappleState != GrappleState.Attached)
         {
             grappleLine.enabled = false;
-            if (sandVFX != null && sandVFX.aliveParticleCount > 0) sandVFX.Stop(); // Stop spawning new sand
+            if (sandVFX != null && sandVFX.aliveParticleCount > 0) sandVFX.Stop();
             return;
         }
 
-        Vector3 lineStart = grappleOrigin != null
-            ? grappleOrigin.position
-            : playerCamera.transform.position;
+        Vector3 lineStart;
+
+        // Convert the 2D UI position into a 3D world point in front of the camera
+        if (uiGrappleEmitter != null)
+        {
+            Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, uiGrappleEmitter.position);
+            lineStart = playerCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, emitterForwardOffset));
+        }
+        else if (grappleOrigin != null)
+        {
+            lineStart = grappleOrigin.position;
+        }
+        else
+        {
+            lineStart = playerCamera.transform.position;
+        }
 
         grappleLine.enabled = true;
         grappleLine.SetPosition(0, lineStart);
         grappleLine.SetPosition(1, grapplePoint);
 
-        // Update the VFX Graph properties and ensure it's playing
         if (sandVFX != null)
         {
             sandVFX.SetVector3("StartPoint", lineStart);
             sandVFX.SetVector3("EndPoint", grapplePoint);
 
-            // Start playing if it was idle
             if (!sandVFX.HasAnySystemAwake())
                 sandVFX.Play();
         }
