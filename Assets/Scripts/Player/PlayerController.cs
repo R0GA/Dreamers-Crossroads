@@ -1,5 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+/// <summary>
+/// Bitflags for the player's traversal abilities. PlayerController gates input on these;
+/// AbilityCrystal (and anything else — cutscenes, debug menus, save data) grants them by
+/// calling PlayerController.UnlockAbility(...).
+/// </summary>
+[Flags]
+public enum PlayerAbility
+{
+    None    = 0,
+    Jump    = 1 << 0,
+    Grapple = 1 << 1,
+    Launch  = 1 << 2,
+
+    All = Jump | Grapple | Launch
+}
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
@@ -120,6 +137,14 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Which layers count as interactable. Keep this on its own layer, separate from groundMask/grappleMask.")]
     [SerializeField] private LayerMask interactionMask = ~0;
 
+    // ── Abilities ─────────────────────────────────────────────────────────────
+
+    [Header("Abilities")]
+    [Tooltip("Abilities the player has at the start of the scene. For a tutorial level, "
+           + "set this to None and let AbilityCrystals unlock Jump/Grapple/Launch one at a "
+           + "time. For any other level, leave this at All.")]
+    [SerializeField] private PlayerAbility startingAbilities = PlayerAbility.All;
+
     // ── Public State (read by UI / VFX) ──────────────────────────────────────
     public float ChargeAmount => chargeAmount;
     public bool IsCharging => isCharging;
@@ -127,6 +152,25 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
     public IInteractable CurrentInteractable => currentInteractable;
+
+    /// <summary>Currently unlocked abilities. Read-only from outside — grant abilities via UnlockAbility.</summary>
+    public PlayerAbility UnlockedAbilities => unlockedAbilities;
+
+    /// <summary>Fired once, right when an ability is newly granted (not on redundant re-grants). Useful for a "Jump Restored" banner, SFX, save data, etc.</summary>
+    public event Action<PlayerAbility> AbilityUnlocked;
+
+    /// <summary>True if the player currently has every flag in <paramref name="ability"/> (can pass a single flag or a combination).</summary>
+    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ability) == ability;
+
+    /// <summary>Grants an ability (or combination of abilities) to the player. Safe to call repeatedly — already-unlocked flags are ignored and won't re-fire the event.</summary>
+    public void UnlockAbility(PlayerAbility ability)
+    {
+        PlayerAbility newlyGranted = ability & ~unlockedAbilities;
+        if (newlyGranted == PlayerAbility.None) return;
+
+        unlockedAbilities |= ability;
+        AbilityUnlocked?.Invoke(newlyGranted);
+    }
 
     // ── Private: Components / Input ───────────────────────────────────────────
 
@@ -144,6 +188,10 @@ public class PlayerController : MonoBehaviour
     // ── Private: Interaction State ────────────────────────────────────────────
 
     private IInteractable currentInteractable;
+
+    // ── Private: Ability State ────────────────────────────────────────────────
+
+    private PlayerAbility unlockedAbilities;
 
     // ── Private: Core Movement State ──────────────────────────────────────────
 
@@ -183,6 +231,8 @@ public class PlayerController : MonoBehaviour
         // rather than throwing, so InteractAlt-less interactables still work fine.
         interactAction = pi.actions["Interact"];
         interactAltAction = pi.actions.FindAction("InteractAlt");
+
+        unlockedAbilities = startingAbilities;
 
         InitGrappleLine();
 
@@ -303,6 +353,8 @@ public class PlayerController : MonoBehaviour
 
     private bool CanJump()
     {
+        if (!HasAbility(PlayerAbility.Jump)) return false;
+
         bool hasInput = jumpBufferTimer > 0f || (allowBunnyHop && jumpAction.IsPressed());
         bool nearGround = coyoteTimer > 0f;
         return hasInput && nearGround;
@@ -312,7 +364,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGrappleInput()
     {
-        if (grappleAction.WasPressedThisFrame() && grappleState == GrappleState.Idle)
+        if (grappleAction.WasPressedThisFrame() && grappleState == GrappleState.Idle
+            && HasAbility(PlayerAbility.Grapple))
             TryFireGrapple();
 
         if (grappleAction.WasReleasedThisFrame() && grappleState == GrappleState.Attached)
@@ -380,7 +433,7 @@ public class PlayerController : MonoBehaviour
         if (grappleState == GrappleState.Attached || !isGrounded)
             return; // Can't start charging while grappling — prevents awkward edge cases)
 
-        if (chargeAction.WasPressedThisFrame())
+        if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch))
         {
             isCharging = true;
             chargeAmount = 0f;
@@ -450,7 +503,7 @@ public class PlayerController : MonoBehaviour
         Accelerate(wishDir, grappleAirControl, airAcceleration);
 
         // Slingshot jump — preserve swing speed and add vertical burst
-        if (jumpBufferTimer > 0f)
+        if (jumpBufferTimer > 0f && HasAbility(PlayerAbility.Jump))
         {
             ReleaseGrapple();
 
