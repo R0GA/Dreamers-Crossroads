@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FXWaterfall01
+  m_Shader: {fileID: -6465566751694194690, guid: f00d4216fdd371445933655e905bff5e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3048
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AccentMap_Add: 9.73
+    - _AccentMap_Strength: 0.04
+    - _AddPrecomputedVelocity: 0
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Base_Opacity: 1
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _BlitCC: 0.04
+    - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Cliff_Line_Break_Scale: 1.694
+    - _Cliff_Line_Break_Scale_Ver: 1.694
+    - _Cliff_Line_Break_Threshold: 0.31
+    - _Cliff_Line_Break_Threshold_Ver: 0.622
+    - _Cliff_Line_Density: 0.9
+    - _Cliff_Line_Density_Ver: 0.199
+    - _Cliff_Line_JitterScale: 1.44
+    - _Cliff_Line_JitterScale_Ver: 0.03
+    - _Cliff_Line_JitterStrength: 0.31
+    - _Cliff_Line_JitterStrength_Ver: 0.585
+    - _Cliff_Line_Thickness: 0.003
+    - _Cliff_Line_Thickness_Ver: 0.001
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _Depth_Add: 5.17
+    - _Depth_Blend: 0.728
+    - _Depth_Strength: 4.47
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DropNoiseScale: 1.56
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
+    - _EnvironmentReflections: 1
+    - _Environment_Light_Influence: 0.513
+    - _FallNoiseStep01: 0.58
+    - _FallNoiseStep02: 0.8
+    - _Fall_NoiseScale: 1.72
+    - _Fall_NoiseStep01: 0.63
+    - _Fall_NoiseStep02: 0.71
+    - _Fall_NoiseStepA: 0.563
+    - _Fall_NoiseStepB: 0.386
+    - _Fall_PosFloorAdd: 0.74
+    - _Fall_PosFloorMult: 8.05
+    - _Fall_Scale: 0.7
+    - _Fall_TimeScale: 0.89
+    - _Foam_Clip: 0.905
+    - _Foam_Offset: 0.96
+    - _Foam_Size: 0.64
+    - _Foam_Size_Variance: 0.4
+    - _Foam_Speed: 0.1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _NoiseScale: 6.99
+    - _NoiseStep: 0.371
+    - _NoiseStepA: 0.346
+    - _NoiseStepB: 0.146
+    - _Noise_DropScale: 1
+    - _Noise_Scale: 2.41
+    - _Noise_StepA: 0.507
+    - _Noise_StepB: 0.35
+    - _OcclusionStrength: 1
+    - _Outline_Size: 0.18
+    - _Parallax: 0.005
+    - _PosFloorAdd: 0.19
+    - _PosFloorMult: 0.57
+    - _QueueControl: 0
+    - _QueueOffset: 48
+    - _ReceiveShadows: 1
+    - _Shadow_Intensity: 0.5
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 0
+    - _TestFoam: 0.8
+    - _TimeScale: 0.42
+    - _TopAdd: -0.44
+    - _TopIntensity: 0
+    - _TopStrength: 100
+    - _Wind_Scale: 0.09
+    - _Wind_ScaleB: 2.21
+    - _Wind_Speed: 0.16
+    - _Wind_Strength: 0.36
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _Accent_Color: {r: 0.117647044, g: 0.43529412, b: 0.41598442, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Base_Color: {r: 0.2991723, g: 0.5515784, b: 0.7830189, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Accent: {r: 1, g: 0.37498975, b: 0, a: 1}
+    - _Color_Base: {r: 0.36862746, g: 0.46666667, b: 0.6901961, a: 1}
+    - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Shadow: {r: 0.49056602, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Line_Color: {r: 0.1792453, g: 0.14983787, b: 0.13443397, a: 1}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Shadow_Color: {r: 0.8490566, g: 0.18823424, b: 0.18823424, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Top_Color: {r: 0.3551086, g: 0.7169812, b: 0.5591953, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &6002636381468154698
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 10
