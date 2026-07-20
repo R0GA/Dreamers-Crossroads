@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,10 +18,17 @@ namespace PuzzlePlatformer.Puzzles
 
         public void OpenDoor()
         {
+           StartCoroutine(OpenDoorRoutine());
+        }
+
+        private IEnumerator OpenDoorRoutine()
+        {
+            yield return new WaitForSeconds(2f); // Optional delay before opening the door
             Debug.Log("Puzzle solved! Opening door...");
             SceneManager.LoadScene("EndSceneTutorial");
             if (doorAnimator != null) doorAnimator.SetTrigger(openTriggerName);
             if (audioSource != null && openSound != null) audioSource.PlayOneShot(openSound);
         }
+
     }
 }

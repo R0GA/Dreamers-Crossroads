@@ -1,8 +1,14 @@
+using SmnStyleHardline.Demo;
 using UnityEngine;
 
 public class ExitScript : MonoBehaviour
 {
-   public void ExitGame()
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+    }
+    public void ExitGame()
     {
            Application.Quit();
     }
