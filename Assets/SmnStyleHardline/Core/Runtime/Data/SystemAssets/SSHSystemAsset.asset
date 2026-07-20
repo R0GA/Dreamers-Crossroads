@@ -15,25 +15,25 @@ MonoBehaviour:
   Core:
     LightSyncTick: 40
   Environment:
-    ShadowColor: {r: 0.05660485, g: 0.11261017, b: 0.4731189, a: 0}
-    ShadowIntensity: 0.76299864
+    ShadowColor: {r: 0.028048495, g: 0, b: 0.16981131, a: 0}
+    ShadowIntensity: 0.75
     ShadowClip: 0.377
     ShadowRangeMult: 0.39
-    EnvironmentLightColor: {r: 0.9433962, g: 0.4123794, b: 0.24474904, a: 0}
-    EnvironmentLightIntensity: 0.18343519
+    EnvironmentLightColor: {r: 0.49056602, g: 0, b: 0.16169493, a: 0}
+    EnvironmentLightIntensity: 0.524
     EnvironmentLightInfluence: 0.34
   Skybox:
-    BaseColor: {r: 0.19223925, g: 0.40974566, b: 0.9056604, a: 0}
-    AccentColor: {r: 1, g: 0.810727, b: 0.7213191, a: 0}
-    StarsColor: {r: 0.032838106, g: 0.032838106, b: 0.032838106, a: 0}
-    BandIntensity: 1.0834873
-    BandAdd: -0.22747649
-    BandHorizontalWidth: 0.3738835
+    BaseColor: {r: 0, g: 0.031360116, b: 0.103773594, a: 0}
+    AccentColor: {r: 0.103773594, g: 0, b: 0.034250423, a: 0}
+    StarsColor: {r: 1, g: 0.9522199, b: 0.5613208, a: 0}
+    BandIntensity: 0.96
+    BandAdd: 0
+    BandHorizontalWidth: 0.214
     BandContrast: 2.68
-    StarmapDensity: 684
-    StarmapScale: 0.055
-    StarmapSeed: 0.006
-    StarmapTilt: 60.32838
+    StarmapDensity: 301
+    StarmapScale: 0.198
+    StarmapSeed: 0.046
+    StarmapTilt: 65.3
   Outline:
     ColorOutlineColor: {r: 0.030927373, g: 0.037088294, b: 0.047169805, a: 1}
     ColorOutlineStrength: 0.11
