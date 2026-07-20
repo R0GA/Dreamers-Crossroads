@@ -1,5 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+/// <summary>
+/// Bitflags for the player's traversal abilities. PlayerController gates input on these;
+/// AbilityCrystal (and anything else — cutscenes, debug menus, save data) grants them by
+/// calling PlayerController.UnlockAbility(...).
+/// </summary>
+[Flags]
+public enum PlayerAbility
+{
+    None    = 0,
+    Jump    = 1 << 0,
+    Grapple = 1 << 1,
+    Launch  = 1 << 2,
+
+    All = Jump | Grapple | Launch
+}
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
@@ -14,6 +31,13 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Point the grapple beam visually fires from (e.g. a hand bone or weapon muzzle). "
            + "Falls back to the camera position if left empty.")]
     [SerializeField] private Transform grappleOrigin;
+    [SerializeField] private UnityEngine.VFX.VisualEffect sandVFX;
+    [SerializeField] private Animator viewmodelAnimator;
+    [Tooltip("Empty RectTransform childed to your UI Viewmodel at the firing point.")]
+    [SerializeField] private RectTransform uiGrappleEmitter;
+
+    [Tooltip("How far in front of the camera lens (in meters) the 3D beam should spawn.")]
+    [SerializeField] private float emitterForwardOffset = 0.5f;
 
     // ── Look ──────────────────────────────────────────────────────────────────
 
@@ -111,10 +135,49 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Movement speed multiplier while charging. Lower = more planted windup feel.")]
     [SerializeField][Range(0f, 1f)] private float chargeMoveScale = 0.25f;
 
+    // ── Interaction ───────────────────────────────────────────────────────────
+
+    [Header("Interaction")]
+    [Tooltip("Max distance the player can interact with something.")]
+    [SerializeField] private float interactionRange = 3f;
+
+    [Tooltip("Which layers count as interactable. Keep this on its own layer, separate from groundMask/grappleMask.")]
+    [SerializeField] private LayerMask interactionMask = ~0;
+
+    // ── Abilities ─────────────────────────────────────────────────────────────
+
+    [Header("Abilities")]
+    [Tooltip("Abilities the player has at the start of the scene. For a tutorial level, "
+           + "set this to None and let AbilityCrystals unlock Jump/Grapple/Launch one at a "
+           + "time. For any other level, leave this at All.")]
+    [SerializeField] private PlayerAbility startingAbilities = PlayerAbility.All;
+
     // ── Public State (read by UI / VFX) ──────────────────────────────────────
     public float ChargeAmount => chargeAmount;
     public bool IsCharging => isCharging;
     public bool IsGrappling => grappleState == GrappleState.Attached;
+
+    [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
+    public IInteractable CurrentInteractable => currentInteractable;
+
+    /// <summary>Currently unlocked abilities. Read-only from outside — grant abilities via UnlockAbility.</summary>
+    public PlayerAbility UnlockedAbilities => unlockedAbilities;
+
+    /// <summary>Fired once, right when an ability is newly granted (not on redundant re-grants). Useful for a "Jump Restored" banner, SFX, save data, etc.</summary>
+    public event Action<PlayerAbility> AbilityUnlocked;
+
+    /// <summary>True if the player currently has every flag in <paramref name="ability"/> (can pass a single flag or a combination).</summary>
+    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ability) == ability;
+
+    /// <summary>Grants an ability (or combination of abilities) to the player. Safe to call repeatedly — already-unlocked flags are ignored and won't re-fire the event.</summary>
+    public void UnlockAbility(PlayerAbility ability)
+    {
+        PlayerAbility newlyGranted = ability & ~unlockedAbilities;
+        if (newlyGranted == PlayerAbility.None) return;
+
+        unlockedAbilities |= ability;
+        AbilityUnlocked?.Invoke(newlyGranted);
+    }
 
     // ── Private: Components / Input ───────────────────────────────────────────
 
@@ -125,27 +188,37 @@ public class PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction grappleAction;
     private InputAction chargeAction;
+    private InputAction interactAction;
+    private InputAction interactAltAction;
     private LineRenderer grappleLine;
+
+    // ── Private: Interaction State ────────────────────────────────────────────
+
+    private IInteractable currentInteractable;
+
+    // ── Private: Ability State ────────────────────────────────────────────────
+
+    private PlayerAbility unlockedAbilities;
 
     // ── Private: Core Movement State ──────────────────────────────────────────
 
-    private Vector3 velocity;       
+    private Vector3 velocity;
     private float pitch;
     private bool isGrounded;
     private float coyoteTimer;
     private float jumpBufferTimer;
-    private float jumpGraceTimer; 
+    private float jumpGraceTimer;
 
     // ── Private: Grapple State ────────────────────────────────────────────────
 
     private enum GrappleState { Idle, Attached }
     private GrappleState grappleState = GrappleState.Idle;
-    private Vector3 grapplePoint;   
-    private float ropeLength;     
+    private Vector3 grapplePoint;
+    private float ropeLength;
 
     // ── Private: Charge Launch State ─────────────────────────────────────────
 
-    private float chargeAmount;    
+    private float chargeAmount;
     private bool isCharging;
 
     // ═════════════════════════════════════════════════════════════════════════
@@ -161,6 +234,13 @@ public class PlayerController : MonoBehaviour
         grappleAction = pi.actions["Grapple"];
         chargeAction = pi.actions["ChargeLaunch"];
 
+        // InteractAlt is optional — FindAction (which the [] indexer wraps) returns null
+        // rather than throwing, so InteractAlt-less interactables still work fine.
+        interactAction = pi.actions["Interact"];
+        interactAltAction = pi.actions.FindAction("InteractAlt");
+
+        unlockedAbilities = startingAbilities;
+
         InitGrappleLine();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -172,12 +252,24 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleLook();
+        HandleInteraction();    // Reads look-updated camera forward, so must run after HandleLook
         GroundCheck();          // Sets isGrounded / coyoteTimer
         TickJumpBuffer();
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
         UpdateGrappleLine();
+
+        if (viewmodelAnimator != null)
+        {
+            // Only play walk if grounded and moving horizontally
+            bool isMoving = HorizontalSpeed() > 0.1f;
+            viewmodelAnimator.SetBool("IsWalking", isGrounded && isMoving);
+
+            // Pass ability holding states directly to the animator
+            viewmodelAnimator.SetBool("IsGrappling", IsGrappling);
+            viewmodelAnimator.SetBool("IsCharging", IsCharging);
+        }
 
         // Single authoritative Move() call — all systems write to velocity, one read here
         CollisionFlags flags = cc.Move(velocity * Time.deltaTime);
@@ -198,6 +290,35 @@ public class PlayerController : MonoBehaviour
         pitch -= look.y;
         pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);
         cameraPivot.localEulerAngles = new Vector3(pitch, 0f, 0f);
+    }
+
+    // ── Interaction ───────────────────────────────────────────────────────────
+
+    private void HandleInteraction()
+    {
+        currentInteractable = FindInteractable();
+
+        if (currentInteractable == null) return;
+
+        if (interactAction != null && interactAction.WasPressedThisFrame())
+            currentInteractable.Interact(gameObject);
+        else if (interactAltAction != null && interactAltAction.WasPressedThisFrame())
+            currentInteractable.InteractAlt(gameObject);
+    }
+
+    private IInteractable FindInteractable()
+    {
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionRange,
+                            interactionMask, QueryTriggerInteraction.Ignore))
+        {
+            // GetComponentInParent so the collider can live on a child mesh while the
+            // script lives on a pivot/root object — same pattern used elsewhere in this file.
+            return hit.collider.GetComponentInParent<IInteractable>();
+        }
+
+        return null;
     }
 
     // ── Ground Detection ──────────────────────────────────────────────────────
@@ -250,6 +371,8 @@ public class PlayerController : MonoBehaviour
 
     private bool CanJump()
     {
+        if (!HasAbility(PlayerAbility.Jump)) return false;
+
         bool hasInput = jumpBufferTimer > 0f || (allowBunnyHop && jumpAction.IsPressed());
         bool nearGround = coyoteTimer > 0f;
         return hasInput && nearGround;
@@ -259,7 +382,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGrappleInput()
     {
-        if (grappleAction.WasPressedThisFrame() && grappleState == GrappleState.Idle)
+        if (grappleAction.WasPressedThisFrame() && grappleState == GrappleState.Idle
+            && HasAbility(PlayerAbility.Grapple))
             TryFireGrapple();
 
         if (grappleAction.WasReleasedThisFrame() && grappleState == GrappleState.Attached)
@@ -327,7 +451,7 @@ public class PlayerController : MonoBehaviour
         if (grappleState == GrappleState.Attached || !isGrounded)
             return; // Can't start charging while grappling — prevents awkward edge cases)
 
-        if (chargeAction.WasPressedThisFrame())
+        if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch))
         {
             isCharging = true;
             chargeAmount = 0f;
@@ -397,7 +521,7 @@ public class PlayerController : MonoBehaviour
         Accelerate(wishDir, grappleAirControl, airAcceleration);
 
         // Slingshot jump — preserve swing speed and add vertical burst
-        if (jumpBufferTimer > 0f)
+        if (jumpBufferTimer > 0f && HasAbility(PlayerAbility.Jump))
         {
             ReleaseGrapple();
 
@@ -448,10 +572,11 @@ public class PlayerController : MonoBehaviour
             grappleLine = gameObject.AddComponent<LineRenderer>();
 
         grappleLine.positionCount = 2;
-        grappleLine.startWidth = 0.04f;
-        grappleLine.endWidth = 0.04f;
+        grappleLine.startWidth = 1f;
+        grappleLine.endWidth = 1f;
         grappleLine.useWorldSpace = true;
         grappleLine.enabled = false;
+        if (sandVFX != null) sandVFX.Stop();
         // Assign a material in the Inspector for the best look.
         // Without one Unity will use a pink/magenta default — hard to miss!
     }
@@ -461,16 +586,39 @@ public class PlayerController : MonoBehaviour
         if (grappleState != GrappleState.Attached)
         {
             grappleLine.enabled = false;
+            if (sandVFX != null && sandVFX.aliveParticleCount > 0) sandVFX.Stop();
             return;
         }
 
-        Vector3 lineStart = grappleOrigin != null
-            ? grappleOrigin.position
-            : playerCamera.transform.position;
+        Vector3 lineStart;
+
+        // Convert the 2D UI position into a 3D world point in front of the camera
+        if (uiGrappleEmitter != null)
+        {
+            Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, uiGrappleEmitter.position);
+            lineStart = playerCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, emitterForwardOffset));
+        }
+        else if (grappleOrigin != null)
+        {
+            lineStart = grappleOrigin.position;
+        }
+        else
+        {
+            lineStart = playerCamera.transform.position;
+        }
 
         grappleLine.enabled = true;
         grappleLine.SetPosition(0, lineStart);
         grappleLine.SetPosition(1, grapplePoint);
+
+        if (sandVFX != null)
+        {
+            sandVFX.SetVector3("StartPoint", lineStart);
+            sandVFX.SetVector3("EndPoint", grapplePoint);
+
+            if (!sandVFX.HasAnySystemAwake())
+                sandVFX.Play();
+        }
     }
 
     // ── Physics Helpers ───────────────────────────────────────────────────────
