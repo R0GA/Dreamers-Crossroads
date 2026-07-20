@@ -10,38 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
-  m_Name: Crystal2
+  m_Name: Opener
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: My tether's back. Shweeeet.
+    text: Damn, seems my dreamcatcher's down.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 4
   - speakerName: Sandman
-    text: Hm... Im getting more about that dream nearby...
+    text: Looks like it took a hard hit in that last dream... power levels are gone.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 5
   - speakerName: Sandman
-    text: Dream belongs to a girl named Chelsea, if the signal's reading right.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
-  - speakerName: Sandman
-    text: Seems shes got a birthday coming up, by the feel of it.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
-  - speakerName: Sandman
-    text: Well then, Let's not dawdle.
+    text: Well, it wouldnt be the first time.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 4
-  - speakerName: 
-    text: 'Tip: Certain objects can be tethered to. Press and hold left click to
-      attach to and swing from objects.'
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 0}
-    autoAdvanceDelay: 10
   playOnce: 1

@@ -84,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         if (sequence.playOnce && playedOnce.Contains(sequence)) return false;
 
         playRoutine = StartCoroutine(PlaySequenceRoutine(sequence));
+        Debug.Log($"DialogueManager: playing sequence \"{sequence.name}\" with {sequence.lines.Length} lines.");
         return true;
     }
 

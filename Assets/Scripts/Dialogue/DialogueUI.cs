@@ -37,8 +37,16 @@ public class DialogueUI : MonoBehaviour
     {
         if (panelRoot != null) panelRoot.SetActive(false);
         if (advanceAction != null) advanceAction.action.Enable();
+    }
 
-        if (DialogueManager.Instance == null) return;
+    private void Start()
+    {
+        // By the time Start runs, DialogueManager.Awake() is guaranteed to have finished.
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogWarning("DialogueUI could not find DialogueManager.Instance!");
+            return;
+        }
 
         DialogueManager.Instance.DialogueStarted += HandleDialogueStarted;
         DialogueManager.Instance.LineStarted += HandleLineStarted;
@@ -48,6 +56,11 @@ public class DialogueUI : MonoBehaviour
     private void OnDisable()
     {
         if (advanceAction != null) advanceAction.action.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        // Clean up event subscriptions here instead of OnDisable
         if (DialogueManager.Instance == null) return;
 
         DialogueManager.Instance.DialogueStarted -= HandleDialogueStarted;
@@ -78,6 +91,7 @@ public class DialogueUI : MonoBehaviour
     private void HandleDialogueStarted(DialogueSequence sequence)
     {
         if (panelRoot != null) panelRoot.SetActive(true);
+        Debug.Log($"Dialogue started: {sequence.name}");
     }
 
     private void HandleLineStarted(DialogueLine line)
