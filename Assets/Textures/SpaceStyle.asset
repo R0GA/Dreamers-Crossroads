@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 541c979fd03d8144283a0ba276eaa275, type: 3}
-  m_Name: SSHSystemAsset
-  m_EditorClassIdentifier: Assembly-CSharp::SSHSystemAsset
-  Core:
-    LightSyncTick: 40
+  m_Script: {fileID: 11500000, guid: ac162aab5c8b9014ca305e9183c98402, type: 3}
+  m_Name: SpaceStyle
+  m_EditorClassIdentifier: SmnStyleHardline.Runtime::SmnStyleHardline.Core.SSHStyleAsset
   Environment:
     ShadowColor: {r: 0.028048495, g: 0, b: 0.16981131, a: 0}
-    ShadowIntensity: 0.75
+    ShadowIntensity: 1.27
     ShadowClip: 0.377
     ShadowRangeMult: 0.39
     EnvironmentLightColor: {r: 0.49056602, g: 0, b: 0.16169493, a: 0}

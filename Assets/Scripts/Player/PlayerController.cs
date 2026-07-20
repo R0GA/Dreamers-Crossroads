@@ -258,12 +258,12 @@ public class PlayerController : MonoBehaviour
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
-        UpdateGrappleLine();
+       // UpdateGrappleLine();
 
         if (viewmodelAnimator != null)
         {
             // Only play walk if grounded and moving horizontally
-            bool isMoving = HorizontalSpeed() > 0.1f;
+            bool isMoving = HorizontalSpeed() > 0.3f;
             viewmodelAnimator.SetBool("IsWalking", isGrounded && isMoving);
 
             // Pass ability holding states directly to the animator
@@ -277,6 +277,10 @@ public class PlayerController : MonoBehaviour
         // Kill upward velocity on ceiling hits so the player drops immediately
         if ((flags & CollisionFlags.Above) != 0 && velocity.y > 0f)
             velocity.y = 0f;
+    }
+    private void LateUpdate()
+    {
+        UpdateGrappleLine();
     }
 
     // ── Look ──────────────────────────────────────────────────────────────────
@@ -572,8 +576,8 @@ public class PlayerController : MonoBehaviour
             grappleLine = gameObject.AddComponent<LineRenderer>();
 
         grappleLine.positionCount = 2;
-        grappleLine.startWidth = 1f;
-        grappleLine.endWidth = 1f;
+        grappleLine.startWidth = 0.2f;
+        grappleLine.endWidth = 0.2f;
         grappleLine.useWorldSpace = true;
         grappleLine.enabled = false;
         if (sandVFX != null) sandVFX.Stop();

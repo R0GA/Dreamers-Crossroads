@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (voiceSource == null)
-            voiceSource = GetComponent<AudioSource>();
+            voiceSource = GetComponent<AudioSource>(); 
     }
 
     // ── Public API ───────────────────────────────────────────────────────────
