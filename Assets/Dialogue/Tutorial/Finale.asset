@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Finale
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sandman
+    text: Seems the dream has sealed itself shut.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 4
+  - speakerName: Sandman
+    text: Come to think of it, the rings on this crystal are intact...
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 5
+  - speakerName: Sandman
+    text: 'Hmm. I think I remember seeing these symbols somewhere on the
+
+      highway.
+      Well. Not much of a mystery then, is it.'
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 8
+  playOnce: 1

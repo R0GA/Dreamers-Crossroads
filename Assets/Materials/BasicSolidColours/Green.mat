@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Green
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e246ae1e3ee8a2d43b65781e3766f9c3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -30,8 +30,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -96,6 +95,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AccentMask_Add: 1
+    - _AccentMask_Strength: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -111,12 +112,33 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Environment_Light_Influence: 1
+    - _Environment_Shadow_Influence: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _Proc_Line_Break_Scale_Hor1: 1.694
+    - _Proc_Line_Break_Scale_Hor2: 1.91
+    - _Proc_Line_Break_Scale_Ver: 1.694
+    - _Proc_Line_Break_Threshold_Hor1: 0.31
+    - _Proc_Line_Break_Threshold_Hor2: 0.31
+    - _Proc_Line_Break_Threshold_Ver: 0.622
+    - _Proc_Line_Density_Hor1: 0.9
+    - _Proc_Line_Density_Hor2: 0.19
+    - _Proc_Line_Density_Ver: 0.199
+    - _Proc_Line_JitterScale_Hor1: 1.44
+    - _Proc_Line_JitterScale_Hor2: 0.27
+    - _Proc_Line_JitterScale_Ver: 0.03
+    - _Proc_Line_JitterStrength_Hor1: 0.31
+    - _Proc_Line_JitterStrength_Hor2: 0.28
+    - _Proc_Line_JitterStrength_Ver: 0.585
+    - _Proc_Line_Thickness_Hor1: 0.003
+    - _Proc_Line_Thickness_Hor2: 0.001
+    - _Proc_Line_Thickness_Ver: 0.001
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -125,12 +147,19 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _TopMask_Add: 0
+    - _TopMask_ClipZ: 0
+    - _TopMask_Strength: 1
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.005317564, g: 0.5924529, b: 0, a: 1}
     - _Color: {r: 0.005317564, g: 0.5924529, b: 0, a: 1}
+    - _Color_Accent: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Base: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Top: {r: 0, g: 1, b: 0.054832935, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

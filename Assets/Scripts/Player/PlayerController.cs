@@ -10,10 +10,10 @@ using UnityEngine.InputSystem;
 [Flags]
 public enum PlayerAbility
 {
-    None    = 0,
-    Jump    = 1 << 0,
+    None = 0,
+    Jump = 1 << 0,
     Grapple = 1 << 1,
-    Launch  = 1 << 2,
+    Launch = 1 << 2,
 
     All = Jump | Grapple | Launch
 }
@@ -216,10 +216,25 @@ public class PlayerController : MonoBehaviour
     private Vector3 grapplePoint;
     private float ropeLength;
 
+    // Tracks a moving anchor: grapplePoint is recomputed from this each frame instead of
+    // staying fixed at the world position it was hit at. Null means the anchor doesn't move
+    // (or was hit by something with no transform worth tracking, which never happens in
+    // practice — every collider has one — so this is really just a "still attached?" guard).
+    private Transform grappleAnchor;
+    private Vector3 grappleLocalOffset;
+
     // ── Private: Charge Launch State ─────────────────────────────────────────
 
     private float chargeAmount;
     private bool isCharging;
+
+    // ── Private: Moving Platform State ────────────────────────────────────────
+
+    // The platform currently under the player, tracked so its motion can be folded
+    // into our own Move() call each frame instead of leaving the player behind.
+    private Transform currentPlatform;
+    private Vector3 platformPrevPosition;
+    private Quaternion platformPrevRotation;
 
     // ═════════════════════════════════════════════════════════════════════════
 
@@ -258,7 +273,6 @@ public class PlayerController : MonoBehaviour
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
-       // UpdateGrappleLine();
 
         if (viewmodelAnimator != null)
         {
@@ -270,17 +284,52 @@ public class PlayerController : MonoBehaviour
             viewmodelAnimator.SetBool("IsGrappling", IsGrappling);
             viewmodelAnimator.SetBool("IsCharging", IsCharging);
         }
+    }
 
-        // Single authoritative Move() call — all systems write to velocity, one read here
-        CollisionFlags flags = cc.Move(velocity * Time.deltaTime);
+    private void LateUpdate()
+    {
+        UpdateGrappleLine();
+
+        // Platform delta — how far the platform we're standing on moved/rotated since
+        // last frame. Computed here (after GroundCheck may have just re-anchored us
+        // onto a new platform this frame) so the first frame on a platform always
+        // yields zero delta instead of snapping the player.
+        Vector3 platformDelta = Vector3.zero;
+        if (currentPlatform != null && isGrounded)
+        {
+            Vector3 newPos = currentPlatform.position;
+            Quaternion newRot = currentPlatform.rotation;
+
+            platformDelta = newPos - platformPrevPosition;
+
+            // Carry rotation too: spin the player's horizontal offset from the
+            // platform's pivot by however much the platform turned this frame, and
+            // apply that as extra positional delta plus a matching facing turn.
+            Quaternion deltaRot = newRot * Quaternion.Inverse(platformPrevRotation);
+            Vector3 offsetFromPivot = (transform.position + platformDelta) - newPos;
+            Vector3 rotatedOffset = deltaRot * offsetFromPivot;
+            platformDelta += rotatedOffset - offsetFromPivot;
+            transform.Rotate(0f, deltaRot.eulerAngles.y, 0f);
+
+            platformPrevPosition = newPos;
+            platformPrevRotation = newRot;
+        }
+
+        Vector3 finalVelocity = velocity;
+
+        // If the platform is actively pushing us upward, don't fight it with the -2f grounding velocity.
+        // Doing so causes the player to sink into the collider and triggers depenetration jitter.
+        if (currentPlatform != null && isGrounded && platformDelta.y > 0f)
+        {
+            finalVelocity.y = Mathf.Max(0f, finalVelocity.y);
+        }
+
+        // Pass finalVelocity instead of velocity
+        CollisionFlags flags = cc.Move(platformDelta + finalVelocity * Time.deltaTime);
 
         // Kill upward velocity on ceiling hits so the player drops immediately
         if ((flags & CollisionFlags.Above) != 0 && velocity.y > 0f)
             velocity.y = 0f;
-    }
-    private void LateUpdate()
-    {
-        UpdateGrappleLine();
     }
 
     // ── Look ──────────────────────────────────────────────────────────────────
@@ -336,6 +385,7 @@ public class PlayerController : MonoBehaviour
             jumpGraceTimer -= Time.deltaTime;
             isGrounded = false;
             coyoteTimer = 0f;
+            currentPlatform = null;
             return;
         }
 
@@ -343,9 +393,24 @@ public class PlayerController : MonoBehaviour
         Vector3 bottom = transform.position + cc.center + Vector3.down * (cc.height * 0.5f - cc.radius);
         Vector3 origin = bottom + Vector3.up * 0.1f;
 
+        // --- NEW FIX START ---
+        float dynamicCastDist = groundCheckDistance;
+
+        // If we are on a platform, check if it moved down since the last frame
+        if (currentPlatform != null)
+        {
+            float verticalDelta = currentPlatform.position.y - platformPrevPosition.y;
+            if (verticalDelta < 0f)
+            {
+                // Extend the raycast by exactly how far the platform fell, plus a tiny safety margin
+                dynamicCastDist += Mathf.Abs(verticalDelta) + 0.05f;
+            }
+        }
+
         bool hit = Physics.SphereCast(
-            origin, castRadius, Vector3.down, out _,
-            0.1f + groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);
+            origin, castRadius, Vector3.down, out RaycastHit groundHit,
+            0.1f + dynamicCastDist, groundMask, QueryTriggerInteraction.Ignore);
+        // --- NEW FIX END ---
 
         if (hit)
         {
@@ -355,11 +420,30 @@ public class PlayerController : MonoBehaviour
             // Landing while grappling detaches the hook — prevents awkward sliding
             if (grappleState == GrappleState.Attached)
                 ReleaseGrapple();
+
+            // GetComponentInParent so the platform's collider can live on a child mesh
+            // while MovingPlatform sits on the root — same pattern as FindInteractable.
+            MovingPlatform platform = groundHit.collider.GetComponentInParent<MovingPlatform>();
+            Transform platformRoot = platform != null ? platform.transform : null;
+
+            // Only re-anchor when we land on a *different* platform (or the ground).
+            // Re-grabbing the same transform every frame would reset platformPrevPosition
+            // to the current position and the delta would always compute to zero.
+            if (platformRoot != currentPlatform)
+            {
+                currentPlatform = platformRoot;
+                if (currentPlatform != null)
+                {
+                    platformPrevPosition = currentPlatform.position;
+                    platformPrevRotation = currentPlatform.rotation;
+                }
+            }
         }
         else
         {
             isGrounded = false;
             coyoteTimer -= Time.deltaTime;
+            currentPlatform = null;
         }
     }
 
@@ -404,16 +488,29 @@ public class PlayerController : MonoBehaviour
             grapplePoint = hit.point;
             ropeLength = hit.distance;
             grappleState = GrappleState.Attached;
+
+            // Remember the point relative to the collider's own transform, so if that
+            // transform moves or rotates afterward, we can recompute where the hit point
+            // now is instead of staying pinned to the world position it was fired at.
+            grappleAnchor = hit.collider.transform;
+            grappleLocalOffset = grappleAnchor.InverseTransformPoint(hit.point);
         }
     }
 
     private void ReleaseGrapple()
     {
         grappleState = GrappleState.Idle;
+        grappleAnchor = null;
     }
 
     private void ApplyGrapplePhysics()
     {
+        // Follow the anchor if it's moved/rotated since last frame (or since it was hit,
+        // for the very first frame). A static anchor just recomputes to the same point
+        // it already had, so there's no need to special-case "moving vs. not."
+        if (grappleAnchor != null)
+            grapplePoint = grappleAnchor.TransformPoint(grappleLocalOffset);
+
         Vector3 toAnchor = grapplePoint - transform.position;
         float dist = toAnchor.magnitude;
 
@@ -623,6 +720,33 @@ public class PlayerController : MonoBehaviour
             if (!sandVFX.HasAnySystemAwake())
                 sandVFX.Play();
         }
+    }
+
+    // ── Respawn ───────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Teleports the player to a checkpoint and clears all momentum/mid-air state so they
+    /// don't land carrying grapple swing speed, launch charge, or fall velocity from before
+    /// they died. Called by PlayerRespawner — nothing else should move this transform
+    /// directly while a CharacterController is attached.
+    /// </summary>
+    public void Respawn(Vector3 position, Quaternion rotation)
+    {
+        if (grappleState == GrappleState.Attached)
+            ReleaseGrapple();
+
+        isCharging = false;
+        chargeAmount = 0f;
+        velocity = Vector3.zero;
+        coyoteTimer = 0f;
+        jumpBufferTimer = 0f;
+        jumpGraceTimer = 0f;
+
+        // CharacterController fights direct transform edits while enabled — it needs to be
+        // off for the teleport to actually stick instead of being resolved away next Move().
+        cc.enabled = false;
+        transform.SetPositionAndRotation(position, rotation);
+        cc.enabled = true;
     }
 
     // ── Physics Helpers ───────────────────────────────────────────────────────
