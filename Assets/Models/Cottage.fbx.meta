@@ -3,22 +3,7 @@ guid: 6960b264f43ff67428a5a01dd57c5247
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ChimneyStone
-    second: {fileID: 2100000, guid: 849ed694cefc4fd4b809a306aedaf50c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RoofTiles
-    second: {fileID: 2100000, guid: a6be85cca2641cd48855599011accb3d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wood(door)
-    second: {fileID: 2100000, guid: 95e062b2dff7edf42b214d1e772b7f27, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

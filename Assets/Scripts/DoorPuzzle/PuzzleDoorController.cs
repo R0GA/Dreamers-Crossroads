@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PuzzlePlatformer.Puzzles
 {
@@ -17,6 +18,7 @@ namespace PuzzlePlatformer.Puzzles
         public void OpenDoor()
         {
             Debug.Log("Puzzle solved! Opening door...");
+            SceneManager.LoadScene("EndSceneTutorial");
             if (doorAnimator != null) doorAnimator.SetTrigger(openTriggerName);
             if (audioSource != null && openSound != null) audioSource.PlayOneShot(openSound);
         }
