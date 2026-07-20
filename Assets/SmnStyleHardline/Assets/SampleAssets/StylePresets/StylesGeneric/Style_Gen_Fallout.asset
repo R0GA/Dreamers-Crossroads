@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac162aab5c8b9014ca305e9183c98402, type: 3}
+  m_Name: Style_Gen_Fallout
+  m_EditorClassIdentifier: SmnStyleHardline.Runtime::SmnStyleHardline.Core.SSHStyleAsset
+  Environment:
+    ShadowColor: {r: 0.16981131, g: 0, b: 0.1591981, a: 0}
+    ShadowIntensity: 0.75
+    ShadowClip: 0.79
+    ShadowRangeMult: 0.39088747
+    EnvironmentLightColor: {r: 0.6556604, g: 1, b: 0.73319054, a: 0}
+    EnvironmentLightIntensity: 0.78
+    EnvironmentLightInfluence: 1
+  Skybox:
+    BaseColor: {r: 0.20690487, g: 0.41568628, b: 0.18039216, a: 0}
+    AccentColor: {r: 1, g: 0.6367924, b: 0.6944655, a: 0}
+    StarsColor: {r: 1, g: 1, b: 1, a: 0}
+    BandIntensity: 1.086592
+    BandAdd: -0.23489305
+    BandHorizontalWidth: 0.105
+    BandContrast: 2.68
+    StarmapDensity: 684
+    StarmapScale: 0.055150088
+    StarmapSeed: 0.006
+    StarmapTilt: 60.039154
+  Outline:
+    ColorOutlineColor: {r: 0.030927373, g: 0.037088294, b: 0.047169805, a: 1}
+    ColorOutlineStrength: 0.07
+    ColorOutlineNoiseScale: 2.77
+    ColorOutlineNoiseIntensity: 0.21
+    ColorOutlineNoiseAdd: 0.34
+    ColorOutlineClip: 0.517
+    GeoOutlineColor: {r: 0.045167305, g: 0.052897085, b: 0.066037714, a: 1}
+    GeoOutlineNormalStrength: 1.23
+    GeoOutlineNormalCutoffMaskStrength: 1
+    GeoOutlineNormalCutoffMaskAdd: 0
+    GeoOutlineDepthStrengthStart: 0.1
+    GeoOutlineDepthStrengthEnd: 2.79
+    GeoOutlineDepthAdd: 10
+    GeoOutlineDepthMult: 5

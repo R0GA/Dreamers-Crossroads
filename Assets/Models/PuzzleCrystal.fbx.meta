@@ -3,7 +3,22 @@ guid: a95170fa56a5aee4bbcf479e378c1d40
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Icons
+    second: {fileID: 2100000, guid: fe10928d55780ad4490f5b30842a354d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 4e35e42d09eeca646b676a0db0bdc01c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rings
+    second: {fileID: 2100000, guid: 1b435c2a3b686fb41aa0b7dbe83d797d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
