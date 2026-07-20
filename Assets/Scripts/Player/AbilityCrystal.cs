@@ -31,6 +31,8 @@ public class AbilityCrystal : MonoBehaviour, IInteractable
     [SerializeField] private float destroyDelay = 2f;
 
     [Header("Feedback (all optional)")]
+    [SerializeField] private DialogueSequence sequence;
+    [SerializeField] private Animator animator; 
     [SerializeField] private GameObject visualToHide;
     [SerializeField] private ParticleSystem activateVfx;
     [SerializeField] private AudioSource activateSfx;
@@ -55,6 +57,9 @@ public class AbilityCrystal : MonoBehaviour, IInteractable
         used = true;
         player.UnlockAbility(abilityToGrant);
 
+        if (DialogueManager.Instance != null && sequence != null)
+            DialogueManager.Instance.PlayDialogue(sequence);
+
         if (activateVfx != null) activateVfx.Play();
         if (activateSfx != null) activateSfx.Play();
         onAbilityGranted?.Invoke();
@@ -63,7 +68,8 @@ public class AbilityCrystal : MonoBehaviour, IInteractable
         {
             if (visualToHide != null) visualToHide.SetActive(false);
             GetComponent<Collider>().enabled = false;
-            Destroy(gameObject, destroyDelay);
+            if (animator != null) animator.SetBool("Activate", true);
+            //Destroy(gameObject, destroyDelay);
         }
     }
 

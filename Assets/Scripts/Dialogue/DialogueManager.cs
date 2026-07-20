@@ -54,8 +54,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log($"DialogueManager Awake on {gameObject.name}, Instance was {(Instance == null ? "null" : "already set")}");
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -86,7 +84,6 @@ public class DialogueManager : MonoBehaviour
         if (sequence.playOnce && playedOnce.Contains(sequence)) return false;
 
         playRoutine = StartCoroutine(PlaySequenceRoutine(sequence));
-        Debug.Log($"DialogueManager: Playing sequence {sequence.name} with {sequence.lines.Length} lines.");
         return true;
     }
 
