@@ -216,6 +216,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 grapplePoint;
     private float ropeLength;
 
+    // Tracks a moving anchor: grapplePoint is recomputed from this each frame instead of
+    // staying fixed at the world position it was hit at. Null means the anchor doesn't move
+    // (or was hit by something with no transform worth tracking, which never happens in
+    // practice — every collider has one — so this is really just a "still attached?" guard).
+    private Transform grappleAnchor;
+    private Vector3 grappleLocalOffset;
+
     // ── Private: Charge Launch State ─────────────────────────────────────────
 
     private float chargeAmount;
@@ -404,16 +411,29 @@ public class PlayerController : MonoBehaviour
             grapplePoint = hit.point;
             ropeLength = hit.distance;
             grappleState = GrappleState.Attached;
+
+            // Remember the point relative to the collider's own transform, so if that
+            // transform moves or rotates afterward, we can recompute where the hit point
+            // now is instead of staying pinned to the world position it was fired at.
+            grappleAnchor = hit.collider.transform;
+            grappleLocalOffset = grappleAnchor.InverseTransformPoint(hit.point);
         }
     }
 
     private void ReleaseGrapple()
     {
         grappleState = GrappleState.Idle;
+        grappleAnchor = null;
     }
 
     private void ApplyGrapplePhysics()
     {
+        // Follow the anchor if it's moved/rotated since last frame (or since it was hit,
+        // for the very first frame). A static anchor just recomputes to the same point
+        // it already had, so there's no need to special-case "moving vs. not."
+        if (grappleAnchor != null)
+            grapplePoint = grappleAnchor.TransformPoint(grappleLocalOffset);
+
         Vector3 toAnchor = grapplePoint - transform.position;
         float dist = toAnchor.magnitude;
 
