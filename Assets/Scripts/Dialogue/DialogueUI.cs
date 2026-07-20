@@ -35,6 +35,8 @@ public class DialogueUI : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("DialogueUI enabled");
+
         if (panelRoot != null) panelRoot.SetActive(false);
         if (advanceAction != null) advanceAction.action.Enable();
 
@@ -78,6 +80,7 @@ public class DialogueUI : MonoBehaviour
     private void HandleDialogueStarted(DialogueSequence sequence)
     {
         if (panelRoot != null) panelRoot.SetActive(true);
+        Debug.Log($"Dialogue started: {sequence.name}");
     }
 
     private void HandleLineStarted(DialogueLine line)
