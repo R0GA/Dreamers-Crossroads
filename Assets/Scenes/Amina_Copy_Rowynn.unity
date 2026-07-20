@@ -5552,7 +5552,7 @@ Transform:
   m_GameObject: {fileID: 156731009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 194.98, y: 3.99, z: 7.82}
+  m_LocalPosition: {x: 197.32, y: 5.34, z: 7.82}
   m_LocalScale: {x: 3.3264, y: 3.3264, z: 3.3264}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26351,10 +26351,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7276875759486510860, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 02a12880e89343f4395359bd1d5a1297, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -62762,7 +62758,7 @@ Animator:
   m_GameObject: {fileID: 1964420817}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 856928c8a4a15374c9a68cfdd6e8afe2, type: 2}
+  m_Controller: {fileID: 9100000, guid: ffc8f39e5283d2240ad4940f1088cb06, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
