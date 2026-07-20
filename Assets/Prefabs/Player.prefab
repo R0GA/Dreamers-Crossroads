@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 2115119598609862375}
   - component: {fileID: 4096746457260564658}
   - component: {fileID: 1845194801920281441}
+  - component: {fileID: 5311560195470760682}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -571,7 +572,7 @@ MonoBehaviour:
   groundAcceleration: 80
   friction: 8
   stopSpeed: 1.5
-  maxAirSpeed: 0.85
+  maxAirSpeed: 0.5
   airAcceleration: 800
   jumpHeight: 2
   allowBunnyHop: 0
@@ -592,7 +593,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   minLaunchSpeed: 5
-  maxLaunchSpeed: 20
+  maxLaunchSpeed: 25
   chargeTime: 1.2
   chargeMoveScale: 0.25
   interactionRange: 3
@@ -795,6 +796,19 @@ VFXRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
+--- !u!114 &5311560195470760682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457835094722397461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eed8ba6a0f553148b9276672a1fe11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawner
+  initialSpawnPoint: {fileID: 0}
 --- !u!1 &4272473180239803688
 GameObject:
   m_ObjectHideFlags: 0

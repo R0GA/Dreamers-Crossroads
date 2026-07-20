@@ -10,10 +10,10 @@ using UnityEngine.InputSystem;
 [Flags]
 public enum PlayerAbility
 {
-    None    = 0,
-    Jump    = 1 << 0,
+    None = 0,
+    Jump = 1 << 0,
     Grapple = 1 << 1,
-    Launch  = 1 << 2,
+    Launch = 1 << 2,
 
     All = Jump | Grapple | Launch
 }
@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
-       // UpdateGrappleLine();
+                                // UpdateGrappleLine();
 
         if (viewmodelAnimator != null)
         {
@@ -623,6 +623,33 @@ public class PlayerController : MonoBehaviour
             if (!sandVFX.HasAnySystemAwake())
                 sandVFX.Play();
         }
+    }
+
+    // ── Respawn ───────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Teleports the player to a checkpoint and clears all momentum/mid-air state so they
+    /// don't land carrying grapple swing speed, launch charge, or fall velocity from before
+    /// they died. Called by PlayerRespawner — nothing else should move this transform
+    /// directly while a CharacterController is attached.
+    /// </summary>
+    public void Respawn(Vector3 position, Quaternion rotation)
+    {
+        if (grappleState == GrappleState.Attached)
+            ReleaseGrapple();
+
+        isCharging = false;
+        chargeAmount = 0f;
+        velocity = Vector3.zero;
+        coyoteTimer = 0f;
+        jumpBufferTimer = 0f;
+        jumpGraceTimer = 0f;
+
+        // CharacterController fights direct transform edits while enabled — it needs to be
+        // off for the teleport to actually stick instead of being resolved away next Move().
+        cc.enabled = false;
+        transform.SetPositionAndRotation(position, rotation);
+        cc.enabled = true;
     }
 
     // ── Physics Helpers ───────────────────────────────────────────────────────
