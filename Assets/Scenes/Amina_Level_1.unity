@@ -54635,7 +54635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1845194801920281441, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3457835094722397461, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_Name
@@ -54643,7 +54643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3457835094722397461, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7026166443520137955, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103582,9 +103582,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1845194801920281441, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3457835094722397461, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457835094722397461, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7026166443520137955, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_LocalPosition.x
