@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// Bitflags for the player's traversal abilities. PlayerController gates input on these;
@@ -120,6 +121,30 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask grappleMask = ~0;
 
+    // ── Grapple Feedback UI ───────────────────────────────────────────────────
+
+    [Header("Grapple Feedback UI")]
+    [Tooltip("Crosshair image whose rotation/color reflects what the player is currently looking at.")]
+    [SerializeField] private Image crosshairImage;
+
+    [Tooltip("Crosshair color during normal gameplay — not looking at anything grappleable.")]
+    [SerializeField] private Color crosshairDefaultColor = new Color(0.7f, 0.7f, 0.7f, 0.6f);
+
+    [Tooltip("Crosshair color once within usable grapple range (maxGrappleDistance) — full opacity, white.")]
+    [SerializeField] private Color crosshairTargetColor = Color.white;
+
+    [Tooltip("How far (in degrees) the crosshair rotates when looking at a grapple anchor, "
+           + "whether or not it's currently in range.")]
+    [SerializeField] private float crosshairAnchorRotation = 45f;
+
+    [Tooltip("How quickly the crosshair's rotation and color ease toward their target each frame. Higher = snappier.")]
+    [SerializeField] private float crosshairTransitionSpeed = 12f;
+
+    [Tooltip("Grapple anchors only trigger the crosshair rotation within this distance. Keep this a "
+           + "bit larger than maxGrappleDistance so the crosshair gives some early warning as the "
+           + "player approaches, without reacting to anchors clear across the map.")]
+    [SerializeField] private float grappleHighlightRange = 45f;
+
     // ── Charge Launch ─────────────────────────────────────────────────────────
 
     [Header("Charge Launch")]
@@ -134,6 +159,22 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Movement speed multiplier while charging. Lower = more planted windup feel.")]
     [SerializeField][Range(0f, 1f)] private float chargeMoveScale = 0.25f;
+
+    [Tooltip("Whether the player gets one bonus launch charge while airborne, usable once per "
+           + "air-time and restored on landing (in addition to normal grounded charging).")]
+    [SerializeField] private bool allowAirLaunch = true;
+
+    // ── Launch Feedback UI ────────────────────────────────────────────────────
+
+    [Header("Launch Feedback UI")]
+    [Tooltip("Root object for the charge bar (e.g. its background panel). Enabled only while charging.")]
+    [SerializeField] private GameObject chargeBarRoot;
+
+    [Tooltip("Slider whose value (0-1) tracks charge progress. Using a Slider instead of a "
+           + "fillAmount Image lets the fill graphic use a 9-sliced sprite that resizes cleanly "
+           + "instead of stretching. Set the Slider's Min/Max Value to 0/1, and turn off its "
+           + "Interactable and Navigation since it's display-only.")]
+    [SerializeField] private Slider chargeBarSlider;
 
     // ── Interaction ───────────────────────────────────────────────────────────
 
@@ -159,6 +200,12 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
     public IInteractable CurrentInteractable => currentInteractable;
+
+    /// <summary>What the crosshair is currently reporting for grapple targeting. Drives crosshairImage internally; exposed for any other UI that wants it too.</summary>
+    public GrappleTargetState CurrentGrappleTarget => grappleTargetState;
+
+    /// <summary>Whether the player still has their bonus in-air launch charge available (always true while grounded and allowAirLaunch is used up mid-air).</summary>
+    public bool AirLaunchAvailable => airLaunchAvailable;
 
     /// <summary>Currently unlocked abilities. Read-only from outside — grant abilities via UnlockAbility.</summary>
     public PlayerAbility UnlockedAbilities => unlockedAbilities;
@@ -216,6 +263,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 grapplePoint;
     private float ropeLength;
 
+    /// <summary>Reported by UpdateGrappleTargeting each frame for crosshair coloring.</summary>
+    public enum GrappleTargetState { None, Highlighted, InRange }
+    private GrappleTargetState grappleTargetState = GrappleTargetState.None;
+
     // Tracks a moving anchor: grapplePoint is recomputed from this each frame instead of
     // staying fixed at the world position it was hit at. Null means the anchor doesn't move
     // (or was hit by something with no transform worth tracking, which never happens in
@@ -227,6 +278,9 @@ public class PlayerController : MonoBehaviour
 
     private float chargeAmount;
     private bool isCharging;
+
+    // True until spent by starting a charge in midair; restored the moment the player lands.
+    private bool airLaunchAvailable = true;
 
     // ── Private: Moving Platform State ────────────────────────────────────────
 
@@ -270,6 +324,7 @@ public class PlayerController : MonoBehaviour
         HandleInteraction();    // Reads look-updated camera forward, so must run after HandleLook
         GroundCheck();          // Sets isGrounded / coyoteTimer
         TickJumpBuffer();
+        UpdateGrappleTargeting(); // Crosshair color feedback; uses look-updated camera forward
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
@@ -416,6 +471,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
+            airLaunchAvailable = true; // Landing restores the bonus in-air launch charge
 
             // Landing while grappling detaches the hook — prevents awkward sliding
             if (grappleState == GrappleState.Attached)
@@ -461,6 +517,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!HasAbility(PlayerAbility.Jump)) return false;
 
+        // Charging (right click / ChargeLaunch held) locks out jumping. Previously a jump
+        // fired mid-charge would knock isGrounded false for a couple of frames, and
+        // HandleChargeLaunch's release check never ran while airborne — so releasing the
+        // charge button mid-jump silently ate the charge instead of launching.
+        if (isCharging) return false;
+
         bool hasInput = jumpBufferTimer > 0f || (allowBunnyHop && jumpAction.IsPressed());
         bool nearGround = coyoteTimer > 0f;
         return hasInput && nearGround;
@@ -476,6 +538,61 @@ public class PlayerController : MonoBehaviour
 
         if (grappleAction.WasReleasedThisFrame() && grappleState == GrappleState.Attached)
             ReleaseGrapple();
+    }
+
+    /// <summary>
+    /// Separate from TryFireGrapple's raycast — this one runs every frame purely to drive
+    /// crosshair feedback, using a longer range so the player gets an early "something's
+    /// there" cue before they're actually close enough to fire at it.
+    /// </summary>
+    private void UpdateGrappleTargeting()
+    {
+        if (HasAbility(PlayerAbility.Grapple) && grappleState == GrappleState.Idle)
+        {
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, grappleHighlightRange,
+                                grappleMask, QueryTriggerInteraction.Ignore))
+            {
+                grappleTargetState = hit.distance <= maxGrappleDistance
+                    ? GrappleTargetState.InRange
+                    : GrappleTargetState.Highlighted;
+            }
+            else
+            {
+                grappleTargetState = GrappleTargetState.None;
+            }
+        }
+        else if (grappleState == GrappleState.Attached)
+        {
+            // Latched on — hold the rotated "highlighted" look rather than resetting to
+            // neutral or snapping to the full in-range tint, since the player isn't aiming
+            // at anything anymore while swinging.
+            grappleTargetState = GrappleTargetState.Highlighted;
+        }
+        else
+        {
+            grappleTargetState = GrappleTargetState.None;
+        }
+
+        if (crosshairImage == null) return;
+
+        // Rotated whenever an anchor is in view at all (Highlighted or InRange); only
+        // InRange swaps it to the full-opacity white "you can fire now" tint.
+        float targetRotationZ = grappleTargetState == GrappleTargetState.None ? 0f : crosshairAnchorRotation;
+        Color targetColor = grappleTargetState == GrappleTargetState.InRange
+            ? crosshairTargetColor
+            : crosshairDefaultColor;
+
+        // Framerate-independent ease toward the target rotation/color rather than snapping,
+        // so the crosshair doesn't pop jarringly as the player's look crosses an anchor edge.
+        float t = 1f - Mathf.Exp(-crosshairTransitionSpeed * Time.deltaTime);
+
+        float currentZ = crosshairImage.rectTransform.localEulerAngles.z;
+        float newZ = Mathf.LerpAngle(currentZ, targetRotationZ, t);
+        crosshairImage.rectTransform.localRotation = Quaternion.Euler(0f, 0f, newZ);
+
+        crosshairImage.color = Color.Lerp(crosshairImage.color, targetColor, t);
     }
 
     private void TryFireGrapple()
@@ -549,16 +666,33 @@ public class PlayerController : MonoBehaviour
 
     private void HandleChargeLaunch()
     {
-        if (grappleState == GrappleState.Attached || !isGrounded)
-            return; // Can't start charging while grappling — prevents awkward edge cases)
-
-        if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch))
+        if (grappleState == GrappleState.Attached)
         {
-            isCharging = true;
-            chargeAmount = 0f;
+            SyncChargeBarUI();
+            return; // Can't start or continue charging while grappling — prevents awkward edge cases
         }
 
-        if (!isCharging) return;
+        if (!isCharging)
+        {
+            // Grounded charging always works; airborne charging only works if the player
+            // still has their one bonus air-launch charge (restored on landing).
+            bool canStartCharging = isGrounded || (allowAirLaunch && airLaunchAvailable);
+
+            if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch) && canStartCharging)
+            {
+                isCharging = true;
+                chargeAmount = 0f;
+
+                if (!isGrounded)
+                    airLaunchAvailable = false; // Spend the air charge the moment charging starts
+            }
+
+            if (!isCharging)
+            {
+                SyncChargeBarUI();
+                return;
+            }
+        }
 
         chargeAmount = Mathf.MoveTowards(chargeAmount, 1f, Time.deltaTime / chargeTime);
 
@@ -568,6 +702,14 @@ public class PlayerController : MonoBehaviour
             isCharging = false;
             chargeAmount = 0f;
         }
+
+        SyncChargeBarUI();
+    }
+
+    private void SyncChargeBarUI()
+    {
+        if (chargeBarRoot != null) chargeBarRoot.SetActive(isCharging);
+        if (chargeBarSlider != null) chargeBarSlider.value = chargeAmount;
     }
 
     private void ExecuteLaunch()
@@ -737,6 +879,7 @@ public class PlayerController : MonoBehaviour
 
         isCharging = false;
         chargeAmount = 0f;
+        airLaunchAvailable = true;
         velocity = Vector3.zero;
         coyoteTimer = 0f;
         jumpBufferTimer = 0f;
