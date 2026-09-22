@@ -17,6 +17,7 @@ using UnityEngine.Events;
 ///
 /// No health, no damage. Progress is the drowsiness meter; failure is losing footing and time.
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class SirNightmareFight : MonoBehaviour
 {
     public enum FightState { Dormant, Transition, Attacking, Drowsy, Defeated }
@@ -97,6 +98,28 @@ public class SirNightmareFight : MonoBehaviour
     [SerializeField] private float openingDelay = 2f;
     [SerializeField] private float phaseTransitionTime = 3f;
 
+    [Header("Dialogue")]
+    [Tooltip("Played once the fight opens, before he starts attacking. Explains the bubbles.")]
+    [SerializeField] private DialogueSequence introSequence;
+
+    [Tooltip("Played the first time he goes drowsy, before the Lullaby Anchor appears. Explains the finisher.")]
+    [SerializeField] private DialogueSequence firstDrowsySequence;
+
+    [Tooltip("Played once, at the start of the phase right after the first lullaby is sung. Tells the player to repeat the process.")]
+    [SerializeField] private DialogueSequence firstLullabySequence;
+
+    [Header("Audio")]
+    [Tooltip("Auto-filled from this GameObject's AudioSource if left empty.")]
+    [SerializeField] private AudioSource audioSource;
+
+    [Tooltip("Played the instant he goes drowsy (bubble count hits its target).")]
+    [SerializeField] private AudioClip drowsyClip;
+
+    [Tooltip("Played when he comes back up — either the drowsy window is missed and he snaps "
+           + "awake, or the next phase begins after a successful lullaby. NOT played at the "
+           + "very start of the fight, since that's a first appearance rather than a wake-up.")]
+    [SerializeField] private AudioClip wakeClip;
+
     [Header("Events")]
     public UnityEvent onFightStarted;
     public UnityEvent<int> onPhaseStarted;
@@ -120,6 +143,8 @@ public class SirNightmareFight : MonoBehaviour
     private readonly List<NightmareOrb> activeOrbs = new List<NightmareOrb>();
     private readonly Dictionary<DreamBubble, Transform> activeBubbles = new Dictionary<DreamBubble, Transform>();
     private AttackType lastAttack = (AttackType)(-1);
+    private bool shownDrowsyHint;
+    private bool shownRepeatHint;
 
     private void Reset()
     {
@@ -159,6 +184,8 @@ public class SirNightmareFight : MonoBehaviour
 
     private void Awake()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+
         if (player == null) player = FindFirstObjectByType<PlayerController>();
         if (player == null || lullabyAnchor == null || phases == null || phases.Length == 0)
         {
@@ -209,6 +236,7 @@ public class SirNightmareFight : MonoBehaviour
 
         SetDrowsiness(0f);
         Trigger("Wake");
+        if (index > 0) PlaySfx(wakeClip);
 
         if (phase.collapseOnStart != null)
             foreach (var p in phase.collapseOnStart)
@@ -217,6 +245,17 @@ public class SirNightmareFight : MonoBehaviour
         onPhaseStarted.Invoke(index);
 
         yield return new WaitForSeconds(index == 0 ? openingDelay : phaseTransitionTime);
+
+        // Attacks wait for these — the player reads at their own pace and isn't dodging while doing it
+        if (index == 0)
+        {
+            yield return PlaySequenceBlocking(introSequence);
+        }
+        else if (!shownRepeatHint)
+        {
+            shownRepeatHint = true;
+            yield return PlaySequenceBlocking(firstLullabySequence);
+        }
 
         StartAttacking();
     }
@@ -263,7 +302,7 @@ public class SirNightmareFight : MonoBehaviour
         ClearBubbles();
 
         Trigger("Drowsy");
-        lullabyAnchor.gameObject.SetActive(true);
+        PlaySfx(drowsyClip);
         onDrowsy.Invoke();
 
         drowsyRoutine = StartCoroutine(DrowsyWindow());
@@ -271,12 +310,23 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator DrowsyWindow()
     {
+        // Anchor only appears once the hint is done — otherwise a player looking at it while
+        // mashing the advance button can "sing" before they've even read what it does.
+        if (!shownDrowsyHint)
+        {
+            shownDrowsyHint = true;
+            yield return PlaySequenceBlocking(firstDrowsySequence);
+        }
+
+        lullabyAnchor.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(drowsyWindow);
 
         // Missed it — he snaps awake, keeping part of his drowsiness
         player.ReleaseGrappleFrom(lullabyAnchor.transform);
         lullabyAnchor.gameObject.SetActive(false);
         Trigger("Wake");
+        PlaySfx(wakeClip);
         onWokeUp.Invoke();
         SetDrowsiness(drowsinessOnMiss);
 
@@ -339,13 +389,13 @@ public class SirNightmareFight : MonoBehaviour
     {
         switch (type)
         {
-            case AttackType.AimedVolley:     return AimedVolley(phase);
-            case AttackType.Fan:             return Fan(phase);
-            case AttackType.HomingOrb:       return HomingOrb(phase);
+            case AttackType.AimedVolley: return AimedVolley(phase);
+            case AttackType.Fan: return Fan(phase);
+            case AttackType.HomingOrb: return HomingOrb(phase);
             case AttackType.PlatformScatter: return PlatformScatter(phase);
-            case AttackType.PlatformHunt:    return PlatformHunt(phase);
-            case AttackType.PlatformSweep:   return PlatformSweep(phase);
-            default:                         return null;
+            case AttackType.PlatformHunt: return PlatformHunt(phase);
+            case AttackType.PlatformSweep: return PlatformSweep(phase);
+            default: return null;
         }
     }
 
@@ -555,7 +605,28 @@ public class SirNightmareFight : MonoBehaviour
         activeOrbs.Clear();
     }
 
+    // ── Dialogue ──────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Plays a sequence through DialogueManager and waits for it to finish before returning.
+    /// Safe to yield on even when sequence is null, DialogueManager isn't in the scene, or
+    /// something else is already talking — in every one of those cases it just returns
+    /// immediately instead of stalling the fight.
+    /// </summary>
+    private IEnumerator PlaySequenceBlocking(DialogueSequence sequence)
+    {
+        if (sequence == null || DialogueManager.Instance == null) yield break;
+        if (!DialogueManager.Instance.PlayDialogue(sequence)) yield break;
+
+        yield return new WaitUntil(() => !DialogueManager.Instance.IsPlaying);
+    }
+
     // ── Misc ──────────────────────────────────────────────────────────────────
+
+    private void PlaySfx(AudioClip clip)
+    {
+        if (audioSource != null && clip != null) audioSource.PlayOneShot(clip);
+    }
 
     private void Trigger(string trigger)
     {

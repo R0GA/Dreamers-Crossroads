@@ -207,6 +207,15 @@ public class PlayerController : MonoBehaviour
     /// <summary>Whether the player still has their bonus in-air launch charge available (always true while grounded and allowAirLaunch is used up mid-air).</summary>
     public bool AirLaunchAvailable => airLaunchAvailable;
 
+    /// <summary>True while grounded (per GroundCheck's most recent result). Used by footstep audio, landing VFX, etc.</summary>
+    public bool IsGrounded => isGrounded;
+
+    /// <summary>Horizontal (XZ) speed in m/s. Used for footstep cadence and wind-noise volume scaling.</summary>
+    public float HorizontalSpeed => new Vector3(velocity.x, 0f, velocity.z).magnitude;
+
+    /// <summary>Full 3D speed (includes vertical) in m/s. Wind noise reads this instead of HorizontalSpeed so it also kicks in on a straight-up launch or a fast fall.</summary>
+    public float Speed => velocity.magnitude;
+
     /// <summary>Currently unlocked abilities. Read-only from outside — grant abilities via UnlockAbility.</summary>
     public PlayerAbility UnlockedAbilities => unlockedAbilities;
 
@@ -430,7 +439,7 @@ public class PlayerController : MonoBehaviour
         if (viewmodelAnimator != null)
         {
             // Only play walk if grounded and moving horizontally
-            bool isMoving = HorizontalSpeed() > 0.3f;
+            bool isMoving = HorizontalSpeed > 0.3f;
             viewmodelAnimator.SetBool("IsWalking", isGrounded && isMoving);
 
             // Pass ability holding states directly to the animator
@@ -1009,7 +1018,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyFriction()
     {
-        float speed = HorizontalSpeed();
+        float speed = HorizontalSpeed;
         if (speed < 0.001f) return;
 
         float control = Mathf.Max(speed, stopSpeed);
@@ -1022,7 +1031,4 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity() =>
         velocity.y += Physics.gravity.y * Time.deltaTime;
-
-    private float HorizontalSpeed() =>
-        new Vector3(velocity.x, 0f, velocity.z).magnitude;
 }
