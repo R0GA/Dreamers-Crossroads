@@ -10,33 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
-  m_Name: Sequence_4
+  m_Name: Sequence_7_KaraokeRoomEntrance
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Pixie
-    text: Oh no. This is Chelsea's dance floor. She loves this. She was so excited
-      about this part and look at it, it's all
+    text: The jukebox has the song but it's all jumbled.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 3
-  - speakerName: Sandman
-    text: Drained. Something's been at it.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 2
   - speakerName: Pixie
-    text: Okay. Okay, we fix it. We just... How do we fix it?
+    text: 'Chelsea knows every single note of this. She could hum it in her sleep.
+
+'
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 2
   - speakerName: Pixie
-    text: Oh! OH! Did you see that? It went PINK!
+    text: 'She literally is. She literally is humming it in her sleep right now.
+
+'
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 2
   - speakerName: Sandman
-    text: Watch where I step. Don't cross a tile I've already turned.
+    text: 'We need to find the right order and play it back.
+
+'
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: Exactly! The jukebox will play a sequence and you have to- you have to
+      listen and then repeat it back in the right order.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 4
   playOnce: 0

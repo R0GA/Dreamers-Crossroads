@@ -10,53 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
-  m_Name: Sequence_3
+  m_Name: Sequence_6_ApproachingKaraoke
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Pixie
-    text: Okay this is actually kind of fun.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
-  - speakerName: Sandman
-    text: Don't get distracted.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2
-  - speakerName: Pixie
-    text: 'I''m NOT distracted I''m MULTITASKING.
+    text: 'Do you hear that? That''s Chelsea''s song.
 
 '
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 2
-  - speakerName: Pixie
-    text: Okay. Okay, you're actually really good at this.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
   - speakerName: Sandman
-    text: I've been doing it a while.
+    text: What do you mean?
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 2
   - speakerName: Pixie
-    text: How long is a while?
+    text: When Chelsea gets scared. Really scared. Her mum sings her this lullaby.
+      Just this one specific song, every time.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
-  - speakerName: Sandman
-    text: Long enough.
+    autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: "And somehow, it just makes everything feel\u2026 okay."
     voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 2
   - speakerName: Pixie
-    text: That's not a number.
+    text: It's in there. But it sounds scratchy and scrambled.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 2
   - speakerName: Sandman
-    text: No. It isn't.
+    text: Then we unscramble it.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 2
