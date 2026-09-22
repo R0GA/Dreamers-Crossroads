@@ -254,17 +254,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1341035819390672999, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3457835094722397461, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5409394333339658188, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7026166443520137955, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,10 +298,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8816446617031330930, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 8070382632815290346, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: d4e3618086291174c8e2c3aaa4de89a4, type: 3}
     - target: {fileID: 8928507225479848801, guid: bf0759b0a2852eb4c8bdd5570174eda1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
