@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.004
+  m_Name: Brideg Rock
   m_Shader: {fileID: -6465566751694194690, guid: 61e2a68e2cecb2d44a03c96b458f52df, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -87,7 +87,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AccentMask_Add: 1
-    - _AccentMask_Strength: 1
+    - _AccentMask_Strength: 1.81
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -103,8 +103,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Environment_Light_Influence: 1
-    - _Environment_Shadow_Influence: 1
+    - _Environment_Light_Influence: 0
+    - _Environment_Shadow_Influence: 0.659
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -129,8 +129,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9063354, g: 0.096523024, b: 0, a: 1}
     - _Color: {r: 0.9063354, g: 0.096522994, b: 0, a: 1}
-    - _Color_Accent: {r: 0, g: 0.43053007, b: 1, a: 1}
-    - _Color_Base: {r: 0.9622641, g: 0.631952, b: 0.4584372, a: 1}
+    - _Color_Accent: {r: 0.7509433, g: 0.23490965, b: 0, a: 1}
+    - _Color_Base: {r: 1, g: 0.34375006, b: 0, a: 1}
     - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
