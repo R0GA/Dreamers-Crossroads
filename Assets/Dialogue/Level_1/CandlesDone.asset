@@ -10,22 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
-  m_Name: Sequence_1_EnteringDream
+  m_Name: CandlesDone
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
-  - speakerName: Sandman
-    text: Well.
+  - speakerName: Pixie
+    text: Ah, look at that... A pathways opened up, the dream is stabilizing.
     voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 1
-  - speakerName: Sandman
-    text: That's a lot of birthday party.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2
-  - speakerName: Sandman
-    text: Right then. Let's find out what we're working with.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: Follow it! Follow it!
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
   playOnce: 1

@@ -32,6 +32,7 @@ public class CandlePuzzle : MonoBehaviour
     [SerializeField] private float extinguishStagger = 0.1f;
     [Tooltip("Pause after all candles are out before the player can try again.")]
     [SerializeField] private float afterResetPauseSeconds = 0.5f;
+    [SerializeField] private DialogueSequence solvedDialogue;
 
     [Header("Events")]
     public UnityEvent onCorrectCandle;   // each right candle (e.g. play a little chime)
@@ -92,6 +93,8 @@ public class CandlePuzzle : MonoBehaviour
     private void Solve()
     {
         Solved = true;
+        if (DialogueManager.Instance != null && solvedDialogue != null)
+            DialogueManager.Instance.PlayDialogue(solvedDialogue);
         onPuzzleSolved?.Invoke();
     }
 

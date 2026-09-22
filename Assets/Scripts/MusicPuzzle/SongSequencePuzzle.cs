@@ -58,6 +58,7 @@ public class SongSequencePuzzle : MonoBehaviour
 
     [Tooltip("On a wrong note: ON replays from round 1 (classic Simon Says); OFF just repeats the current round.")]
     [SerializeField] private bool resetProgressOnMistake = true;
+    [SerializeField] private DialogueSequence solvedDialogue;
 
     [Header("Events")]
     public UnityEvent onRoundStarted;
@@ -126,6 +127,8 @@ public class SongSequencePuzzle : MonoBehaviour
         if (currentRound >= songSequence.Length)
         {
             state = State.Solved;
+            if (DialogueManager.Instance != null && solvedDialogue != null)
+                DialogueManager.Instance.PlayDialogue(solvedDialogue);
             onPuzzleSolved?.Invoke();
             return;
         }

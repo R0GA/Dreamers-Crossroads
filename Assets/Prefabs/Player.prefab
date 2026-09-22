@@ -168,7 +168,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 11a0dcb3f76175a46b1d61fff3a28a2f, type: 3}
+  m_Resource: {fileID: 8300000, guid: a3f3a2909abce824a9c912380b0250ee, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -375,7 +375,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 663d48ccdf6f9394ea39b8f020a51e4c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 41b852015e1455c448de10aeaab25f28, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -958,7 +958,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3457835094722397461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1362,9 +1362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   footstepClips:
-  - {fileID: 8300000, guid: 9fb289cc895074b4684253b12bd0d52f, type: 3}
-  - {fileID: 8300000, guid: 30219e3e0cad9c14d9f777bc45be3eb0, type: 3}
-  - {fileID: 8300000, guid: 5352cd047965cd640a20924dcc927c4b, type: 3}
+  - {fileID: 8300000, guid: 1f773c9cf3661264480426b77706679e, type: 3}
+  - {fileID: 8300000, guid: 82e3120dc8cd3d344a6f280130971456, type: 3}
+  - {fileID: 8300000, guid: 334b42c0022d9e8498e0ef444cb7f45e, type: 3}
   footstepSource: {fileID: 9154003223292102933}
   strideLength: 2
   minSpeedForFootsteps: 0.3
@@ -1676,7 +1676,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 4a8082e87e5b2344f86252ac2a319eb4, type: 3}
+  m_Resource: {fileID: 8300000, guid: e63ae622acf0b1b469221f3255d5e317, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

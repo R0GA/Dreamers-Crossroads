@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,6 +26,7 @@ public class DanceFloorPuzzleManager : MonoBehaviour
              "freezing progress so the player can't accidentally mess it up afterward. " +
              "If false, the player can keep stepping on panels and unsolve it (onPuzzleUnsolved still fires).")]
     [SerializeField] private bool lockOnSolve = false;
+    [SerializeField] private DialogueSequence solvedDialogue;
 
     public bool IsSolved { get; private set; }
 
@@ -65,6 +67,8 @@ public class DanceFloorPuzzleManager : MonoBehaviour
         {
             IsSolved = true;
             if (lockOnSolve) SetPanelsInteractable(false);
+            if (DialogueManager.Instance != null && solvedDialogue != null)
+                DialogueManager.Instance.PlayDialogue(solvedDialogue);
             onPuzzleSolved?.Invoke();
         }
         else if (!allSolved && IsSolved)
