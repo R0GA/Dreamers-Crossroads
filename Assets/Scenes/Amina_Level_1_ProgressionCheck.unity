@@ -7831,6 +7831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightStartTrigger
   fight: {fileID: 882665364}
+  levelAudio: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!114 &133007504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30835,8 +30837,7 @@ Transform:
   m_LocalScale: {x: 1.5335937, y: 1.5335937, z: 1.5335937}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1628931806}
-  - {fileID: 1082547719}
+  - {fileID: 1626927381}
   - {fileID: 628786434}
   - {fileID: 1175537109}
   - {fileID: 1195664839}
@@ -30848,6 +30849,7 @@ Transform:
   - {fileID: 349604128}
   - {fileID: 200305655}
   - {fileID: 320437612}
+  - {fileID: 1628931806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &557589619
@@ -58477,8 +58479,8 @@ Transform:
   m_GameObject: {fileID: 1082547718}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.69820714, z: -0, w: 0.71589583}
-  m_LocalPosition: {x: 25.391846, y: 4.669998, z: -35.532623}
-  m_LocalScale: {x: 10.515053, y: 7.2258472, z: 12.027449}
+  m_LocalPosition: {x: 25.391848, y: 4.669989, z: -35.53263}
+  m_LocalScale: {x: 10.515055, y: 7.2258477, z: 12.02745}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 209375846}
@@ -58492,7 +58494,7 @@ Transform:
   - {fileID: 985113588}
   - {fileID: 49818246}
   - {fileID: 2110693471}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 1626927381}
   m_LocalEulerAnglesHint: {x: 0, y: 88.567, z: 0}
 --- !u!1 &1084719110
 GameObject:
@@ -88067,6 +88069,38 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1626927380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626927381}
+  m_Layer: 0
+  m_Name: ActivateOnCakeSolved
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1626927381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626927380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1082547719}
+  m_Father: {fileID: 557315577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628492691
 GameObject:
   m_ObjectHideFlags: 0
@@ -104479,6 +104513,38 @@ PrefabInstance:
     - target: {fileID: 3009277817743885596, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: m_Name
       value: CandlePuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1626927380}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
