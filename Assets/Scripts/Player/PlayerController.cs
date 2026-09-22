@@ -201,6 +201,11 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
     public IInteractable CurrentInteractable => currentInteractable;
 
+    /// <summary>True from the moment an interact animation is triggered until the Interact clip reports it's
+    /// finished (via an Animation Event calling OnInteractAnimationEnd). Useful for suppressing footstep audio,
+    /// interaction prompts, etc. while the one-shot plays. Purely informational — does not block re-triggering.</summary>
+    public bool IsInteracting => isInteracting;
+
     /// <summary>What the crosshair is currently reporting for grapple targeting. Drives crosshairImage internally; exposed for any other UI that wants it too.</summary>
     public GrappleTargetState CurrentGrappleTarget => grappleTargetState;
 
@@ -345,6 +350,12 @@ public class PlayerController : MonoBehaviour
     // ── Private: Interaction State ────────────────────────────────────────────
 
     private IInteractable currentInteractable;
+
+    // Animator.StringToHash avoids re-hashing the parameter name string every call.
+    // The other params (IsWalking etc.) only get set once per frame from Update, so it's
+    // not worth the churn there, but Interact fires from a hot path (input), so it's cached.
+    private static readonly int InteractTriggerHash = Animator.StringToHash("Interact");
+    private bool isInteracting;
 
     // ── Private: Ability State ────────────────────────────────────────────────
 
@@ -516,9 +527,45 @@ public class PlayerController : MonoBehaviour
         if (currentInteractable == null) return;
 
         if (interactAction != null && interactAction.WasPressedThisFrame())
+        {
             currentInteractable.Interact(gameObject);
+            PlayInteractAnimation();
+        }
         else if (interactAltAction != null && interactAltAction.WasPressedThisFrame())
+        {
             currentInteractable.InteractAlt(gameObject);
+            PlayInteractAnimation();
+        }
+    }
+
+    private void PlayInteractAnimation()
+    {
+        if (viewmodelAnimator == null) return;
+
+        // Gameplay (Interact()/InteractAlt()) always fires on every press — this guard only
+        // stops a second Trigger from stacking up on top of one still playing. Without it, a
+        // press mid-animation leaves a Trigger armed that Unity holds onto and fires the
+        // moment the current Interact state exits, replaying the clip right after.
+        if (isInteracting) return;
+
+        isInteracting = true;
+        viewmodelAnimator.SetTrigger(InteractTriggerHash);
+    }
+
+    /// <summary>
+    /// Hook this up to an Animation Event on the last frame of the Interact clip (right-click
+    /// the clip in the Animation window → add event → drag this method in) so the controller
+    /// finds out when the one-shot has actually finished, rather than guessing off a timer.
+    /// </summary>
+    public void OnInteractAnimationEnd()
+    {
+        isInteracting = false;
+
+        // Defensive: clears a Trigger that could otherwise have gotten armed and consumed on
+        // the exact same frame the guard above would normally have blocked it (e.g. a press
+        // landing right as the clip ends). Harmless no-op the rest of the time.
+        if (viewmodelAnimator != null)
+            viewmodelAnimator.ResetTrigger(InteractTriggerHash);
     }
 
     private IInteractable FindInteractable()
