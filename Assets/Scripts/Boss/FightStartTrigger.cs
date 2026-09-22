@@ -5,6 +5,8 @@ using UnityEngine;
 public class FightStartTrigger : MonoBehaviour
 {
     [SerializeField] private SirNightmareFight fight;
+    [SerializeField] private AudioSource levelAudio;
+    [SerializeField] private AudioClip bossMusic;
 
     private bool used;
 
@@ -17,5 +19,6 @@ public class FightStartTrigger : MonoBehaviour
 
         used = true;
         fight.StartFight();
+        levelAudio.clip = bossMusic;
     }
 }
