@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1
+  m_text: Skip To Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
   m_sharedMaterial: {fileID: -6140817253285787970, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
@@ -648,6 +648,7 @@ MonoBehaviour:
   tutorialScene: TutorialLVL
   levelOneScene: Amina_Level_1_ProgressionCheck
   tutorialEndScene: EndSceneTutorial
+  levelEndScene: EndSceneLevel1
 --- !u!4 &309145755
 Transform:
   m_ObjectHideFlags: 0
@@ -1550,9 +1551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tutorial
-
-'
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
   m_sharedMaterial: {fileID: -6140817253285787970, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
