@@ -9,6 +9,7 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] private string tutorialScene = "TutorialLVL";
     [SerializeField] private string levelOneScene = "Amina_Level_1_ProgressionCheck";
     [SerializeField] private string tutorialEndScene = "EndSceneTutorial";
+    [SerializeField] private string levelEndScene = "EndSceneLevel1";
 
     private void OnEnable()
     {
@@ -49,6 +50,11 @@ public class GameSceneManager : MonoBehaviour
     public void LoadTutorialEnd()
     {
         LoadScene(tutorialEndScene);
+    }
+
+    public void LoadLevelEnd()
+    {
+        LoadScene(levelEndScene);
     }
 
 
