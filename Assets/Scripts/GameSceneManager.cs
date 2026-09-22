@@ -10,6 +10,21 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] private string levelOneScene = "Amina_Level_1_ProgressionCheck";
     [SerializeField] private string tutorialEndScene = "EndSceneTutorial";
 
+    private void OnEnable()
+    {
+        UnlockCursor();
+    }
+
+    private void Start()
+    {
+        UnlockCursor();
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
     public void LoadTutorial()
     {
