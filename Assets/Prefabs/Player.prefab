@@ -172,7 +172,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -379,7 +379,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   footstepSource: {fileID: 9154003223292102933}
   strideLength: 2
   minSpeedForFootsteps: 0.3
-  footstepVolume: 0.3
+  footstepVolume: 0.2
   footstepPitchRange: {x: 0.8, y: 1.1}
   chargeSource: {fileID: 7014216673721243232}
   chargeMaxVolume: 0.5
@@ -1680,7 +1680,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1929,9 +1929,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

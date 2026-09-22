@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Well now what do we have here...
-    voiceClip: {fileID: 0}
+    text: Now what do we have here...
+    voiceClip: {fileID: 8300000, guid: 94d40fb2e09e04f4aad1be404a067246, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 2
   - speakerName: Sandman
-    text: Didn't think the highway grew crystals...
-    voiceClip: {fileID: 0}
+    text: I Didn't think the highway grew crystals...
+    voiceClip: {fileID: 8300000, guid: 1e44904c01c62a340aef961b3c17e6a1, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3
   playOnce: 1
