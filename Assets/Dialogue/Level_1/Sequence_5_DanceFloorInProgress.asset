@@ -17,12 +17,12 @@ MonoBehaviour:
     text: Should you go back? Can you go back? Maybe go back.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
+    autoAdvanceDelay: 3
   - speakerName: Sandman
     text: I'm working on it.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 1
+    autoAdvanceDelay: 2
   - speakerName: Pixie
     text: It's working! it's actually working! look at it, it's so PINK.
     voiceClip: {fileID: 0}
@@ -32,14 +32,14 @@ MonoBehaviour:
     text: I need to get across to the next section. Without crossing a turned tile.
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2
+    autoAdvanceDelay: 3
   - speakerName: Pixie
     text: 'Oh! Oh you can use the disco ball! Grapple onto it and swing across!
 
 '
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
+    autoAdvanceDelay: 3
   - speakerName: Sandman
     text: That's what I was going to do.
     voiceClip: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
     text: I know! I'm just I'm saying it out loud because it's EXCITING!
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 2
+    autoAdvanceDelay: 2.5
   - speakerName: Pixie
     text: "WHEEEEE \u2014"
     voiceClip: {fileID: 0}

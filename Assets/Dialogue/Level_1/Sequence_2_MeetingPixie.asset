@@ -28,7 +28,7 @@ MonoBehaviour:
     text: You look like the Sandman. You have to be the Sandman. Please be the Sandman.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 4
   - speakerName: Pixie
     text: 'OKAY. Okay okay okay. We have a situation. Several situations actually. '
     voiceClip: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
       everything is-
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 4
   - speakerName: Pixie
     text: 'Have you noticed the floor? '
     voiceClip: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
       sections."
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2
+    autoAdvanceDelay: 3
   - speakerName: Sandman
     text: "Let\u2019s take them one at a time then we get you home."
     voiceClip: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
       soon discover, does not do things by halves."
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 4.5
   - speakerName: Sandman
     text: I can see that.
     voiceClip: {fileID: 0}
