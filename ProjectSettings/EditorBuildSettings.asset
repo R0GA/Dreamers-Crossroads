@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 7103afe581c3dc746a6f672ada063c27
+  - enabled: 1
+    path: Assets/Scenes/Controls_Scene.unity
+    guid: 7f3389c9952cb2548b3cfb7b9a4fb7a7
+  - enabled: 1
     path: Assets/Scenes/TutorialLVL.unity
     guid: 3c314dc3276588142845bef3217fe56b
+  - enabled: 0
+    path: Assets/Scenes/Amina_Level_1_Update.unity
+    guid: f527f44b776b867429471ea085d44259
+  - enabled: 1
+    path: Assets/Scenes/Amina_Level_1_ProgressionCheck.unity
+    guid: 727fb7bc31faa584ca796d837eea53a5
   - enabled: 1
     path: Assets/Scenes/EndSceneTutorial.unity
     guid: 8ae9448601f9cf145b8a534de6c8c9d9
