@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
     public event Action<PlayerAbility> AbilityUnlocked;
 
     /// <summary>True if the player currently has every flag in <paramref name="ability"/> (can pass a single flag or a combination).</summary>
-    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ability) == ability;
+    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ~suppressedAbilities & ability) == ability;
 
     /// <summary>Grants an ability (or combination of abilities) to the player. Safe to call repeatedly — already-unlocked flags are ignored and won't re-fire the event.</summary>
     public void UnlockAbility(PlayerAbility ability)
@@ -224,6 +224,100 @@ public class PlayerController : MonoBehaviour
 
         unlockedAbilities |= ability;
         AbilityUnlocked?.Invoke(newlyGranted);
+    }
+
+    // ── Temporary Suppression / Knockback (boss hits, curses, cutscenes) ──────
+
+    /// <summary>Abilities that are unlocked but currently disabled by SuppressAbilities. HasAbility() already accounts for these.</summary>
+    public PlayerAbility SuppressedAbilities => suppressedAbilities;
+
+    /// <summary>Fired when SuppressAbilities disables something — good hook for a screen tint, sputtering-sand VFX, or a sting.</summary>
+    public event Action<PlayerAbility> AbilitiesSuppressed;
+
+    /// <summary>Fired when suppression ends (timer ran out, or Respawn cleared it).</summary>
+    public event Action AbilitiesRestored;
+
+    /// <summary>
+    /// Temporarily disables abilities without revoking them. Suppressing Grapple drops any active
+    /// rope; suppressing Launch cancels an in-progress charge. All suppressed flags share one timer,
+    /// so a second hit extends the whole lockout to whichever duration is longer.
+    /// </summary>
+    public void SuppressAbilities(PlayerAbility abilities, float duration)
+    {
+        if (abilities == PlayerAbility.None || duration <= 0f) return;
+
+        suppressedAbilities |= abilities;
+        suppressTimer = Mathf.Max(suppressTimer, duration);
+        AbilitiesSuppressed?.Invoke(abilities);
+    }
+
+    /// <summary>
+    /// Hard interrupt: overwrites the player's velocity with a shove (horizontal direction + upward
+    /// pop), drops the grapple, and cancels any launch charge. Vertical component of
+    /// <paramref name="direction"/> is ignored — use <paramref name="upwardSpeed"/> instead.
+    /// </summary>
+    public void ApplyKnockback(Vector3 direction, float horizontalSpeed, float upwardSpeed)
+    {
+        if (grappleState == GrappleState.Attached)
+            ReleaseGrapple();
+
+        isCharging = false;
+        chargeAmount = 0f;
+
+        direction.y = 0f;
+        if (direction.sqrMagnitude < 0.0001f) direction = -transform.forward;
+        direction.Normalize();
+
+        velocity = direction * horizontalSpeed;
+        velocity.y = upwardSpeed;
+
+        // Same trick as ExecuteLaunch: stops GroundCheck re-grounding us next frame,
+        // which would clamp velocity.y to -2 and eat the knockback.
+        jumpGraceTimer = 0.2f;
+        isGrounded = false;
+        coyoteTimer = 0f;
+        jumpBufferTimer = 0f;
+    }
+
+    /// <summary>Seconds since the grapple last detached (0 while attached). Lets things like dream bubbles pop on "swing, release, fly through" rather than only while the rope is live.</summary>
+    public float SecondsSinceGrapple => IsGrappling ? 0f : Time.time - lastGrappleReleaseTime;
+
+    /// <summary>Drops the grapple only if it's latched onto <paramref name="root"/> or one of its children. Called by things that stop existing (crumbling platforms, lullaby anchor) so the rope doesn't stay pinned to empty space.</summary>
+    public void ReleaseGrappleFrom(Transform root)
+    {
+        if (grappleState == GrappleState.Attached && grappleAnchor != null && grappleAnchor.IsChildOf(root))
+            ReleaseGrapple();
+    }
+
+    private void TickSuppression()
+    {
+        if (suppressedAbilities == PlayerAbility.None) return;
+
+        suppressTimer -= Time.deltaTime;
+        if (suppressTimer <= 0f)
+        {
+            ClearSuppression();
+            return;
+        }
+
+        // Cut off anything that just got disabled mid-use
+        if (grappleState == GrappleState.Attached && !HasAbility(PlayerAbility.Grapple))
+            ReleaseGrapple();
+
+        if (isCharging && !HasAbility(PlayerAbility.Launch))
+        {
+            isCharging = false;
+            chargeAmount = 0f;
+        }
+    }
+
+    private void ClearSuppression()
+    {
+        if (suppressedAbilities == PlayerAbility.None) return;
+
+        suppressedAbilities = PlayerAbility.None;
+        suppressTimer = 0f;
+        AbilitiesRestored?.Invoke();
     }
 
     // ── Private: Components / Input ───────────────────────────────────────────
@@ -246,6 +340,8 @@ public class PlayerController : MonoBehaviour
     // ── Private: Ability State ────────────────────────────────────────────────
 
     private PlayerAbility unlockedAbilities;
+    private PlayerAbility suppressedAbilities;
+    private float suppressTimer;
 
     // ── Private: Core Movement State ──────────────────────────────────────────
 
@@ -272,6 +368,7 @@ public class PlayerController : MonoBehaviour
     // (or was hit by something with no transform worth tracking, which never happens in
     // practice — every collider has one — so this is really just a "still attached?" guard).
     private Transform grappleAnchor;
+    private float lastGrappleReleaseTime = float.NegativeInfinity;
     private Vector3 grappleLocalOffset;
 
     // ── Private: Charge Launch State ─────────────────────────────────────────
@@ -320,6 +417,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        TickSuppression();      // Must run before input handling so a freshly-suppressed ability is cut off this frame
         HandleLook();
         HandleInteraction();    // Reads look-updated camera forward, so must run after HandleLook
         GroundCheck();          // Sets isGrounded / coyoteTimer
@@ -616,6 +714,9 @@ public class PlayerController : MonoBehaviour
 
     private void ReleaseGrapple()
     {
+        if (grappleState == GrappleState.Attached)
+            lastGrappleReleaseTime = Time.time;
+
         grappleState = GrappleState.Idle;
         grappleAnchor = null;
     }
@@ -880,6 +981,7 @@ public class PlayerController : MonoBehaviour
         isCharging = false;
         chargeAmount = 0f;
         airLaunchAvailable = true;
+        ClearSuppression();
         velocity = Vector3.zero;
         coyoteTimer = 0f;
         jumpBufferTimer = 0f;
