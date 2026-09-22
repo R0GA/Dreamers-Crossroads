@@ -15,32 +15,46 @@ MonoBehaviour:
   lines:
   - speakerName: Pixie
     text: "Oh! OH! You're here, you're actually here, I've been waiting and waiting
-      and \u2014 are you the Sandman? "
+      and \u2014  "
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: Are you the Sandman?
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
   - speakerName: Pixie
     text: You look like the Sandman. You have to be the Sandman. Please be the Sandman.
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3
   - speakerName: Pixie
     text: 'OKAY. Okay okay okay. We have a situation. Several situations actually. '
     voiceClip: {fileID: 0}
     portrait: {fileID: 0}
     autoAdvanceDelay: 3
   - speakerName: Pixie
-    text: 'Have you seen this place? It''s- well it''s supposed to be wonderful,
-      it''s supposed to be Chelsea''s BEST birthday, '
+    text: Have you seen this place? It's- well it's supposed to be wonderful,
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3
   - speakerName: Pixie
-    text: 'I''ve been trying to hold it together but something got in here and now
-      everything is- have you noticed the floor? '
+    text: 'It''s supposed to be Chelsea''s BEST birthday, '
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: I've been trying to hold it together but something got in here and now
+      everything is-
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: 'Have you noticed the floor? '
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
   - speakerName: Pixie
     text: 'Don''t look at the floor it''ll stress you out. '
     voiceClip: {fileID: 0}
@@ -68,16 +82,26 @@ MonoBehaviour:
     autoAdvanceDelay: 2
   - speakerName: Sandman
     text: "It doesn\u2019t look like there\u2019s much left to cross. Its just three
-      sections. Let\u2019s take them one at a time then we get you home."
+      sections."
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: "Let\u2019s take them one at a time then we get you home."
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
   - speakerName: Pixie
     text: "Three! Just three? That\u2019s nothing. Three is manageable. Three is
-      practically lucky. Come on, let\u2019s go."
+      practically lucky."
     voiceClip: {fileID: 0}
     portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
     autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: "Come on, let\u2019s go."
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
   - speakerName: Pixie
     text: "I should warn you, this dream is very Chelsea. And Chelsea, as you\u2019ll
       soon discover, does not do things by halves."
