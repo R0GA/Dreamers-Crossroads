@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence_5_DanceFloorInProgress
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: Should you go back? Can you go back? Maybe go back.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: I'm working on it.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 1
+  - speakerName: Pixie
+    text: It's working! it's actually working! look at it, it's so PINK.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: I need to get across to the next section. Without crossing a turned tile.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: 'Oh! Oh you can use the disco ball! Grapple onto it and swing across!
+
+'
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: That's what I was going to do.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: I know! I'm just I'm saying it out loud because it's EXCITING!
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: "WHEEEEE \u2014"
+    voiceClip: {fileID: 0}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  playOnce: 0
