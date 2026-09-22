@@ -14,14 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Guess the highway never did sit still for long.
-    voiceClip: {fileID: 0}
+    text: "Ah. It\u2019s Moving. Naturally. I\u2019ll have to time this one."
+    voiceClip: {fileID: 8300000, guid: 806874fbd68591f48b8a36ad9a5fe0dd, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 5.5
   - speakerName: Sandman
-    text: Thing with these is commitment... Stop thinking halfway through and its
-      a one way ticket to the bottom
+    text: The highway never did sit still for long.
+    voiceClip: {fileID: 8300000, guid: 52bfa28e4d46d3c4aa227e845b3a6022, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sandman
+    text: 'Thing with these is commitment. Stop thinking halfway through
+
+      and
+      it''s a one-way ticket to the bottom.'
     voiceClip: {fileID: 0}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
+    autoAdvanceDelay: 6.5
   playOnce: 1

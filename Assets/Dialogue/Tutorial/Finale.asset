@@ -14,21 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Seems the dream has sealed itself shut.
-    voiceClip: {fileID: 0}
+    text: The dream must've formed fast. It's sealed itself shut.
+    voiceClip: {fileID: 8300000, guid: 1552d50576efa304f9cf6096b47a6970, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
     text: Come to think of it, the rings on this crystal are intact...
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 9296aea20998cc748950f9a6a92d40b3, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
+    autoAdvanceDelay: 4.5
   - speakerName: Sandman
-    text: 'Hmm. I think I remember seeing these symbols somewhere on the
-
-      highway.
-      Well. Not much of a mystery then, is it.'
-    voiceClip: {fileID: 0}
+    text: Hmm. I think I remember seeing these symbols somewhere on thehighway.
+    voiceClip: {fileID: 8300000, guid: 85f696c051f7eed4dae02dfd2cecf3fc, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 8
+    autoAdvanceDelay: 5.5
+  - speakerName: Sandman
+    text: Well, not much of a mystery then, is it.
+    voiceClip: {fileID: 8300000, guid: 02ae63dac6e57d14793e19bc7cc25599, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 3.5
   playOnce: 1

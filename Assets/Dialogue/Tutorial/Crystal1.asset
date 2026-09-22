@@ -15,27 +15,17 @@ MonoBehaviour:
   lines:
   - speakerName: Sandman
     text: Hm...
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 37a3ef7ba856c924ab4a12fb17defc2a, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 1.5
+    autoAdvanceDelay: 1
   - speakerName: Sandman
-    text: Powers coming back to my catcher.
-    voiceClip: {fileID: 0}
+    text: Aha! Power's coming back to my catcher.
+    voiceClip: {fileID: 8300000, guid: ef768ca90ce89e54b8b04762bcf8e89b, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
-    text: It seems its reacting to something nearby too...
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
-  - speakerName: Sandman
-    text: A dream if I had to guess... A close one too.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
-  - speakerName: Sandman
-    text: Funny time for one to turn up.
-    voiceClip: {fileID: 0}
+    text: Seems its reacting to something nearby too...
+    voiceClip: {fileID: 8300000, guid: eacb0978e8c4de24d9ab9e9a837a02b8, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 4
   - speakerName: 

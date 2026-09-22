@@ -15,23 +15,22 @@ MonoBehaviour:
   lines:
   - speakerName: Sandman
     text: Now thats what im talkin' about...
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 30d3ee997a5b1cc47bdbbcfab5b8c692, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 2.5
   - speakerName: Sandman
     text: Feels like my catchers fully operational again.
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 2088687d0245ff8468a9884082f13087, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
-    text: Damn, I'm getting more about that dream too now, it seems Sir Knightmares
-      beaten me there already.
-    voiceClip: {fileID: 0}
+    text: Seems Sir Knightmares beaten me there already.
+    voiceClip: {fileID: 8300000, guid: 13fb2cc69d61fef4d99a0c9a31787eca, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 8
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
-    text: Guess I've gotta be hasty, thankfully I've got my launch back.
-    voiceClip: {fileID: 0}
+    text: Well, let's not dawdle.
+    voiceClip: {fileID: 8300000, guid: b066039d70bad234d93fc28d9a6f12cb, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 5
   - speakerName: 

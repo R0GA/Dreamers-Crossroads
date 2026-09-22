@@ -15,29 +15,20 @@ MonoBehaviour:
   lines:
   - speakerName: Sandman
     text: My tether's back. Shweeeet.
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 13e38f09ee5bd4f4daaf607bc45acff3, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 4.5
   - speakerName: Sandman
     text: Hm... Im getting more about that dream nearby...
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 4b103f6e95767fb44a6bf271e0946227, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sandman
+    text: Dream belongs to a girl named Chelsea. If the signal's reading right, it's
+      her birthday.
+    voiceClip: {fileID: 8300000, guid: 3ad289319eb832049941db797fbba9ff, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 5
-  - speakerName: Sandman
-    text: Dream belongs to a girl named Chelsea, if the signal's reading right.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
-  - speakerName: Sandman
-    text: Seems shes got a birthday coming up, by the feel of it.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
-  - speakerName: Sandman
-    text: Well then, Let's not dawdle.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
   - speakerName: 
     text: 'Tip: Certain objects can be tethered to. Press and hold left click to
       attach to and swing from objects.'

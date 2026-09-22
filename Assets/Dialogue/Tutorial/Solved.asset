@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
-  m_Name: GrappleSection
+  m_Name: Solved
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: It's just like riding a bike.
-    voiceClip: {fileID: 8300000, guid: 85c98bbd56cf65e4dbdb46524eb9f6af, type: 3}
+    text: There we go. Old girl's opening up.
+    voiceClip: {fileID: 8300000, guid: 4a8e90e927407ae4d9146b71227f4729, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2.5
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
-    text: Not that I've ever ridden one...
-    voiceClip: {fileID: 8300000, guid: a33c86c5a48eeab4da02fa6225f0bda4, type: 3}
+    text: That trouble maker...
+    voiceClip: {fileID: 8300000, guid: f6569ea7ae2d33c4d9ca56b184924bca, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 2.5
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: Hold on little one. Im nearly there.
+    voiceClip: {fileID: 8300000, guid: 2a3773c3aece7b74d9c3bd54a12f69c6, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 1.5
   playOnce: 1
