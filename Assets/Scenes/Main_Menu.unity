@@ -2136,7 +2136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1205529754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,6 +2149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc786a8728d5b242b9cb9ba51060c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuCursor
+  mainMenuScene: Main_Menu
+  controlsScene: Controls_Scene
+  tutorialScene: TutorialLVL
+  levelOneScene: Amina_Level_1_ProgressionCheck
+  tutorialEndScene: EndSceneTutorial
 --- !u!4 &1205529755
 Transform:
   m_ObjectHideFlags: 0
