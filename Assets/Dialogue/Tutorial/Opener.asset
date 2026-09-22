@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Damn, seems my dreamcatcher's down.
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
-  - speakerName: Sandman
-    text: Looks like it took a hard hit in that last dream... power levels are gone.
-    voiceClip: {fileID: 0}
+    text: Damn, seems my dreamcatcher's down. Power levels are gone.
+    voiceClip: {fileID: 8300000, guid: 2e5dc0c5cd73fa947b0fe71bd250cc36, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
     autoAdvanceDelay: 5
   - speakerName: Sandman
-    text: Well, it wouldnt be the first time.
-    voiceClip: {fileID: 0}
+    text: Looks like it took a hard hit in that last dream...
+    voiceClip: {fileID: 8300000, guid: c3a41b3105ecc4e4db4a281e0bd10df0, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3
+  - speakerName: Sandman
+    text: Ah well, wouldnt be the first time.
+    voiceClip: {fileID: 8300000, guid: c228fb23eda15214ea4a14886c9602ff, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
   playOnce: 1
