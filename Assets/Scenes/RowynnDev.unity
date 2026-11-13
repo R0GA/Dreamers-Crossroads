@@ -2665,6 +2665,7 @@ MonoBehaviour:
   onRingRotated:
     m_PersistentCalls:
       m_Calls: []
+  solvedDialogue: {fileID: 0}
 --- !u!4 &1733554661
 Transform:
   m_ObjectHideFlags: 0
@@ -3596,6 +3597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4213134003828264457, guid: 4dc60f2923d12814db98f13e3ac4cb56, type: 3}
+      propertyPath: oneShot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4942757657513375566, guid: 4dc60f2923d12814db98f13e3ac4cb56, type: 3}
       propertyPath: m_LocalPosition.x
       value: -74.69362
