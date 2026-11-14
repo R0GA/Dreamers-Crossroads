@@ -9672,8 +9672,8 @@ Transform:
   m_GameObject: {fileID: 167573384}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6910812, z: -0, w: 0.7227772}
-  m_LocalPosition: {x: 192.1, y: 10.570145, z: -16.8}
-  m_LocalScale: {x: 2.329908, y: 1.6010008, z: 2.66474}
+  m_LocalPosition: {x: 192.10002, y: 10.570159, z: -16.799982}
+  m_LocalScale: {x: 2.3299081, y: 1.6010009, z: 2.66474}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2128077439}
@@ -9738,7 +9738,7 @@ Transform:
   - {fileID: 628045339}
   - {fileID: 257271515}
   - {fileID: 1867270890}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 502563436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &167573386
 MonoBehaviour:
@@ -9757,7 +9757,7 @@ MonoBehaviour:
   minTimeBetweenFalls: 1
   maxTimeBetweenFalls: 2.5
   tilesPerWave: 2
-  autoStart: 1
+  autoStart: 0
 --- !u!1 &170583717
 GameObject:
   m_ObjectHideFlags: 0
@@ -20917,8 +20917,8 @@ Transform:
   m_GameObject: {fileID: 349604127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6910812, z: -0, w: 0.7227772}
-  m_LocalPosition: {x: 225.2, y: 10.570145, z: -36.6}
-  m_LocalScale: {x: 2.329908, y: 1.6010008, z: 2.66474}
+  m_LocalPosition: {x: 225.20001, y: 10.570159, z: -36.599995}
+  m_LocalScale: {x: 2.3299081, y: 1.6010009, z: 2.66474}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1795216936}
@@ -20986,7 +20986,7 @@ Transform:
   - {fileID: 1819400029}
   - {fileID: 256521068}
   - {fileID: 2062759284}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 502563436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &349604129
 MonoBehaviour:
@@ -21005,7 +21005,7 @@ MonoBehaviour:
   minTimeBetweenFalls: 2.5
   maxTimeBetweenFalls: 4
   tilesPerWave: 1
-  autoStart: 1
+  autoStart: 0
 --- !u!1 &352567814
 GameObject:
   m_ObjectHideFlags: 0
@@ -29390,6 +29390,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502034906}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &502563435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502563436}
+  m_Layer: 0
+  m_Name: Hexagon floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &502563436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502563435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 628786434}
+  - {fileID: 631946410}
+  - {fileID: 167573385}
+  - {fileID: 1628492692}
+  - {fileID: 349604128}
+  m_Father: {fileID: 557315577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &503521087
 GameObject:
   m_ObjectHideFlags: 0
@@ -33199,11 +33235,7 @@ Transform:
   m_Children:
   - {fileID: 1077440458}
   - {fileID: 1626927381}
-  - {fileID: 628786434}
-  - {fileID: 631946410}
-  - {fileID: 167573385}
-  - {fileID: 1628492692}
-  - {fileID: 349604128}
+  - {fileID: 502563436}
   - {fileID: 1175537109}
   - {fileID: 1195664839}
   - {fileID: 415172803}
@@ -37479,8 +37511,8 @@ Transform:
   m_GameObject: {fileID: 628786433}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.04375449, z: -0, w: 0.99904233}
-  m_LocalPosition: {x: 195.2, y: 10.570159, z: -94.8}
-  m_LocalScale: {x: 2.3299084, y: 1.6010007, z: 2.6647406}
+  m_LocalPosition: {x: 195.20001, y: 10.570159, z: -94.800026}
+  m_LocalScale: {x: 2.3299086, y: 1.6010007, z: 2.6647406}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1697559927}
@@ -37543,7 +37575,7 @@ Transform:
   - {fileID: 1073976419}
   - {fileID: 472275393}
   - {fileID: 112264687}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 502563436}
   m_LocalEulerAnglesHint: {x: 0, y: 5.015, z: 0}
 --- !u!114 &628786435
 MonoBehaviour:
@@ -37562,7 +37594,7 @@ MonoBehaviour:
   minTimeBetweenFalls: 2.5
   maxTimeBetweenFalls: 3.5
   tilesPerWave: 1
-  autoStart: 1
+  autoStart: 0
 --- !u!1 &631648435
 GameObject:
   m_ObjectHideFlags: 0
@@ -37725,9 +37757,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631946409}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.37263864, z: -0, w: 0.9279765}
+  m_LocalRotation: {x: -0, y: 0.37263867, z: -0, w: 0.92797655}
   m_LocalPosition: {x: 179.70001, y: 10.570159, z: -62.699997}
-  m_LocalScale: {x: 2.3299084, y: 1.6010007, z: 2.6647406}
+  m_LocalScale: {x: 2.3299081, y: 1.6010007, z: 2.6647406}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1896198018}
@@ -37797,7 +37829,7 @@ Transform:
   - {fileID: 888135887}
   - {fileID: 516567681}
   - {fileID: 1123251856}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 502563436}
   m_LocalEulerAnglesHint: {x: 0, y: 43.757, z: 0}
 --- !u!114 &631946411
 MonoBehaviour:
@@ -37816,7 +37848,7 @@ MonoBehaviour:
   minTimeBetweenFalls: 2.5
   maxTimeBetweenFalls: 3.5
   tilesPerWave: 1
-  autoStart: 1
+  autoStart: 0
 --- !u!1 &632794106
 GameObject:
   m_ObjectHideFlags: 0
@@ -95645,8 +95677,8 @@ Transform:
   m_GameObject: {fileID: 1628492691}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6910812, z: -0, w: 0.7227772}
-  m_LocalPosition: {x: 201.9, y: 10.570145, z: -37.9}
-  m_LocalScale: {x: 2.329908, y: 1.6010008, z: 2.66474}
+  m_LocalPosition: {x: 201.9, y: 10.570159, z: -37.90002}
+  m_LocalScale: {x: 2.3299081, y: 1.6010009, z: 2.66474}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 731762050}
@@ -95712,7 +95744,7 @@ Transform:
   - {fileID: 1238603963}
   - {fileID: 391824028}
   - {fileID: 42538598}
-  m_Father: {fileID: 557315577}
+  m_Father: {fileID: 502563436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1628492693
 MonoBehaviour:
@@ -95731,7 +95763,7 @@ MonoBehaviour:
   minTimeBetweenFalls: 1.5
   maxTimeBetweenFalls: 3
   tilesPerWave: 1
-  autoStart: 1
+  autoStart: 0
 --- !u!1 &1628931805
 GameObject:
   m_ObjectHideFlags: 0
@@ -113929,7 +113961,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: cc25dbfea1068c64b81d6b481e0e44e1, type: 2}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -113940,6 +113972,26 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1626927380}
@@ -113948,11 +114000,51 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1077440457}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 628786435}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 631946411}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 167573386}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 1628492693}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 349604129}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
@@ -113964,12 +114056,52 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StartRandomFalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: StartRandomFalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: StartRandomFalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: StartRandomFalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: StartRandomFalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: RandomHexagonFalling, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: RandomHexagonFalling, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: RandomHexagonFalling, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: RandomHexagonFalling, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: RandomHexagonFalling, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -113985,6 +114117,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
       propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080747808674877676, guid: 843657b0b793c6b4696faaa0b851d04d, type: 3}
+      propertyPath: onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
