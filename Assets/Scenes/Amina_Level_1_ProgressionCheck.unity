@@ -466,7 +466,6 @@ GameObject:
   - component: {fileID: 8100148}
   - component: {fileID: 8100150}
   - component: {fileID: 8100149}
-  - component: {fileID: 8100151}
   m_Layer: 0
   m_Name: Hexagon Flat Top (105)
   m_TagString: Untagged
@@ -569,29 +568,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8100151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &10179771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2630,6 @@ GameObject:
   - component: {fileID: 42538598}
   - component: {fileID: 42538600}
   - component: {fileID: 42538599}
-  - component: {fileID: 42538601}
   m_Layer: 0
   m_Name: Hexagon Flat Top (25)
   m_TagString: Untagged
@@ -2757,29 +2732,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &42538601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42538597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &44522806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,7 +3361,6 @@ GameObject:
   - component: {fileID: 50089184}
   - component: {fileID: 50089186}
   - component: {fileID: 50089185}
-  - component: {fileID: 50089187}
   m_Layer: 0
   m_Name: Hexagon Flat Top (19)
   m_TagString: Untagged
@@ -3512,29 +3463,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &50089187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50089183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &51319454
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +5996,6 @@ GameObject:
   - component: {fileID: 95592507}
   - component: {fileID: 95592509}
   - component: {fileID: 95592508}
-  - component: {fileID: 95592510}
   m_Layer: 0
   m_Name: Hexagon Flat Top (69)
   m_TagString: Untagged
@@ -6171,29 +6098,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &95592510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95592506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &97499708
 GameObject:
   m_ObjectHideFlags: 0
@@ -9640,7 +9544,6 @@ GameObject:
   - component: {fileID: 163938465}
   - component: {fileID: 163938467}
   - component: {fileID: 163938466}
-  - component: {fileID: 163938468}
   m_Layer: 0
   m_Name: Hexagon Flat Top (109)
   m_TagString: Untagged
@@ -9743,29 +9646,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &163938468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163938464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &167573384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11784,7 +11664,6 @@ GameObject:
   - component: {fileID: 187865044}
   - component: {fileID: 187865046}
   - component: {fileID: 187865045}
-  - component: {fileID: 187865047}
   m_Layer: 0
   m_Name: Hexagon Flat Top (60)
   m_TagString: Untagged
@@ -11887,29 +11766,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &187865047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187865043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &189582719
 GameObject:
   m_ObjectHideFlags: 0
@@ -12741,7 +12597,6 @@ GameObject:
   - component: {fileID: 208528858}
   - component: {fileID: 208528860}
   - component: {fileID: 208528859}
-  - component: {fileID: 208528861}
   m_Layer: 0
   m_Name: Hexagon Flat Top (39)
   m_TagString: Untagged
@@ -12844,29 +12699,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &208528861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208528857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &209375845
 GameObject:
   m_ObjectHideFlags: 0
@@ -15033,7 +14865,6 @@ GameObject:
   - component: {fileID: 249637784}
   - component: {fileID: 249637786}
   - component: {fileID: 249637785}
-  - component: {fileID: 249637787}
   m_Layer: 0
   m_Name: Hexagon Flat Top (97)
   m_TagString: Untagged
@@ -15136,29 +14967,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &249637787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249637783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &252797258
 GameObject:
   m_ObjectHideFlags: 0
@@ -15282,7 +15090,6 @@ GameObject:
   - component: {fileID: 254166197}
   - component: {fileID: 254166199}
   - component: {fileID: 254166198}
-  - component: {fileID: 254166200}
   m_Layer: 0
   m_Name: Hexagon Flat Top (46)
   m_TagString: Untagged
@@ -15385,29 +15192,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &254166200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254166196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &255548500
 GameObject:
   m_ObjectHideFlags: 0
@@ -18210,7 +17994,6 @@ GameObject:
   - component: {fileID: 301165429}
   - component: {fileID: 301165431}
   - component: {fileID: 301165430}
-  - component: {fileID: 301165432}
   m_Layer: 0
   m_Name: Hexagon Flat Top (19)
   m_TagString: Untagged
@@ -18313,29 +18096,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &301165432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301165428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &302327017
 GameObject:
   m_ObjectHideFlags: 0
@@ -21708,7 +21468,6 @@ GameObject:
   - component: {fileID: 364930923}
   - component: {fileID: 364930925}
   - component: {fileID: 364930924}
-  - component: {fileID: 364930926}
   m_Layer: 0
   m_Name: Hexagon Flat Top (21)
   m_TagString: Untagged
@@ -21811,29 +21570,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &364930926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364930922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &367768009
 GameObject:
   m_ObjectHideFlags: 0
@@ -22247,7 +21983,6 @@ GameObject:
   - component: {fileID: 372268702}
   - component: {fileID: 372268704}
   - component: {fileID: 372268703}
-  - component: {fileID: 372268705}
   m_Layer: 0
   m_Name: Hexagon Flat Top (21)
   m_TagString: Untagged
@@ -22350,29 +22085,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &372268705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372268701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &373119921
 GameObject:
   m_ObjectHideFlags: 0
@@ -23666,7 +23378,6 @@ GameObject:
   - component: {fileID: 391824028}
   - component: {fileID: 391824030}
   - component: {fileID: 391824029}
-  - component: {fileID: 391824031}
   m_Layer: 0
   m_Name: Hexagon Flat Top (24)
   m_TagString: Untagged
@@ -23769,29 +23480,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &391824031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391824027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &392767429
 GameObject:
   m_ObjectHideFlags: 0
@@ -25725,7 +25413,6 @@ GameObject:
   - component: {fileID: 426913183}
   - component: {fileID: 426913185}
   - component: {fileID: 426913184}
-  - component: {fileID: 426913186}
   m_Layer: 0
   m_Name: Hexagon Flat Top (69)
   m_TagString: Untagged
@@ -25828,29 +25515,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &426913186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426913182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &428674709
 GameObject:
   m_ObjectHideFlags: 0
@@ -27982,7 +27646,6 @@ GameObject:
   - component: {fileID: 474608333}
   - component: {fileID: 474608335}
   - component: {fileID: 474608334}
-  - component: {fileID: 474608336}
   m_Layer: 0
   m_Name: Hexagon Flat Top (7)
   m_TagString: Untagged
@@ -28085,29 +27748,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &474608336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474608332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &478379188
 GameObject:
   m_ObjectHideFlags: 0
@@ -30798,7 +30438,6 @@ GameObject:
   - component: {fileID: 515302412}
   - component: {fileID: 515302414}
   - component: {fileID: 515302413}
-  - component: {fileID: 515302415}
   m_Layer: 0
   m_Name: Hexagon Flat Top (5)
   m_TagString: Untagged
@@ -30901,29 +30540,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &515302415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515302411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &516567680
 GameObject:
   m_ObjectHideFlags: 0
@@ -30935,7 +30551,6 @@ GameObject:
   - component: {fileID: 516567681}
   - component: {fileID: 516567683}
   - component: {fileID: 516567682}
-  - component: {fileID: 516567684}
   m_Layer: 0
   m_Name: Hexagon Flat Top (24)
   m_TagString: Untagged
@@ -31038,29 +30653,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &516567684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516567680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &519614661
 GameObject:
   m_ObjectHideFlags: 0
@@ -32344,7 +31936,6 @@ GameObject:
   - component: {fileID: 539156349}
   - component: {fileID: 539156351}
   - component: {fileID: 539156350}
-  - component: {fileID: 539156352}
   m_Layer: 0
   m_Name: Hexagon Flat Top (104)
   m_TagString: Untagged
@@ -32447,29 +32038,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &539156352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539156348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &539908951
 GameObject:
   m_ObjectHideFlags: 0
@@ -39765,7 +39333,6 @@ GameObject:
   - component: {fileID: 661504777}
   - component: {fileID: 661504779}
   - component: {fileID: 661504778}
-  - component: {fileID: 661504780}
   m_Layer: 0
   m_Name: Hexagon Flat Top (14)
   m_TagString: Untagged
@@ -39868,29 +39435,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &661504780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661504776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &663588944
 GameObject:
   m_ObjectHideFlags: 0
@@ -43275,7 +42819,6 @@ GameObject:
   - component: {fileID: 721047279}
   - component: {fileID: 721047281}
   - component: {fileID: 721047280}
-  - component: {fileID: 721047282}
   m_Layer: 0
   m_Name: Hexagon Flat Top (4)
   m_TagString: Untagged
@@ -43378,29 +42921,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &721047282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721047278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &723756230
 GameObject:
   m_ObjectHideFlags: 0
@@ -46948,7 +46468,6 @@ GameObject:
   - component: {fileID: 803931899}
   - component: {fileID: 803931901}
   - component: {fileID: 803931900}
-  - component: {fileID: 803931902}
   m_Layer: 0
   m_Name: Hexagon Flat Top (1)
   m_TagString: Untagged
@@ -47051,29 +46570,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &803931902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803931898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &807821287
 GameObject:
   m_ObjectHideFlags: 0
@@ -47288,7 +46784,6 @@ GameObject:
   - component: {fileID: 809546370}
   - component: {fileID: 809546372}
   - component: {fileID: 809546371}
-  - component: {fileID: 809546373}
   m_Layer: 0
   m_Name: Hexagon Flat Top (110)
   m_TagString: Untagged
@@ -47391,29 +46886,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &809546373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809546369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &810325742
 GameObject:
   m_ObjectHideFlags: 0
@@ -47425,7 +46897,6 @@ GameObject:
   - component: {fileID: 810325743}
   - component: {fileID: 810325745}
   - component: {fileID: 810325744}
-  - component: {fileID: 810325746}
   m_Layer: 0
   m_Name: Hexagon Flat Top (1)
   m_TagString: Untagged
@@ -47528,29 +46999,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &810325746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810325742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &813732608
 GameObject:
   m_ObjectHideFlags: 0
@@ -53397,7 +52845,6 @@ GameObject:
   - component: {fileID: 906884453}
   - component: {fileID: 906884455}
   - component: {fileID: 906884454}
-  - component: {fileID: 906884456}
   m_Layer: 0
   m_Name: Hexagon Flat Top (49)
   m_TagString: Untagged
@@ -53500,29 +52947,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &906884456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906884452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &909955820
 GameObject:
   m_ObjectHideFlags: 0
@@ -55155,7 +54579,6 @@ GameObject:
   - component: {fileID: 931628601}
   - component: {fileID: 931628603}
   - component: {fileID: 931628602}
-  - component: {fileID: 931628604}
   m_Layer: 0
   m_Name: Hexagon Flat Top (80)
   m_TagString: Untagged
@@ -55258,29 +54681,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &931628604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931628600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &932799688
 GameObject:
   m_ObjectHideFlags: 0
@@ -58290,7 +57690,6 @@ GameObject:
   - component: {fileID: 980228354}
   - component: {fileID: 980228356}
   - component: {fileID: 980228355}
-  - component: {fileID: 980228357}
   m_Layer: 0
   m_Name: Hexagon Flat Top (115)
   m_TagString: Untagged
@@ -58393,29 +57792,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &980228357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980228353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &981679363
 GameObject:
   m_ObjectHideFlags: 0
@@ -58889,7 +58265,6 @@ GameObject:
   - component: {fileID: 986084038}
   - component: {fileID: 986084040}
   - component: {fileID: 986084039}
-  - component: {fileID: 986084041}
   m_Layer: 0
   m_Name: Hexagon Flat Top (96)
   m_TagString: Untagged
@@ -58992,29 +58367,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &986084041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986084037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &986897644
 GameObject:
   m_ObjectHideFlags: 0
@@ -62952,6 +62304,118 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1059704130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059704131}
+  - component: {fileID: 1059704134}
+  - component: {fileID: 1059704133}
+  - component: {fileID: 1059704132}
+  m_Layer: 7
+  m_Name: SphereGrapple (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059704131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059704130}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.5406049, z: -0, w: 0.8412766}
+  m_LocalPosition: {x: -1.056, y: 2.583, z: 12.186}
+  m_LocalScale: {x: 0.141517, y: 0.15033776, z: 0.15996906}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195664839}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1059704132
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059704130}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1059704133
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059704130}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8a5f17cd4d3179e46ac5ff86bbead037, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1059704134
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059704130}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1059817473
 GameObject:
   m_ObjectHideFlags: 0
@@ -63650,7 +63114,6 @@ GameObject:
   - component: {fileID: 1070281879}
   - component: {fileID: 1070281881}
   - component: {fileID: 1070281880}
-  - component: {fileID: 1070281882}
   m_Layer: 0
   m_Name: Hexagon Flat Top (112)
   m_TagString: Untagged
@@ -63753,29 +63216,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1070281882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070281878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1071600581
 GameObject:
   m_ObjectHideFlags: 0
@@ -65162,7 +64602,6 @@ GameObject:
   - component: {fileID: 1109994523}
   - component: {fileID: 1109994525}
   - component: {fileID: 1109994524}
-  - component: {fileID: 1109994526}
   m_Layer: 0
   m_Name: Hexagon Flat Top (97)
   m_TagString: Untagged
@@ -65179,7 +64618,7 @@ Transform:
   m_GameObject: {fileID: 1109994522}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0.000000022817398, z: 0.000000022817398, w: 0.7071068}
-  m_LocalPosition: {x: 0.82, y: 1.63, z: 23.07}
+  m_LocalPosition: {x: 0.8, y: 1.63, z: 23.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65265,29 +64704,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1109994526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109994522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1111351237
 GameObject:
   m_ObjectHideFlags: 0
@@ -66246,7 +65662,6 @@ GameObject:
   - component: {fileID: 1123251856}
   - component: {fileID: 1123251858}
   - component: {fileID: 1123251857}
-  - component: {fileID: 1123251859}
   m_Layer: 0
   m_Name: Hexagon Flat Top (25)
   m_TagString: Untagged
@@ -66349,29 +65764,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1123251859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123251855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1124250634
 GameObject:
   m_ObjectHideFlags: 0
@@ -70306,6 +69698,7 @@ Transform:
   m_Children:
   - {fileID: 1392228940}
   - {fileID: 1393701918}
+  - {fileID: 1059704131}
   m_Father: {fileID: 557315577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1200525164
@@ -73627,7 +73020,6 @@ GameObject:
   - component: {fileID: 1242303569}
   - component: {fileID: 1242303571}
   - component: {fileID: 1242303570}
-  - component: {fileID: 1242303572}
   m_Layer: 0
   m_Name: Hexagon Flat Top (14)
   m_TagString: Untagged
@@ -73730,29 +73122,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1242303572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242303568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1245280069
 GameObject:
   m_ObjectHideFlags: 0
@@ -79397,7 +78766,6 @@ GameObject:
   - component: {fileID: 1337453378}
   - component: {fileID: 1337453380}
   - component: {fileID: 1337453379}
-  - component: {fileID: 1337453381}
   m_Layer: 0
   m_Name: Hexagon Flat Top (14)
   m_TagString: Untagged
@@ -79500,29 +78868,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1337453381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337453377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1342224969
 GameObject:
   m_ObjectHideFlags: 0
@@ -79551,7 +78896,7 @@ Transform:
   m_GameObject: {fileID: 1342224969}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.5406049, z: -0, w: 0.8412766}
-  m_LocalPosition: {x: -1.6770004, y: 2.0500002, z: 11.701}
+  m_LocalPosition: {x: -1.661, y: 2.0500002, z: 12.246}
   m_LocalScale: {x: 0.141517, y: 0.15033776, z: 0.15996906}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -81382,7 +80727,6 @@ GameObject:
   - component: {fileID: 1371684738}
   - component: {fileID: 1371684740}
   - component: {fileID: 1371684739}
-  - component: {fileID: 1371684741}
   m_Layer: 0
   m_Name: Hexagon Flat Top (81)
   m_TagString: Untagged
@@ -81485,29 +80829,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1371684741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371684737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1372882409
 GameObject:
   m_ObjectHideFlags: 0
@@ -81519,7 +80840,6 @@ GameObject:
   - component: {fileID: 1372882410}
   - component: {fileID: 1372882412}
   - component: {fileID: 1372882411}
-  - component: {fileID: 1372882413}
   m_Layer: 0
   m_Name: Hexagon Flat Top (100)
   m_TagString: Untagged
@@ -81622,29 +80942,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1372882413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372882409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!4 &1373190591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5392905430511884390, guid: 85a944e185ac038499ccd87eb7558b77, type: 3}
@@ -82249,7 +81546,6 @@ GameObject:
   - component: {fileID: 1388407617}
   - component: {fileID: 1388407619}
   - component: {fileID: 1388407618}
-  - component: {fileID: 1388407620}
   m_Layer: 0
   m_Name: Hexagon Flat Top (114)
   m_TagString: Untagged
@@ -82352,29 +81648,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1388407620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388407616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1388940866
 GameObject:
   m_ObjectHideFlags: 0
@@ -82386,7 +81659,6 @@ GameObject:
   - component: {fileID: 1388940867}
   - component: {fileID: 1388940869}
   - component: {fileID: 1388940868}
-  - component: {fileID: 1388940870}
   m_Layer: 0
   m_Name: Hexagon Flat Top (11)
   m_TagString: Untagged
@@ -82489,29 +81761,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1388940870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388940866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1388965408
 GameObject:
   m_ObjectHideFlags: 0
@@ -85598,7 +84847,6 @@ GameObject:
   - component: {fileID: 1437114302}
   - component: {fileID: 1437114304}
   - component: {fileID: 1437114303}
-  - component: {fileID: 1437114305}
   m_Layer: 0
   m_Name: Hexagon Flat Top (39)
   m_TagString: Untagged
@@ -85701,29 +84949,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1437114305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437114301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1439983717
 GameObject:
   m_ObjectHideFlags: 0
@@ -86071,7 +85296,6 @@ GameObject:
   - component: {fileID: 1442837673}
   - component: {fileID: 1442837675}
   - component: {fileID: 1442837674}
-  - component: {fileID: 1442837676}
   m_Layer: 0
   m_Name: Hexagon Flat Top (113)
   m_TagString: Untagged
@@ -86174,29 +85398,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1442837676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442837672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1442849509
 GameObject:
   m_ObjectHideFlags: 0
@@ -86580,7 +85781,6 @@ GameObject:
   - component: {fileID: 1450740013}
   - component: {fileID: 1450740015}
   - component: {fileID: 1450740014}
-  - component: {fileID: 1450740016}
   m_Layer: 0
   m_Name: Hexagon Flat Top (40)
   m_TagString: Untagged
@@ -86683,29 +85883,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1450740016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450740012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1451752776
 GameObject:
   m_ObjectHideFlags: 0
@@ -88033,7 +87210,6 @@ GameObject:
   - component: {fileID: 1469322587}
   - component: {fileID: 1469322589}
   - component: {fileID: 1469322588}
-  - component: {fileID: 1469322590}
   m_Layer: 0
   m_Name: Hexagon Flat Top (66)
   m_TagString: Untagged
@@ -88136,29 +87312,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1469322590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469322586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1472141530
 GameObject:
   m_ObjectHideFlags: 0
@@ -88531,7 +87684,6 @@ GameObject:
   - component: {fileID: 1472903489}
   - component: {fileID: 1472903491}
   - component: {fileID: 1472903490}
-  - component: {fileID: 1472903492}
   m_Layer: 0
   m_Name: Hexagon Flat Top (29)
   m_TagString: Untagged
@@ -88634,29 +87786,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1472903492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472903488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1473122442
 GameObject:
   m_ObjectHideFlags: 0
@@ -88781,7 +87910,6 @@ GameObject:
   - component: {fileID: 1474871861}
   - component: {fileID: 1474871863}
   - component: {fileID: 1474871862}
-  - component: {fileID: 1474871864}
   m_Layer: 0
   m_Name: Hexagon Flat Top (6)
   m_TagString: Untagged
@@ -88884,29 +88012,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1474871864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474871860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1479845752
 GameObject:
   m_ObjectHideFlags: 0
@@ -90030,7 +89135,6 @@ GameObject:
   - component: {fileID: 1510076945}
   - component: {fileID: 1510076947}
   - component: {fileID: 1510076946}
-  - component: {fileID: 1510076948}
   m_Layer: 0
   m_Name: Hexagon Flat Top (7)
   m_TagString: Untagged
@@ -90133,29 +89237,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1510076948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510076944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1510549471
 GameObject:
   m_ObjectHideFlags: 0
@@ -90528,7 +89609,6 @@ GameObject:
   - component: {fileID: 1517902524}
   - component: {fileID: 1517902526}
   - component: {fileID: 1517902525}
-  - component: {fileID: 1517902527}
   m_Layer: 0
   m_Name: Hexagon Flat Top (42)
   m_TagString: Untagged
@@ -90631,29 +89711,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1517902527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517902523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1518700719
 GameObject:
   m_ObjectHideFlags: 0
@@ -91527,7 +90584,6 @@ GameObject:
   - component: {fileID: 1536374268}
   - component: {fileID: 1536374270}
   - component: {fileID: 1536374269}
-  - component: {fileID: 1536374271}
   m_Layer: 0
   m_Name: Hexagon Flat Top (114)
   m_TagString: Untagged
@@ -91544,7 +90600,7 @@ Transform:
   m_GameObject: {fileID: 1536374267}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0.000000022817398, z: 0.000000022817398, w: 0.7071068}
-  m_LocalPosition: {x: 0.07, y: 1.6300017, z: 22.6}
+  m_LocalPosition: {x: 0.05, y: 1.6300017, z: 22.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -91630,29 +90686,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1536374271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536374267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1537680755
 GameObject:
   m_ObjectHideFlags: 0
@@ -92374,7 +91407,6 @@ GameObject:
   - component: {fileID: 1542505647}
   - component: {fileID: 1542505649}
   - component: {fileID: 1542505648}
-  - component: {fileID: 1542505650}
   m_Layer: 0
   m_Name: Hexagon Flat Top (80)
   m_TagString: Untagged
@@ -92477,29 +91509,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1542505650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542505646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1543685681
 GameObject:
   m_ObjectHideFlags: 0
@@ -96783,7 +95792,6 @@ GameObject:
   - component: {fileID: 1629672225}
   - component: {fileID: 1629672227}
   - component: {fileID: 1629672226}
-  - component: {fileID: 1629672228}
   m_Layer: 0
   m_Name: Hexagon Flat Top (42)
   m_TagString: Untagged
@@ -96886,29 +95894,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1629672228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629672224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1629706063
 GameObject:
   m_ObjectHideFlags: 0
@@ -99704,7 +98689,6 @@ GameObject:
   - component: {fileID: 1670320521}
   - component: {fileID: 1670320523}
   - component: {fileID: 1670320522}
-  - component: {fileID: 1670320524}
   m_Layer: 0
   m_Name: Hexagon Flat Top (66)
   m_TagString: Untagged
@@ -99807,29 +98791,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1670320524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670320520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1674116067
 GameObject:
   m_ObjectHideFlags: 0
@@ -100350,7 +99311,6 @@ GameObject:
   - component: {fileID: 1681258325}
   - component: {fileID: 1681258327}
   - component: {fileID: 1681258326}
-  - component: {fileID: 1681258328}
   m_Layer: 0
   m_Name: Hexagon Flat Top (101)
   m_TagString: Untagged
@@ -100453,29 +99413,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1681258328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681258324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1684674499
 GameObject:
   m_ObjectHideFlags: 0
@@ -102707,7 +101644,6 @@ GameObject:
   - component: {fileID: 1738703585}
   - component: {fileID: 1738703587}
   - component: {fileID: 1738703586}
-  - component: {fileID: 1738703588}
   m_Layer: 0
   m_Name: Hexagon Flat Top (10)
   m_TagString: Untagged
@@ -102810,29 +101746,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1738703588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738703584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1741140243
 GameObject:
   m_ObjectHideFlags: 0
@@ -102844,7 +101757,6 @@ GameObject:
   - component: {fileID: 1741140244}
   - component: {fileID: 1741140246}
   - component: {fileID: 1741140245}
-  - component: {fileID: 1741140247}
   m_Layer: 0
   m_Name: Hexagon Flat Top (43)
   m_TagString: Untagged
@@ -102947,29 +101859,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1741140247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741140243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1743677148
 GameObject:
   m_ObjectHideFlags: 0
@@ -103230,7 +102119,6 @@ GameObject:
   - component: {fileID: 1746170828}
   - component: {fileID: 1746170830}
   - component: {fileID: 1746170829}
-  - component: {fileID: 1746170831}
   m_Layer: 0
   m_Name: Hexagon Flat Top (5)
   m_TagString: Untagged
@@ -103333,29 +102221,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1746170831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746170827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1746230134
 GameObject:
   m_ObjectHideFlags: 0
@@ -106046,7 +104911,6 @@ GameObject:
   - component: {fileID: 1795216936}
   - component: {fileID: 1795216938}
   - component: {fileID: 1795216937}
-  - component: {fileID: 1795216939}
   m_Layer: 0
   m_Name: Hexagon Flat Top
   m_TagString: Untagged
@@ -106149,29 +105013,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1795216939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795216935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1795842897
 GameObject:
   m_ObjectHideFlags: 0
@@ -107086,7 +105927,6 @@ GameObject:
   - component: {fileID: 1810888843}
   - component: {fileID: 1810888845}
   - component: {fileID: 1810888844}
-  - component: {fileID: 1810888846}
   m_Layer: 0
   m_Name: Hexagon Flat Top (6)
   m_TagString: Untagged
@@ -107189,29 +106029,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1810888846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810888842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1813618580
 GameObject:
   m_ObjectHideFlags: 0
@@ -108252,7 +107069,6 @@ GameObject:
   - component: {fileID: 1832687488}
   - component: {fileID: 1832687490}
   - component: {fileID: 1832687489}
-  - component: {fileID: 1832687491}
   m_Layer: 0
   m_Name: Hexagon Flat Top (111)
   m_TagString: Untagged
@@ -108355,29 +107171,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1832687491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832687487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1833930212
 GameObject:
   m_ObjectHideFlags: 0
@@ -109297,7 +108090,6 @@ GameObject:
   - component: {fileID: 1851631820}
   - component: {fileID: 1851631822}
   - component: {fileID: 1851631821}
-  - component: {fileID: 1851631823}
   m_Layer: 0
   m_Name: Hexagon Flat Top (12)
   m_TagString: Untagged
@@ -109400,29 +108192,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1851631823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851631819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1853807688
 GameObject:
   m_ObjectHideFlags: 0
@@ -110077,7 +108846,6 @@ GameObject:
   - component: {fileID: 1857319529}
   - component: {fileID: 1857319531}
   - component: {fileID: 1857319530}
-  - component: {fileID: 1857319532}
   m_Layer: 0
   m_Name: Hexagon Flat Top (81)
   m_TagString: Untagged
@@ -110180,29 +108948,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1857319532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857319528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 15
 --- !u!1 &1860150192
 GameObject:
   m_ObjectHideFlags: 0
@@ -113226,7 +111971,6 @@ GameObject:
   - component: {fileID: 1896198018}
   - component: {fileID: 1896198020}
   - component: {fileID: 1896198019}
-  - component: {fileID: 1896198021}
   m_Layer: 0
   m_Name: Hexagon Flat Top
   m_TagString: Untagged
@@ -113329,29 +112073,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1896198021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896198017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.6
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 25
 --- !u!1 &1897557838
 GameObject:
   m_ObjectHideFlags: 0
@@ -113475,7 +112196,6 @@ GameObject:
   - component: {fileID: 1900734228}
   - component: {fileID: 1900734230}
   - component: {fileID: 1900734229}
-  - component: {fileID: 1900734231}
   m_Layer: 0
   m_Name: Hexagon Flat Top (26)
   m_TagString: Untagged
@@ -113578,29 +112298,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1900734231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900734227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1902196147
 GameObject:
   m_ObjectHideFlags: 0
@@ -115344,7 +114041,6 @@ GameObject:
   - component: {fileID: 1934115012}
   - component: {fileID: 1934115014}
   - component: {fileID: 1934115013}
-  - component: {fileID: 1934115015}
   m_Layer: 0
   m_Name: Hexagon Flat Top (2)
   m_TagString: Untagged
@@ -115447,29 +114143,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1934115015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934115011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &1934475580
 GameObject:
   m_ObjectHideFlags: 0
@@ -123934,7 +122607,6 @@ GameObject:
   - component: {fileID: 2072405094}
   - component: {fileID: 2072405096}
   - component: {fileID: 2072405095}
-  - component: {fileID: 2072405097}
   m_Layer: 0
   m_Name: Hexagon Flat Top (50)
   m_TagString: Untagged
@@ -124037,29 +122709,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2072405097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072405093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &2072654556
 GameObject:
   m_ObjectHideFlags: 0
@@ -127726,7 +126375,6 @@ GameObject:
   - component: {fileID: 2128077439}
   - component: {fileID: 2128077441}
   - component: {fileID: 2128077440}
-  - component: {fileID: 2128077442}
   m_Layer: 0
   m_Name: Hexagon Flat Top
   m_TagString: Untagged
@@ -127829,29 +126477,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2128077442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128077438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1e03061a1d95468dde11acf0c16c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingHexagon
-  spriteRenderer: {fileID: 0}
-  solidCollider: {fileID: 0}
-  playerTag: Player
-  fallOnPlayerStep: 0
-  warningDuration: 1.1
-  shakeAmount: 0.04
-  shakeSpeed: 30
-  warningColor: {r: 1, g: 1, b: 1, a: 1}
-  fallSpeed: 8
-  fallDuration: 1.5
-  returnDelay: 20
 --- !u!1 &2128246403
 GameObject:
   m_ObjectHideFlags: 0
