@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (voiceSource == null)
-            voiceSource = GetComponent<AudioSource>(); 
+            voiceSource = GetComponent<AudioSource>();
     }
 
     // ── Public API ───────────────────────────────────────────────────────────
@@ -89,10 +89,15 @@ public class DialogueManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Advances past the current line early. Call this from UI input handling (e.g. pressing
-    /// Interact/Continue while dialogue is on screen). No effect if nothing is playing.
+    /// Advances past the current line early. Works for both player-paced lines and
+    /// auto-advance lines (skipping the remaining delay). Call this from UI input handling
+    /// (e.g. pressing Interact/Continue while dialogue is on screen). No effect if nothing
+    /// is playing.
     /// </summary>
-    public void Advance() => advanceRequested = true;
+    public void Advance()
+    {
+        if (IsPlaying) advanceRequested = true;
+    }
 
     /// <summary>Immediately halts whatever sequence is playing, firing DialogueEnded.</summary>
     public void Stop()
@@ -120,17 +125,35 @@ public class DialogueManager : MonoBehaviour
         {
             currentLineIndex = i;
             DialogueLine line = sequence.lines[i];
+
+            // Reset before firing LineStarted so a stale request can't skip this line.
+            advanceRequested = false;
             LineStarted?.Invoke(line);
 
+            // Cut off any previous line's voice so skipped lines never overlap the new one.
+            voiceSource.Stop();
             if (line.voiceClip != null)
                 voiceSource.PlayOneShot(line.voiceClip);
 
-            advanceRequested = false;
-
             if (line.autoAdvanceDelay > 0f)
-                yield return new WaitForSeconds(line.autoAdvanceDelay);
+            {
+                // Wait out the delay, but allow the player to skip it early.
+                float elapsed = 0f;
+                while (elapsed < line.autoAdvanceDelay && !advanceRequested)
+                {
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+            }
             else
+            {
                 yield return new WaitUntil(() => advanceRequested); // DialogueUI calls Advance()
+            }
+
+            // If the player skipped this line, cut its voice immediately. This also covers
+            // skipping the final line, where no next line exists to stop it.
+            if (advanceRequested)
+                voiceSource.Stop();
         }
 
         if (sequence.playOnce)
