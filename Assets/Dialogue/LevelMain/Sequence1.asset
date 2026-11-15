@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Sequence1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
-  - speakerName: 
-    text: 
-    voiceClip: {fileID: 0}
-    portrait: {fileID: 0}
-    autoAdvanceDelay: 0
+  - speakerName: Sandman
+    text: Well now... Thats a lot of birthday party.
+    voiceClip: {fileID: 8300000, guid: efe9b8babbc808243906dc072bf5081e, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 4.5
+  - speakerName: Sandman
+    text: Right then, let's find out what we're working with.
+    voiceClip: {fileID: 8300000, guid: 1061862e6018e22429603d36b37fb59f, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 4.5
   playOnce: 0

@@ -12,5 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
   m_Name: Sequence11
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
-  lines: []
+  lines:
+  - speakerName: Pixie
+    text: Oh.
+    voiceClip: {fileID: 8300000, guid: cb41fb482baf10342a95139ff1662fec, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 1
+  - speakerName: Pixie
+    text: He's actually here.
+    voiceClip: {fileID: 8300000, guid: c338e3cd615b20549820ba146484afa7, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sandman
+    text: Stay close. Stay behind me. Whatever he does, stay on the platforms.
+    voiceClip: {fileID: 8300000, guid: 2d42155e5ebdb424896bdc3deef23975, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 6
   playOnce: 0

@@ -12,5 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
   m_Name: Sequence4 - 2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
-  lines: []
+  lines:
+  - speakerName: Pixie
+    text: Okay, you're actually really good at this.
+    voiceClip: {fileID: 8300000, guid: 7be397c6fd4d6b14298ba1dd5ea9eb38, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Sandman
+    text: I've been doing it a while.
+    voiceClip: {fileID: 8300000, guid: 80aac7b1404506b47bdfe7489a938610, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Pixie
+    text: How long is a while?
+    voiceClip: {fileID: 8300000, guid: 9fabd74e3eeb16a4ebf4abfa84d2b69c, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sandman
+    text: Long enough.
+    voiceClip: {fileID: 8300000, guid: 6ef597eab7ccb54498d9b2940080d213, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Pixie
+    text: That's not a number.
+    voiceClip: {fileID: 8300000, guid: 6fb164c5d6169ca4a89e0adad8642506, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: No. It isn't.
+    voiceClip: {fileID: 8300000, guid: 33c65cdd3f1ae3040be0c7a9eba5dac7, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
   playOnce: 0
