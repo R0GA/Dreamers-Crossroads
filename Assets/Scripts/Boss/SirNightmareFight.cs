@@ -94,8 +94,10 @@ public class SirNightmareFight : MonoBehaviour
     [SerializeField] private PlayerController player;
     [Tooltip("Where orbs spawn — Sir Nightmare's hand or maw.")]
     [SerializeField] private Transform muzzle;
-    [Tooltip("Optional. Triggers used: Wake, Throw, Slam, Flinch, Drowsy, Defeated.")]
+    [Tooltip("Optional. Auto-found on this object or its children. Parameters used: bool 'Asleep', trigger 'Attack'.")]
     [SerializeField] private Animator animator;
+    [Tooltip("Optional. Tinted briefly when a bubble pops (there is no flinch animation).")]
+    [SerializeField] private SpriteRenderer bossSprite;
     [SerializeField] private LullabyAnchor lullabyAnchor;
     [Tooltip("Every platform in the arena. Auto-filled at runtime if left empty.")]
     [SerializeField] private CrumblingPlatform[] platforms;
@@ -118,6 +120,16 @@ public class SirNightmareFight : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float aimLead = 0.5f;
     [SerializeField] private float openingDelay = 2f;
     [SerializeField] private float phaseTransitionTime = 3f;
+
+    [Header("Animation Timing")]
+    [Tooltip("Seconds from the Attack animation starting to the frame where the attack should actually land "
+           + "(orb leaves the hand, fist hits the floor). Orbs and platform strikes wait this long.")]
+    [SerializeField] private float attackWindup = 0.35f;
+    [Tooltip("Length of the wake-up animation in seconds. After a MISSED lullaby window he won't attack "
+           + "until this has played. Phase transitions already wait phaseTransitionTime.")]
+    [SerializeField] private float wakeUpAnimTime = 1f;
+    [SerializeField] private Color flinchColor = new Color(1f, 0.65f, 0.65f);
+    [SerializeField] private float flinchTime = 0.12f;
 
     [Header("Dialogue")]
     [Tooltip("Played by a DialogueTriggerZone on the approach (use the SAME asset on the zone). Bubbles start "
@@ -146,6 +158,7 @@ public class SirNightmareFight : MonoBehaviour
     public UnityEvent<int> onPhaseStarted;
     public UnityEvent onDrowsy;
     public UnityEvent onWokeUp;
+    public UnityEvent onFlinch;
     public UnityEvent onDefeated;
 
     // ── Public State ──────────────────────────────────────────────────────────
@@ -164,6 +177,13 @@ public class SirNightmareFight : MonoBehaviour
     private readonly List<NightmareOrb> activeOrbs = new List<NightmareOrb>();
     private readonly Dictionary<DreamBubble, Transform> activeBubbles = new Dictionary<DreamBubble, Transform>();
     private AttackType lastAttack = (AttackType)(-1);
+
+    // Animator parameters
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int AsleepHash = Animator.StringToHash("Asleep");
+
+    private Color spriteBaseColor = Color.white;
+    private Coroutine flinchRoutine;
 
     // Fight start needs BOTH the approach dialogue finished AND the player inside the arena.
     private bool approachStarted, approachFinished, arenaEntered, fightBegun;
@@ -216,6 +236,9 @@ public class SirNightmareFight : MonoBehaviour
     private void Awake()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+        if (bossSprite == null) bossSprite = GetComponentInChildren<SpriteRenderer>();
+        if (bossSprite != null) spriteBaseColor = bossSprite.color;
 
         if (player == null) player = FindFirstObjectByType<PlayerController>();
         if (player == null || lullabyAnchor == null || phases == null || phases.Length == 0)
@@ -352,7 +375,7 @@ public class SirNightmareFight : MonoBehaviour
         // Phase 1 keeps whatever bubbles were popped during the approach; later phases start fresh.
         if (index > 0) SetDrowsiness(0f);
 
-        Trigger("Wake");
+        SetAsleep(false); // plays the wake-up animation, then Idle (no-op if he's already awake)
         if (index > 0) PlaySfx(wakeClip);
 
         if (phase.collapseOnStart != null)
@@ -455,7 +478,7 @@ public class SirNightmareFight : MonoBehaviour
 
         if (State != FightState.Attacking) return; // dormant / waking: no flinch, can't go down yet
 
-        Trigger("Flinch");
+        Flinch();
 
         // Only a pop made AFTER this phase's start dialogue has finished can put him down. If the
         // meter was already full before then, the next pop after the dialogue does it.
@@ -472,7 +495,7 @@ public class SirNightmareFight : MonoBehaviour
         ClearOrbs();
         ClearBubbles();
 
-        Trigger("Drowsy");
+        SetAsleep(true); // wind-down -> sleep loop
         PlaySfx(drowsyClip);
         onDrowsy.Invoke();
 
@@ -490,10 +513,14 @@ public class SirNightmareFight : MonoBehaviour
         // Missed it — he snaps awake, keeping part of his drowsiness
         player.ReleaseGrappleFrom(lullabyAnchor.transform);
         lullabyAnchor.gameObject.SetActive(false);
-        Trigger("Wake");
+        SetAsleep(false);
         PlaySfx(wakeClip);
         onWokeUp.Invoke();
         SetDrowsiness(drowsinessOnMiss);
+
+        // Let the wake-up animation play out before he starts attacking again
+        State = FightState.Transition;
+        yield return new WaitForSeconds(wakeUpAnimTime);
 
         StartAttacking();
     }
@@ -527,7 +554,7 @@ public class SirNightmareFight : MonoBehaviour
         yield return WaitForDialogueIdle();
         yield return PlaySequenceBlocking(finalDialogue);
 
-        Trigger("Defeated");
+        SetAsleep(true); // already asleep from the lullaby; makes sure he stays that way
         onDefeated.Invoke();
     }
 
@@ -576,7 +603,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator AimedVolley(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         for (int i = 0; i < phase.volleyCount; i++)
         {
             FireOrb(AimDirection(phase.orbSpeed), phase.orbSpeed, phase, homing: false);
@@ -586,7 +613,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator Fan(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         Vector3 centre = AimDirection(phase.orbSpeed);
 
         for (int i = 0; i < phase.fanOrbs; i++)
@@ -601,7 +628,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator HomingOrb(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         float slow = phase.orbSpeed * 0.55f; // slow enough to outmanoeuvre with a swing
         FireOrb(AimDirection(slow), slow, phase, homing: true);
         yield return new WaitForSeconds(0.6f);
@@ -609,7 +636,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformScatter(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         List<CrumblingPlatform> candidates = Strikeable();
         Shuffle(candidates);
@@ -623,7 +650,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformHunt(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         if (StrikeBudget() > 0)
         {
@@ -659,7 +686,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformSweep(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         int count = Mathf.Min(phase.scatterCount + 2, StrikeBudget());
         int start = UnityEngine.Random.Range(0, platforms.Length);
@@ -803,9 +830,38 @@ public class SirNightmareFight : MonoBehaviour
         if (audioSource != null && clip != null) audioSource.PlayOneShot(clip);
     }
 
-    private void Trigger(string trigger)
+    /// <summary>Sleep or wake. The Animator handles the wind-down / loop / wake-up chain itself.</summary>
+    private void SetAsleep(bool asleep)
     {
-        if (animator != null) animator.SetTrigger(trigger);
+        if (animator == null) return;
+
+        // An attack triggered a moment before he fell asleep must not fire when he wakes up
+        if (asleep) animator.ResetTrigger(AttackHash);
+        animator.SetBool(AsleepHash, asleep);
+    }
+
+    /// <summary>Starts the Attack animation and waits until its "impact" frame.</summary>
+    private IEnumerator PlayAttackAnim()
+    {
+        if (animator != null) animator.SetTrigger(AttackHash);
+        if (attackWindup > 0f) yield return new WaitForSeconds(attackWindup);
+    }
+
+    private void Flinch()
+    {
+        onFlinch.Invoke();
+        if (bossSprite == null) return;
+
+        if (flinchRoutine != null) StopCoroutine(flinchRoutine);
+        flinchRoutine = StartCoroutine(FlinchFlash());
+    }
+
+    private IEnumerator FlinchFlash()
+    {
+        bossSprite.color = flinchColor;
+        yield return new WaitForSeconds(flinchTime);
+        bossSprite.color = spriteBaseColor;
+        flinchRoutine = null;
     }
 
     private void OnDrawGizmosSelected()
