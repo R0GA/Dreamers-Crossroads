@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence3 Success
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: Oh my gosh we did it we did it we did it! Take that deception candles!
+    voiceClip: {fileID: 8300000, guid: 99e619931f90fc140be7df3d698eeee2, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 4.5
+  - speakerName: 
+    text: Yes we did! Phew, my head hurts a little. Let's keep going, before Knightmare
+      makes things worse.
+    voiceClip: {fileID: 8300000, guid: b085eadbae3de8f4580d02e07bd496ea, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 10
+  playOnce: 0

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Finale
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sandman
+    text: The dream must've formed fast. It's sealed itself shut.
+    voiceClip: {fileID: 8300000, guid: 1552d50576efa304f9cf6096b47a6970, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sandman
+    text: Come to think of it, the rings on this crystal are intact...
+    voiceClip: {fileID: 8300000, guid: a03ac3972852bd14580887de39533f65, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 4.5
+  - speakerName: Sandman
+    text: Hmm. I think I remember seeing these symbols somewhere on the highway.
+    voiceClip: {fileID: 8300000, guid: 85f696c051f7eed4dae02dfd2cecf3fc, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 5.5
+  - speakerName: Sandman
+    text: Well, not much of a mystery then, is it.
+    voiceClip: {fileID: 8300000, guid: 02ae63dac6e57d14793e19bc7cc25599, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 3.5
+  playOnce: 1

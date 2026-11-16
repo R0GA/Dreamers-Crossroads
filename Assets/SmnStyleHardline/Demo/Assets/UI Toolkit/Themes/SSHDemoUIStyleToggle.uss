@@ -1,0 +1,18 @@
+/* Root toggle (layout only) */
+.ssh-toggle {
+    margin-left: 4px;
+}
+
+/* The visual checkbox box */
+.ssh-toggle VisualElement > #unity-checkmark {
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(20, 20, 20, 0.6);
+}
+
+/* Checked state */
+.ssh-toggle:checked VisualElement > #unity-checkmark {
+    background-color: rgba(90, 170, 255, 0.85);
+    border-color: rgba(120, 200, 255, 1);
+}

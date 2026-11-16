@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence12 Start
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sir Knightmare
+    text: "Sandman. You came all this way for a pi\xF1ata."
+    voiceClip: {fileID: 8300000, guid: 65d0397a5b2f92a449c908d0da241e26, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 4
+  - speakerName: Sandman
+    text: I go where the dreams are
+    voiceClip: {fileID: 8300000, guid: 0113c504b91226247891f94f42253ea8, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sir Knightmare
+    text: And what does that get you? Night after night, dream after dream. No one
+      knows your name. No one ever will.
+    voiceClip: {fileID: 8300000, guid: 9660b54c408af85409c190cf67839eed, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 8.5
+  - speakerName: Sandman
+    text: "They don\u2019t need to."
+    voiceClip: {fileID: 8300000, guid: d826f915aae90494e921ba9b080ca67d, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sir Knightmare
+    text: "That\u2019s what they all say before the loneliness sets in."
+    voiceClip: {fileID: 8300000, guid: c01c030832f700a4d8a95b9f6bdd665e, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Sandman
+    text: "You\u2019ve been doing this too long. You\u2019ve forgotten what it feels
+      like to actually want something for someone else."
+    voiceClip: {fileID: 8300000, guid: d64cf33a2898c374fa8a87e5869689e1, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 6.5
+  - speakerName: Sir Knightmare
+    text: You know what I find fascinating about you? You could rest. You could stop.
+      The dreams would still come. Some of them would even make it.
+    voiceClip: {fileID: 8300000, guid: f82a473aa436e834eaad80d50cce7c49, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 9.5
+  - speakerName: Sandman
+    text: "Some isn\u2019t enough."
+    voiceClip: {fileID: 8300000, guid: 2869675308a7f8a4e801e3204fbf6dea, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sir Knightmare
+    text: No. It never is for you. Have you ever asked yourself why?
+    voiceClip: {fileID: 8300000, guid: a5846651f0a46f24294d8055f8abadb7, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 6
+  - speakerName: Sandman
+    text: "Hmm\u2026"
+    voiceClip: {fileID: 8300000, guid: 91962372bc5a1e8419128b62ee8ab039, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sir Knightmare
+    text: "That\u2019s what I thought. You don\u2019t do this for them. You do it
+      because without it you don\u2019t know what you are."
+    voiceClip: {fileID: 8300000, guid: 0e17a944f38256d4591296cb04059923, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 6.5
+  - speakerName: Sandman
+    text: Maybe. But right now what I am is in your way.
+    voiceClip: {fileID: 8300000, guid: 7713f6b220e457f499dbe4ca8c89fa6e, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 4
+  playOnce: 0

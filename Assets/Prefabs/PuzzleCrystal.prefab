@@ -1,0 +1,401 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5843029147976453151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.631343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3937482781480542426, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b435c2a3b686fb41aa0b7dbe83d797d, type: 2}
+    - target: {fileID: -2847685669608420464, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2027495203109331403, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2027495203109331403, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b435c2a3b686fb41aa0b7dbe83d797d, type: 2}
+    - target: {fileID: -908233970669494408, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -908233970669494408, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000017484555
+      objectReference: {fileID: 0}
+    - target: {fileID: -908233970669494408, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -369871360330776255, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -369871360330776255, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e35e42d09eeca646b676a0db0bdc01c, type: 2}
+    - target: {fileID: 409729898264343584, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b435c2a3b686fb41aa0b7dbe83d797d, type: 2}
+    - target: {fileID: 919132149155446097, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Name
+      value: PuzzleCrystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895275402126731871, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178967158664964182, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b435c2a3b686fb41aa0b7dbe83d797d, type: 2}
+    - target: {fileID: 3870643108227536723, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721064661657494870, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721064661657494870, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721064661657494870, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1795978346845872865}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3918242341748406684}
+    - targetCorrespondingSourceObject: {fileID: 5400835815924772696, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7113473193528249652}
+    - targetCorrespondingSourceObject: {fileID: -2847685669608420464, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4092290125983214024}
+    - targetCorrespondingSourceObject: {fileID: -2847685669608420464, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6772368394911306273}
+    - targetCorrespondingSourceObject: {fileID: 3870643108227536723, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8687085280309885923}
+    - targetCorrespondingSourceObject: {fileID: 3870643108227536723, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1618813196820611776}
+    - targetCorrespondingSourceObject: {fileID: 2895275402126731871, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8956943925919786235}
+    - targetCorrespondingSourceObject: {fileID: 2895275402126731871, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5209750428537253903}
+    - targetCorrespondingSourceObject: {fileID: 255796341139548692, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451264572268903984}
+  m_SourcePrefab: {fileID: 100100000, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+--- !u!1 &679024253343287183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2847685669608420464, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4092290125983214024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679024253343287183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69c25e68fed09c41bfbe0602ad7ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePlatformer.Puzzles.RingPuzzleRing
+  symbolCount: 3
+  correctIndex: 1
+  rotationAxis: 1
+  rotationSpeed: 180
+  invertDirection: 0
+  audioSource: {fileID: 0}
+  stepSound: {fileID: 0}
+--- !u!64 &6772368394911306273
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679024253343287183}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9056078783826898488, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+--- !u!1 &2010016666158949191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5400835815924772696, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7113473193528249652
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010016666158949191}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5909771305601579947, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+--- !u!1 &5952168159276721675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 255796341139548692, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1451264572268903984
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952168159276721675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4702925393065980420, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+--- !u!1 &6762143693134557518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1795978346845872865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762143693134557518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db469fdb50014043b032f8b851557d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePlatformer.Puzzles.RingPuzzleController
+  rings:
+  - {fileID: 8956943925919786235}
+  - {fileID: 8687085280309885923}
+  - {fileID: 4092290125983214024}
+  onPuzzleSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3918242341748406684}
+        m_TargetAssemblyTypeName: PuzzlePlatformer.Puzzles.PuzzleDoorController,
+          Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRingRotated:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3918242341748406684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762143693134557518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b1a9a01fb90984aa79dc7cf11115e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePlatformer.Puzzles.PuzzleDoorController
+  doorAnimator: {fileID: 0}
+  openTriggerName: Open
+  audioSource: {fileID: 0}
+  openSound: {fileID: 0}
+--- !u!1 &7251311532046588748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3870643108227536723, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8687085280309885923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251311532046588748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69c25e68fed09c41bfbe0602ad7ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePlatformer.Puzzles.RingPuzzleRing
+  symbolCount: 3
+  correctIndex: 0
+  rotationAxis: 1
+  rotationSpeed: 180
+  invertDirection: 0
+  audioSource: {fileID: 0}
+  stepSound: {fileID: 0}
+--- !u!64 &1618813196820611776
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251311532046588748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5612819533600621406, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+--- !u!1 &8734882857833686592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2895275402126731871, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}
+  m_PrefabInstance: {fileID: 5843029147976453151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8956943925919786235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734882857833686592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69c25e68fed09c41bfbe0602ad7ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePlatformer.Puzzles.RingPuzzleRing
+  symbolCount: 3
+  correctIndex: 2
+  rotationAxis: 1
+  rotationSpeed: 180
+  invertDirection: 0
+  audioSource: {fileID: 0}
+  stepSound: {fileID: 0}
+--- !u!64 &5209750428537253903
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734882857833686592}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 231248520257268184, guid: a95170fa56a5aee4bbcf479e378c1d40, type: 3}

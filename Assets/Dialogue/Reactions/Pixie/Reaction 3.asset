@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Reaction 3
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: So! Where were we? Right. Moving on. No need to discuss what just happened.
+    voiceClip: {fileID: 8300000, guid: 26ab07ee82d1d68479d4bba665d1bc3d, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 4
+  - speakerName: Sandman
+    text: Agreed.
+    voiceClip: {fileID: 8300000, guid: faa0a0c0bd164e24798a0b0d888ca008, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Pixie
+    text: Absolutely not discussing it.
+    voiceClip: {fileID: 8300000, guid: 37bf6020d86a2a845a1f1376194490e6, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sandman
+    text: Pixie.
+    voiceClip: {fileID: 8300000, guid: 913af3ac91bf0a141bfc9fcc47478e66, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Pixie
+    text: Yes?
+    voiceClip: {fileID: 8300000, guid: 0ff019af488f186478089e43489e84ae, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: "Let\u2019s go."
+    voiceClip: {fileID: 8300000, guid: ee75658f111f8624f84ae4bdb4da497a, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Pixie
+    text: Right. Yes. Going.
+    voiceClip: {fileID: 8300000, guid: 665127a761149c64fa0c48babc238d64, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 2.5
+  playOnce: 0

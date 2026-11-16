@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence8 Progress
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: Yes! That one! Just like that!
+    voiceClip: {fileID: 8300000, guid: c9774491488ce51439e161a6a628b94b, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: "...and then the high one, and then \u2014 shhh, I'm listening \u2014"
+    voiceClip: {fileID: 8300000, guid: 3543cb0e603165b4c9d413d91459622e, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 4
+  - speakerName: Sandman
+    text: I wasn't saying anything.
+    voiceClip: {fileID: 8300000, guid: 791a7afdc5db87f4c9fccdf4f9f21332, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Pixie
+    text: I know, I'm telling myself.
+    voiceClip: {fileID: 8300000, guid: 7f8bd0860aa2da54e82d803ee832c151, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 2.5
+  playOnce: 0

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence12 Success
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sir Knightmare
+    text: Again.
+    voiceClip: {fileID: 8300000, guid: 35876cd885790cb49b1f6288753ba57b, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: Again.
+    voiceClip: {fileID: 8300000, guid: e15ce670bf8c7b548a1d797873992ac5, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sir Knightmare
+    text: "You\u2019re going to tell me to leave."
+    voiceClip: {fileID: 8300000, guid: 6df3967e0eeaca248881907778563357, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sandman
+    text: "You already know you won\u2019t."
+    voiceClip: {fileID: 8300000, guid: efc0f1bb6b3876946bad9b775946179a, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sir Knightmare
+    text: "And you already know you can\u2019t stop me. Not permanently."
+    voiceClip: {fileID: 8300000, guid: e3b5bf27d245b2341bde11384d7abc1f, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 4
+  - speakerName: Sandman
+    text: "I don\u2019t need permanently. I just need tonight."
+    voiceClip: {fileID: 8300000, guid: e96d73d24e5694f40af00a5a28a70d61, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sir Knightmare
+    text: 
+    voiceClip: {fileID: 8300000, guid: cc54869baf170124599f42828199d007, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Sir Knightmare
+    text: One night at a time. For how long?
+    voiceClip: {fileID: 8300000, guid: 6d2fca1546e989340ab0080548f2ddc5, type: 3}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sandman
+    text: As long as it takes.
+    voiceClip: {fileID: 8300000, guid: 6f4a414086e71794b83a7cbe8ad55654, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  playOnce: 0

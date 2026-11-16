@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Solved
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sandman
+    text: There we go. Old girl's opening up.
+    voiceClip: {fileID: 8300000, guid: 4a8e90e927407ae4d9146b71227f4729, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Sandman
+    text: That trouble maker...
+    voiceClip: {fileID: 8300000, guid: f6569ea7ae2d33c4d9ca56b184924bca, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: Hold on little one. Im nearly there.
+    voiceClip: {fileID: 8300000, guid: 2a3773c3aece7b74d9c3bd54a12f69c6, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 1.5
+  playOnce: 1
