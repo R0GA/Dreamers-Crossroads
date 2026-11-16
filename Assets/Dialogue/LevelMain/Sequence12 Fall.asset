@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence12 Fall
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sandman
+    text: "Stay on the platforms. I\u2019ll be back up."
+    voiceClip: {fileID: 8300000, guid: fe837750577fc444a891d4d9c68f349e, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 3
+  - speakerName: Pixie
+    text: "I\u2019m not going anywhere."
+    voiceClip: {fileID: 8300000, guid: 90c71cd0c29f9c9449f29d443b4a9cf0, type: 3}
+    portrait: {fileID: -93987997, guid: 919e4b97ba3a84a4fb0e7b3cd07edd82, type: 3}
+    autoAdvanceDelay: 2
+  playOnce: 0

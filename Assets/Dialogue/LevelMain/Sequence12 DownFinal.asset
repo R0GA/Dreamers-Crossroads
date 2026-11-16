@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Sequence12 DownFinal
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Sir Knightmare
+    text: "This isn\u2019t over."
+    voiceClip: {fileID: 8300000, guid: 6b6f2b583e546c14eb9add7ce78bb676, type: 3}
+    portrait: {fileID: 0}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: I know. It never is.
+    voiceClip: {fileID: 8300000, guid: 5507a36280a98534f97c04cec7f7da76, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Sir Knightmare
+    text: "You\u2019ll be back tomorrow night. And the night after. And the night
+      after that. Forever. And no one will ever know."
+    voiceClip: {fileID: 8300000, guid: b9725b0004983f84f8b095a45edf67ec, type: 3}
+    portrait: {fileID: 0}
+    autoAdvanceDelay: 8
+  - speakerName: Sandman
+    text: "Chelsea will wake up tomorrow and it\u2019ll be her birthday. And she\u2019ll
+      feel, somewhere she can\u2019t explain, like something is going to be okay.
+      That\u2019s enough."
+    voiceClip: {fileID: 8300000, guid: 722c16fd0ceccb743a4735823115c97b, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 10
+  - speakerName: Sir Knightmare
+    text: "That\u2019s nothing."
+    voiceClip: {fileID: 8300000, guid: bf5ac0321ea408e4090b1247d466da6c, type: 3}
+    portrait: {fileID: 0}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: "That\u2019s everything."
+    voiceClip: {fileID: 8300000, guid: c7f1275cd77b09e45b041d4613d887d3, type: 3}
+    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    autoAdvanceDelay: 2
+  playOnce: 0
