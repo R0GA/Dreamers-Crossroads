@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Yellow
-  m_Shader: {fileID: -6465566751694194690, guid: 61e2a68e2cecb2d44a03c96b458f52df, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 674203c76ab767e4fb10408fded07d48, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,8 +29,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -107,6 +108,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -134,17 +136,32 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _Streaks_BaseWidth: 2
+    - _Streaks_CameraMoveScale: 0.8
+    - _Streaks_CameraOffsetScale: 1
+    - _Streaks_Intensity: 0.5
+    - _Streaks_NegateScale: 1
+    - _Streaks_NoiseScale: 0.01
+    - _Streaks_PreSoftness: 1
+    - _Streaks_Scale: 1
+    - _Streaks_Seed: 1
+    - _Streaks_VariationAmount: 1
     - _Surface: 0
+    - _Surface_Intensity: 0.15
     - _UVSec: 0
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 0.9063354, g: 0.8298043, b: 0.011650453, a: 1}
     - _Color: {r: 0.9063354, g: 0.8298043, b: 0.011650453, a: 1}
     - _Color_Accent: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Base: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Streaks: {r: 1, g: 0.84336674, b: 0.0141509175, a: 1}
+    - _Color_Surface: {r: 0.5943396, g: 0.4693001, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}

@@ -85,8 +85,6 @@ MonoBehaviour:
   groundCheckRange: 10
   hoverHeight: 1.2
   heightSmoothTime: 0.5
-  bobAmplitude: 0
-  bobFrequency: 0
   inFrontThreshold: 0.15
   movingWithPlayerThreshold: 0.3
   holdWanderSpeed: 0.15
@@ -267,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5278228578811419180
 Transform:
   m_ObjectHideFlags: 0
