@@ -21,7 +21,7 @@ MonoBehaviour:
   - speakerName: Sandman
     text: I know. It never is.
     voiceClip: {fileID: 8300000, guid: 5507a36280a98534f97c04cec7f7da76, type: 3}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
     autoAdvanceDelay: 2.5
   - speakerName: Sir Knightmare
     text: "You\u2019ll be back tomorrow night. And the night after. And the night
@@ -34,7 +34,7 @@ MonoBehaviour:
       feel, somewhere she can\u2019t explain, like something is going to be okay.
       That\u2019s enough."
     voiceClip: {fileID: 8300000, guid: 722c16fd0ceccb743a4735823115c97b, type: 3}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
     autoAdvanceDelay: 10
   - speakerName: Sir Knightmare
     text: "That\u2019s nothing."
@@ -44,6 +44,6 @@ MonoBehaviour:
   - speakerName: Sandman
     text: "That\u2019s everything."
     voiceClip: {fileID: 8300000, guid: c7f1275cd77b09e45b041d4613d887d3, type: 3}
-    portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
     autoAdvanceDelay: 2
   playOnce: 0

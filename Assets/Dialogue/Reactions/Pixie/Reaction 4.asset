@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Reaction 4
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: That looked like it hurt.
+    voiceClip: {fileID: 8300000, guid: 746df917b51adab46b36b273de090cb0, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: It did.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Pixie
+    text: Okay. Just checking.
+    voiceClip: {fileID: 8300000, guid: 35cd7c58d2c299e4d8e1f0d59cda3667, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 2
+  - speakerName: Sandman
+    text: Thank you for checking.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 2.5
+  - speakerName: Pixie
+    text: Anytime.
+    voiceClip: {fileID: 0}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 1.5
+  playOnce: 0
