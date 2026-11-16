@@ -16,7 +16,7 @@ MonoBehaviour:
   - speakerName: Sir Knightmare
     text: "You\u2019re going to have to do better than a lullaby."
     voiceClip: {fileID: 8300000, guid: 6d1086b80c48c354ea5bc86cf4ad0637, type: 3}
-    portrait: {fileID: 0}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
     autoAdvanceDelay: 2.5
   - speakerName: Sandman
     text: "First time\u2019s never the last."
@@ -37,7 +37,7 @@ MonoBehaviour:
     text: "You want to know the difference between us? I remember every dream I\u2019ve
       ever touched. Every single one. Can you say the same?"
     voiceClip: {fileID: 8300000, guid: 334e3eac255fb55408524704ca88e02b, type: 3}
-    portrait: {fileID: 0}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
     autoAdvanceDelay: 8.5
   - speakerName: Sandman
     text: "The difference between us is that you remember them because you ruined
@@ -48,6 +48,6 @@ MonoBehaviour:
   - speakerName: Sir Knightmare
     text: How noble.
     voiceClip: {fileID: 8300000, guid: f7760e2ce1988e4458f6091205d24525, type: 3}
-    portrait: {fileID: 0}
+    portrait: {fileID: 1198445817, guid: ae9ba818ed86d054b837af2f23728201, type: 3}
     autoAdvanceDelay: 1.5
   playOnce: 0
