@@ -430,6 +430,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9186592457826115955}
+  - {fileID: 8883879515607217479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1461427812243372716
@@ -470,6 +471,10 @@ MonoBehaviour:
   - {fileID: 6867815189301096358}
   - {fileID: 6170714159408701820}
   - {fileID: 4147744312263254320}
+  introDialogue: {fileID: 11400000, guid: 7d5661c518de3a540ae4aa525bbd3eb3, type: 2}
+  firstCorrectDialogue: {fileID: 11400000, guid: 08bf353fb6e85554fad7f4ddfd5624ed, type: 2}
+  unturnedDialogue: {fileID: 11400000, guid: aebd9c57b67e3884da0ee314150dcdb7, type: 2}
+  finalDialogue: {fileID: 11400000, guid: de4326d68ae4cfd4ab2d986157b3db59, type: 2}
   onPuzzleSolved:
     m_PersistentCalls:
       m_Calls: []
@@ -1001,6 +1006,76 @@ MonoBehaviour:
   targetColorIndex: 0
   playerTag: Player
   retriggerCooldown: 0.35
+--- !u!1 &2159992511845924176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8883879515607217479}
+  - component: {fileID: 1199185347761364225}
+  - component: {fileID: 6150856425444718005}
+  m_Layer: 0
+  m_Name: DialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8883879515607217479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159992511845924176}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8708396164983852110}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1199185347761364225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159992511845924176}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6150856425444718005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159992511845924176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6595840916a584a40a5525d0d5a72001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTriggerZone
+  sequence: {fileID: 11400000, guid: 7d5661c518de3a540ae4aa525bbd3eb3, type: 2}
+  playerTag: Player
+  triggerOnce: 1
+  reTriggerCooldown: 3
 --- !u!1 &2181408642657876326
 GameObject:
   m_ObjectHideFlags: 0

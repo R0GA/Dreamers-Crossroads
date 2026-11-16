@@ -21,6 +21,19 @@ using UnityEngine.Events;
 ///     (See InteractableTrigger for a ready-made generic lever.)
 ///  4. Wire onPuzzleSolved (and onMistake / onRoundSucceeded if you want extra feedback)
 ///     in the Inspector — open a door, unlock an ability, play a fanfare, etc.
+///
+/// DIALOGUE:
+///  - Intro: played by a DialogueTriggerZone (assign the SAME DialogueSequence asset to the
+///    zone and to 'Intro Dialogue' here). BeginPuzzle() is ignored until it ends; with
+///    autoStart on, the puzzle starts the moment it ends. This is the only thing that locks.
+///  - Fail: plays on a wrong note once the player has failed N times in total (default 1),
+///    then only that once unless 'Repeat Fail Dialogue' is on.
+///  - Progress: plays once, after the player has completed N rounds IN A ROW. A mistake
+///    resets that streak, so it only plays when they're genuinely close to solving it.
+///  - Solved: plays on success. If the progress line is still running, it's cut off so the
+///    success line is never dropped.
+///  - A line is never cut off by a hint/fail line: if another sequence is already running
+///    when one is due, it doesn't play that time and is re-checked on the next opportunity.
 /// </summary>
 public class SongSequencePuzzle : MonoBehaviour
 {
@@ -58,6 +71,29 @@ public class SongSequencePuzzle : MonoBehaviour
 
     [Tooltip("On a wrong note: ON replays from round 1 (classic Simon Says); OFF just repeats the current round.")]
     [SerializeField] private bool resetProgressOnMistake = true;
+
+    [Header("Dialogue")]
+    [Tooltip("Must be the same asset your DialogueTriggerZone plays. The puzzle can't be started " +
+             "until it finishes. Leave empty to have the puzzle usable from the start.")]
+    [SerializeField] private DialogueSequence introDialogue;
+
+    [Tooltip("Plays when the player presses a wrong note, once they've reached the failure count below.")]
+    [SerializeField] private DialogueSequence failDialogue;
+    [Tooltip("Total mistakes (across the whole puzzle) before the fail dialogue can play. " +
+             "1 = on the very first mistake, 3 = on the third mistake.")]
+    [Min(1)]
+    [SerializeField] private int failsBeforeFailDialogue = 1;
+    [Tooltip("If off, the fail dialogue plays only once. If on, it plays on every mistake from " +
+             "the failure count onward (still skipped if another sequence is already playing).")]
+    [SerializeField] private bool repeatFailDialogue = false;
+
+    [Tooltip("Plays once, after the player has completed this many rounds IN A ROW without a " +
+             "mistake. Any mistake resets that count to zero.")]
+    [SerializeField] private DialogueSequence progressDialogue;
+    [Min(1)]
+    [SerializeField] private int roundsBeforeProgressDialogue = 3;
+
+    [Tooltip("Plays when the puzzle is solved.")]
     [SerializeField] private DialogueSequence solvedDialogue;
 
     [Header("Events")]
@@ -73,6 +109,12 @@ public class SongSequencePuzzle : MonoBehaviour
     /// </summary>
     public bool IsAcceptingInput { get; private set; }
 
+    /// <summary>
+    /// True once the intro dialogue has finished and the puzzle hasn't been solved yet.
+    /// InteractableTrigger uses this to hide its prompt and ignore presses until then.
+    /// </summary>
+    public bool IsReadyToBegin => introFinished && state != State.Solved;
+
     private enum State { Idle, Playing, Solved }
     private State state = State.Idle;
 
@@ -80,8 +122,42 @@ public class SongSequencePuzzle : MonoBehaviour
     private int expectedIndex;     // how many correct presses the player has made so far this round
     private Coroutine runningRoutine;
 
+    private bool introFinished;
+    private bool failPlayed;
+    private bool progressPlayed;
+    private int failCount;            // total mistakes, never reset
+    private int correctRoundsStreak;  // rounds completed since the last mistake
+
     private void Start()
     {
+        // Subscribe in Start so DialogueManager.Awake() has definitely run.
+        var manager = DialogueManager.Instance;
+
+        if (manager == null)
+        {
+            introFinished = true; // no dialogue system in the scene: don't lock the player out
+        }
+        else
+        {
+            // No intro assigned, or it already played earlier this session (e.g. scene reloaded).
+            introFinished = introDialogue == null || manager.HasPlayed(introDialogue);
+            manager.DialogueEnded += HandleDialogueEnded;
+        }
+
+        if (autoStart && introFinished) BeginPuzzle();
+    }
+
+    private void OnDestroy()
+    {
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.DialogueEnded -= HandleDialogueEnded;
+    }
+
+    private void HandleDialogueEnded(DialogueSequence sequence)
+    {
+        if (sequence != introDialogue || introFinished) return;
+
+        introFinished = true;
         if (autoStart) BeginPuzzle();
     }
 
@@ -91,6 +167,7 @@ public class SongSequencePuzzle : MonoBehaviour
     public void BeginPuzzle()
     {
         if (state == State.Solved) return;
+        if (!introFinished) return; // intro dialogue still hasn't finished
 
         if (randomizeSequence && (songSequence == null || songSequence.Length == 0))
             GenerateRandomSequence();
@@ -98,6 +175,7 @@ public class SongSequencePuzzle : MonoBehaviour
         if (runningRoutine != null) StopCoroutine(runningRoutine);
 
         currentRound = 1;
+        correctRoundsStreak = 0;
         state = State.Playing;
         runningRoutine = StartCoroutine(PlayRound());
     }
@@ -114,6 +192,10 @@ public class SongSequencePuzzle : MonoBehaviour
             IsAcceptingInput = false;
             onMistake?.Invoke();
 
+            failCount++;
+            correctRoundsStreak = 0;
+            HandleFailDialogue();
+
             if (resetProgressOnMistake) currentRound = 1;
             runningRoutine = StartCoroutine(DelayThenPlayRound());
             return;
@@ -127,13 +209,22 @@ public class SongSequencePuzzle : MonoBehaviour
         if (currentRound >= songSequence.Length)
         {
             state = State.Solved;
-            if (DialogueManager.Instance != null && solvedDialogue != null)
-                DialogueManager.Instance.PlayDialogue(solvedDialogue);
+
+            // The progress line may still be running. DialogueManager refuses new sequences
+            // mid-playback, so cut it off to make sure the success line always plays.
+            var manager = DialogueManager.Instance;
+            if (manager != null && manager.IsPlaying && solvedDialogue != null)
+                manager.Stop();
+
+            TryPlay(solvedDialogue);
             onPuzzleSolved?.Invoke();
             return;
         }
 
         onRoundSucceeded?.Invoke();
+
+        correctRoundsStreak++;
+        HandleProgressDialogue(correctRoundsStreak);
         currentRound++;
         runningRoutine = StartCoroutine(DelayThenPlayRound());
     }
@@ -163,6 +254,47 @@ public class SongSequencePuzzle : MonoBehaviour
         IsAcceptingInput = true;
     }
 
+    // ── Dialogue ──────────────────────────────────────────────────────────────
+
+    private enum PlayResult
+    {
+        Started, // sequence is now playing
+        Busy,    // another sequence is playing; try again later
+        Skipped  // nothing to play (none assigned, empty, or a playOnce that already played)
+    }
+
+    private static PlayResult TryPlay(DialogueSequence sequence)
+    {
+        var manager = DialogueManager.Instance;
+
+        if (sequence == null || manager == null
+            || sequence.lines == null || sequence.lines.Length == 0
+            || manager.HasPlayed(sequence))
+            return PlayResult.Skipped;
+
+        return manager.PlayDialogue(sequence) ? PlayResult.Started : PlayResult.Busy;
+    }
+
+    private void HandleFailDialogue()
+    {
+        if (failCount < failsBeforeFailDialogue) return;
+        if (failPlayed && !repeatFailDialogue) return;
+
+        // Only counts as played if it started (or there's nothing to play). If something else
+        // was running, it's left pending and tried again on the next mistake.
+        if (TryPlay(failDialogue) != PlayResult.Busy)
+            failPlayed = true;
+    }
+
+    private void HandleProgressDialogue(int roundsInARow)
+    {
+        if (progressPlayed || roundsInARow < roundsBeforeProgressDialogue) return;
+
+        // Same rule: if busy, try again after the next completed round.
+        if (TryPlay(progressDialogue) != PlayResult.Busy)
+            progressPlayed = true;
+    }
+
     private void GenerateRandomSequence()
     {
         songSequence = new int[randomSequenceLength];
@@ -174,6 +306,14 @@ public class SongSequencePuzzle : MonoBehaviour
     private void OnValidate()
     {
         if (noteButtons == null || noteButtons.Length == 0 || songSequence == null) return;
+
+        if (!randomizeSequence && progressDialogue != null && songSequence.Length > 0
+            && roundsBeforeProgressDialogue >= songSequence.Length)
+        {
+            Debug.LogWarning($"[{name}] roundsBeforeProgressDialogue ({roundsBeforeProgressDialogue}) is not " +
+                              $"less than the song length ({songSequence.Length}), so the progress dialogue " +
+                              "will never play (the success dialogue takes over on the final round).", this);
+        }
 
         foreach (int index in songSequence)
         {
