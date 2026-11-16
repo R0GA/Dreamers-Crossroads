@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Balloon 6
-  m_Shader: {fileID: -6465566751694194690, guid: 61e2a68e2cecb2d44a03c96b458f52df, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3fa4595d71b345d4792fcd23629caf6c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -100,7 +100,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AccentMask_Add: 1
-    - _AccentMask_Strength: 1
+    - _AccentMask_Strength: 0.5
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -142,8 +142,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9063354, g: 0.17660204, b: 0, a: 1}
     - _Color: {r: 0.9063354, g: 0.176602, b: 0, a: 1}
-    - _Color_Accent: {r: 0, g: 0.37928236, b: 0.8792453, a: 1}
-    - _Color_Base: {r: 0.9622641, g: 0.631952, b: 0.4584372, a: 1}
+    - _Color_Accent: {r: 0.6391624, g: 0.0473923, b: 0.6698113, a: 1}
+    - _Color_Base: {r: 0.5471698, g: 0.20906018, b: 0.39802572, a: 1}
     - _Color_Line: {r: 0.6528301, g: 0, b: 0.5836744, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
