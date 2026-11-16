@@ -555,6 +555,33 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &696399186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 890186667730038539, guid: 75008ba2d6d006c4cb0e83276b29d1b7, type: 3}
+  m_PrefabInstance: {fileID: 1276487054156435020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &696399192
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696399186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87403fb7b5a4c6c40b700613cb872d2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &699737131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -940,6 +967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4090055895729268435, guid: 75008ba2d6d006c4cb0e83276b29d1b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4423704263844116091, guid: 75008ba2d6d006c4cb0e83276b29d1b7, type: 3}
       propertyPath: m_Name
       value: BossFightContainer
@@ -947,7 +978,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 890186667730038539, guid: 75008ba2d6d006c4cb0e83276b29d1b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696399192}
   m_SourcePrefab: {fileID: 100100000, guid: 75008ba2d6d006c4cb0e83276b29d1b7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
