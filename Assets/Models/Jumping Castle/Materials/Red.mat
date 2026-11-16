@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Red
-  m_Shader: {fileID: -6465566751694194690, guid: 61e2a68e2cecb2d44a03c96b458f52df, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 674203c76ab767e4fb10408fded07d48, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,8 +16,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -69,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_Color:
-        m_Texture: {fileID: 2800000, guid: 154e90b63462be24a9ee948861cbf2fc, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -91,13 +92,21 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Band_Step_A: 0
+    - _Band_Step_B: 0
+    - _Band_Strength_A: 0
+    - _Band_Strength_B: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _Border_Weight: 0.5
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _Depth_Blend: 0
+    - _Depth_Strength: 0.03
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -105,6 +114,26 @@ Material:
     - _EnvironmentReflections: 1
     - _Environment_Light_Influence: 1
     - _Environment_Shadow_Influence: 1
+    - _Fall_NoiseScale: 1
+    - _Fall_NoiseStep01: 0.4
+    - _Fall_NoiseStep02: 0.8
+    - _Fall_NoiseStepA: 0.5
+    - _Fall_NoiseStepB: 0.5
+    - _Fall_PosFloorAdd: 0
+    - _Fall_PosFloorMult: 1
+    - _Fall_TimeScale: 1
+    - _Foam_RingFadeEnd: 0
+    - _Foam_RingFadeStart: 0
+    - _Foam_RingRadius: 0
+    - _Foam_RingSpacing: 0
+    - _Foam_RingSpeed: 0
+    - _Foam_RingThickness: 0
+    - _Foam_RingWarpFrequency: 0
+    - _Foam_RingWarpSpeed: 0
+    - _Foam_RingWarpStrength: 0
+    - _Foam_Size: 0
+    - _Foam_Size_Variance: 1
+    - _Foam_Speed: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -112,27 +141,82 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline_Size: 0
     - _Parallax: 0.02
+    - _Proc_Line_Break_Scale_Hor1: 1.694
+    - _Proc_Line_Break_Scale_Hor2: 1.91
+    - _Proc_Line_Break_Scale_Ver: 1.694
+    - _Proc_Line_Break_Threshold_Hor1: 0.31
+    - _Proc_Line_Break_Threshold_Hor2: 0.31
+    - _Proc_Line_Break_Threshold_Ver: 0.622
+    - _Proc_Line_Density_Hor1: 0.9
+    - _Proc_Line_Density_Hor2: 0.19
+    - _Proc_Line_Density_Ver: 0.199
+    - _Proc_Line_JitterScale_Hor1: 1.44
+    - _Proc_Line_JitterScale_Hor2: 0.27
+    - _Proc_Line_JitterScale_Ver: 0.03
+    - _Proc_Line_JitterStrength_Hor1: 0.31
+    - _Proc_Line_JitterStrength_Hor2: 0.28
+    - _Proc_Line_JitterStrength_Ver: 0.585
+    - _Proc_Line_Thickness_Hor1: 0.003
+    - _Proc_Line_Thickness_Hor2: 0.001
+    - _Proc_Line_Thickness_Ver: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Specular_BorderClip: 0.5
+    - _Specular_Intensity: 1
+    - _Specular_Push: 16
+    - _Specular_RimBias: 1
+    - _Specular_ViewSupress: 16
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _Streaks_BaseWidth: 2
+    - _Streaks_CameraMoveScale: 0.85
+    - _Streaks_CameraOffsetScale: 1
+    - _Streaks_Intensity: 1
+    - _Streaks_NegateScale: 1
+    - _Streaks_NoiseScale: 0.02
+    - _Streaks_PreSoftness: 1
+    - _Streaks_Scale: 1
+    - _Streaks_Seed: 1
+    - _Streaks_VariationAmount: 1
     - _Surface: 0
+    - _Surface_Intensity: 0.15
+    - _TopMask_Add: 0
+    - _TopMask_ClipZ: 0
+    - _TopMask_Strength: 0
     - _UVSec: 0
+    - _Wind_Scale: 10
+    - _Wind_ScaleB: 10
+    - _Wind_Speed: 10
+    - _Wind_Strength: 599.31
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 0.89020133, g: 0, b: 0.08627323, a: 1}
     - _Color: {r: 0.89020133, g: 0, b: 0.086273216, a: 1}
-    - _Color_Accent: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Base: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Accent: {r: 0.33962262, g: 0.09451762, b: 0.09451762, a: 1}
+    - _Color_BandA: {r: 0, g: 0.43053007, b: 1, a: 1}
+    - _Color_BandB: {r: 0, g: 0.43053007, b: 1, a: 1}
+    - _Color_Base: {r: 0.4433962, g: 0.15267888, b: 0.161397, a: 1}
+    - _Color_Border: {r: 0, g: 0, b: 0, a: 1}
     - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Specular: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Streaks: {r: 0.7075472, g: 0.23696157, b: 0.23696157, a: 1}
+    - _Color_Surface: {r: 0.3490566, g: 0, b: 0, a: 1}
+    - _Color_Top: {r: 0.43921572, g: 0.15294118, b: 0.16078432, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Foam_Color: {r: 0.45882356, g: 0.7885221, b: 0.96078426, a: 1}
+    - _Foam_RingColor: {r: 0.8204432, g: 0.9197043, b: 0.9716981, a: 1}
+    - _Foam_RingSize: {r: 0, g: 0, b: 0, a: 0}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
