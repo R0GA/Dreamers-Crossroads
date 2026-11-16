@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: df6b7934a16059f4f870dca0b91c6a63
+guid: 9b17cac41df7c424dac3f83b44d551f4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Icon_Grey
+    second: {fileID: 2100000, guid: 2b16fef3156e273418a259a8221b534d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Icons
+    second: {fileID: 2100000, guid: e5fbe76221380b744bfc6d076e645eed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 402d0a4484f9220438c8d300b1cc638f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rings
+    second: {fileID: 2100000, guid: 5743a0f648b672140bec0c958a27cd97, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

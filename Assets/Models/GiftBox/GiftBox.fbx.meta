@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 2bc5081b592ae76449078fb4cdd9a8cb
+guid: 027d9afd803381846924ab0bc393ef67
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box
+    second: {fileID: 2100000, guid: d2b9d17e24b28c645855fb4ba9da5645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StrapandBow
+    second: {fileID: 2100000, guid: 05053bf25d4b1d740aacf0cc1f96b06e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
