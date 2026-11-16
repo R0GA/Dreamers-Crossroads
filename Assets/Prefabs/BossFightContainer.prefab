@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15, y: 10, z: 40}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -253,7 +253,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: 10, z: 40}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -514,7 +514,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: 10, z: -40}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -1024,7 +1024,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40, y: 10, z: -15}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -1307,7 +1307,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40, y: 10, z: -15}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -1472,6 +1472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightStartTrigger
   fight: {fileID: 2480131969786674860}
+  levelAudio: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!1 &2919958077884870854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1615,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40, y: 10, z: 15}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -1725,7 +1727,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15, y: 10, z: 40}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -1949,7 +1951,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: 10, z: -40}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -2059,7 +2061,7 @@ Transform:
   m_GameObject: {fileID: 3583590417634467389}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2114,7 +2116,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: ccdf715d521660f43941df9e0b88d9b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f424663a78e129c4684fb4b7cc08ef91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2131,7 +2133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3583590417634467389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e57bbccb8fefb041818204119b790d6, type: 3}
   m_Name: 
@@ -2517,7 +2519,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40, y: 10, z: 15}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -2951,7 +2953,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.3, y: 10, z: 15}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -3282,7 +3284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SirNightmareFight
   player: {fileID: 0}
   muzzle: {fileID: 5615573100382694951}
-  animator: {fileID: 4877348141092515096}
+  animator: {fileID: 0}
+  bossSprite: {fileID: 0}
   lullabyAnchor: {fileID: 6841459889756301043}
   platforms:
   - {fileID: 2046635268783221030}
@@ -3321,6 +3324,8 @@ MonoBehaviour:
     sweepStep: 0.25
     maxActiveBubbles: 2
     bubbleSpawnDelay: 3
+    startDialogue: {fileID: 11400000, guid: 8230f57414f671843921d1cbeaaf8bea, type: 2}
+    downDialogue: {fileID: 11400000, guid: 7b6c716c6ee5a854fad6c0e30fdaf539, type: 2}
   - name: Fitful
     bubblesToDrowse: 4
     collapseOnStart: []
@@ -3339,6 +3344,8 @@ MonoBehaviour:
     sweepStep: 0.25
     maxActiveBubbles: 2
     bubbleSpawnDelay: 3.5
+    startDialogue: {fileID: 11400000, guid: 55be13a41e00825469556a0705695cd3, type: 2}
+    downDialogue: {fileID: 11400000, guid: 3c2fa54cf5ad8a341b57c00b8c72a25b, type: 2}
   - name: Terror
     bubblesToDrowse: 5
     collapseOnStart: []
@@ -3357,15 +3364,20 @@ MonoBehaviour:
     sweepStep: 0.2
     maxActiveBubbles: 2
     bubbleSpawnDelay: 4
-  drowsyWindow: 20
+    startDialogue: {fileID: 0}
+    downDialogue: {fileID: 0}
+  drowsyWindow: 600
   drowsinessOnMiss: 0.5
   maxCrumbledFraction: 0.4
   aimLead: 0
   openingDelay: 2
   phaseTransitionTime: 3
-  introSequence: {fileID: 11400000, guid: efffb9e9fc5bce64695b7e1d28170848, type: 2}
-  firstDrowsySequence: {fileID: 11400000, guid: 470b3fbc20465c44a81fb5719d5f62a0, type: 2}
-  firstLullabySequence: {fileID: 11400000, guid: ff816a26a6f25084c8d17b68c55ef29b, type: 2}
+  attackWindup: 0.2
+  wakeUpAnimTime: 1
+  flinchColor: {r: 1, g: 0.65, b: 0.65, a: 1}
+  flinchTime: 0.12
+  approachDialogue: {fileID: 11400000, guid: e39494d6fbd872448a41ac3a5a948c73, type: 2}
+  finalDialogue: {fileID: 11400000, guid: 4cf14382ab6b5484ebb11c42108ff96d, type: 2}
   audioSource: {fileID: 7961233615925645086}
   drowsyClip: {fileID: 8300000, guid: e40a92797977aa94eb0eb8248eccf901, type: 3}
   wakeClip: {fileID: 8300000, guid: 416364835e1de56419e103678bf15550, type: 3}
@@ -3379,6 +3391,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onWokeUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onFlinch:
     m_PersistentCalls:
       m_Calls: []
   onDefeated:
@@ -3576,7 +3591,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15, y: 10, z: -40}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -3668,7 +3683,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8991963834780316928}
-  - component: {fileID: 4877348141092515096}
+  - component: {fileID: 6724488386831693547}
+  - component: {fileID: 1554541181522828290}
   m_Layer: 0
   m_Name: Anim
   m_TagString: Untagged
@@ -3692,7 +3708,7 @@ Transform:
   - {fileID: 4186158593987379385}
   m_Father: {fileID: 5898596131573684800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4877348141092515096
+--- !u!95 &6724488386831693547
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -3714,6 +3730,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1554541181522828290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498141865020791573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e57bbccb8fefb041818204119b790d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteBillboard
 --- !u!1 &7503651991725972492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3802,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40, y: 10, z: 15}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -4176,7 +4204,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40, y: 10, z: -15}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1983705590928590095}
@@ -4431,7 +4459,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15, y: 10, z: -40}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -4767,7 +4795,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: 10, z: 40}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}
@@ -5312,7 +5340,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40, y: 10, z: -15}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6519523556349551129}

@@ -16,11 +16,23 @@ using UnityEngine.Events;
 ///   4. Miss the window and he snaps awake, losing only some of his drowsiness.
 ///
 /// No health, no damage. Progress is the drowsiness meter; failure is losing footing and time.
+///
+/// DIALOGUE FLOW:
+///  - Approach: played by a DialogueTriggerZone on the way to the boss (assign the SAME asset to
+///    the zone and to 'Approach Dialogue'). When it starts, bubbles begin spawning (and count
+///    towards phase 1) but Sir Nightmare stays dormant. The fight begins once the approach has
+///    ended AND the player has entered the arena (FightStartTrigger -> StartFight()).
+///  - Each phase's Start Dialogue plays as its attacks begin; the player isn't kept waiting. The
+///    phase can't end until a bubble is popped AFTER that dialogue has finished, even if enough
+///    bubbles were already popped.
+///  - Each phase's Down Dialogue plays as he goes down and the heart appears. If the heart is
+///    sung before it finishes, the next phase waits for it.
+///  - Final Dialogue plays after the last heart is sung; onDefeated fires when it ends.
 /// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class SirNightmareFight : MonoBehaviour
 {
-    public enum FightState { Dormant, Transition, Attacking, Drowsy, Defeated }
+    public enum FightState { Dormant, Approach, Transition, Attacking, Drowsy, Defeated }
 
     public enum AttackType
     {
@@ -65,6 +77,15 @@ public class SirNightmareFight : MonoBehaviour
         public int maxActiveBubbles = 2;
         [Tooltip("Seconds between bubble spawns. Longer = scarcer bubbles = more tension.")]
         public float bubbleSpawnDelay = 3f;
+
+        [Header("Dialogue")]
+        [Tooltip("Played as this phase's attacks begin. The phase can't end until a bubble has been popped "
+               + "AFTER this finishes. Leave empty for no dialogue (no waiting).")]
+        public DialogueSequence startDialogue;
+
+        [Tooltip("Played the first time he goes down at the end of this phase, as the heart appears. "
+               + "The next phase waits for it to finish. Leave empty for none.")]
+        public DialogueSequence downDialogue;
     }
 
     // ── Inspector ─────────────────────────────────────────────────────────────
@@ -73,8 +94,10 @@ public class SirNightmareFight : MonoBehaviour
     [SerializeField] private PlayerController player;
     [Tooltip("Where orbs spawn — Sir Nightmare's hand or maw.")]
     [SerializeField] private Transform muzzle;
-    [Tooltip("Optional. Triggers used: Wake, Throw, Slam, Flinch, Drowsy, Defeated.")]
+    [Tooltip("Optional. Auto-found on this object or its children. Parameters used: bool 'Asleep', trigger 'Attack'.")]
     [SerializeField] private Animator animator;
+    [Tooltip("Optional. Tinted briefly when a bubble pops (there is no flinch animation).")]
+    [SerializeField] private SpriteRenderer bossSprite;
     [SerializeField] private LullabyAnchor lullabyAnchor;
     [Tooltip("Every platform in the arena. Auto-filled at runtime if left empty.")]
     [SerializeField] private CrumblingPlatform[] platforms;
@@ -98,15 +121,25 @@ public class SirNightmareFight : MonoBehaviour
     [SerializeField] private float openingDelay = 2f;
     [SerializeField] private float phaseTransitionTime = 3f;
 
+    [Header("Animation Timing")]
+    [Tooltip("Seconds from the Attack animation starting to the frame where the attack should actually land "
+           + "(orb leaves the hand, fist hits the floor). Orbs and platform strikes wait this long.")]
+    [SerializeField] private float attackWindup = 0.35f;
+    [Tooltip("Length of the wake-up animation in seconds. After a MISSED lullaby window he won't attack "
+           + "until this has played. Phase transitions already wait phaseTransitionTime.")]
+    [SerializeField] private float wakeUpAnimTime = 1f;
+    [SerializeField] private Color flinchColor = new Color(1f, 0.65f, 0.65f);
+    [SerializeField] private float flinchTime = 0.12f;
+
     [Header("Dialogue")]
-    [Tooltip("Played once the fight opens, before he starts attacking. Explains the bubbles.")]
-    [SerializeField] private DialogueSequence introSequence;
+    [Tooltip("Played by a DialogueTriggerZone on the approach (use the SAME asset on the zone). Bubbles start "
+           + "spawning when it begins; the fight starts once it has ended and the player is in the arena. "
+           + "Per-phase start/down dialogue is set on each Phase above.")]
+    [SerializeField] private DialogueSequence approachDialogue;
 
-    [Tooltip("Played the first time he goes drowsy, before the Lullaby Anchor appears. Explains the finisher.")]
-    [SerializeField] private DialogueSequence firstDrowsySequence;
-
-    [Tooltip("Played once, at the start of the phase right after the first lullaby is sung. Tells the player to repeat the process.")]
-    [SerializeField] private DialogueSequence firstLullabySequence;
+    [Tooltip("Played after the final heart is sung. When it ends, onDefeated fires (hook your death "
+           + "particles, visuals, and exit portal to that).")]
+    [SerializeField] private DialogueSequence finalDialogue;
 
     [Header("Audio")]
     [Tooltip("Auto-filled from this GameObject's AudioSource if left empty.")]
@@ -125,6 +158,7 @@ public class SirNightmareFight : MonoBehaviour
     public UnityEvent<int> onPhaseStarted;
     public UnityEvent onDrowsy;
     public UnityEvent onWokeUp;
+    public UnityEvent onFlinch;
     public UnityEvent onDefeated;
 
     // ── Public State ──────────────────────────────────────────────────────────
@@ -143,8 +177,25 @@ public class SirNightmareFight : MonoBehaviour
     private readonly List<NightmareOrb> activeOrbs = new List<NightmareOrb>();
     private readonly Dictionary<DreamBubble, Transform> activeBubbles = new Dictionary<DreamBubble, Transform>();
     private AttackType lastAttack = (AttackType)(-1);
-    private bool shownDrowsyHint;
-    private bool shownRepeatHint;
+
+    // Animator parameters
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int AsleepHash = Animator.StringToHash("Asleep");
+
+    private Color spriteBaseColor = Color.white;
+    private Coroutine flinchRoutine;
+
+    // Fight start needs BOTH the approach dialogue finished AND the player inside the arena.
+    private bool approachStarted, approachFinished, arenaEntered, fightBegun;
+
+    // Bubbles spawn from the approach onward; the bubble loop runs while this is true.
+    private bool spawnBubbles;
+
+    // Phase gate: a phase can't end until a bubble is popped after its start dialogue has finished.
+    private bool startGateOpen;
+    private DialogueSequence gateSequence;
+
+    private readonly HashSet<int> downDialoguePlayed = new HashSet<int>();
 
     private void Reset()
     {
@@ -185,6 +236,9 @@ public class SirNightmareFight : MonoBehaviour
     private void Awake()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+        if (bossSprite == null) bossSprite = GetComponentInChildren<SpriteRenderer>();
+        if (bossSprite != null) spriteBaseColor = bossSprite.color;
 
         if (player == null) player = FindFirstObjectByType<PlayerController>();
         if (player == null || lullabyAnchor == null || phases == null || phases.Length == 0)
@@ -207,9 +261,57 @@ public class SirNightmareFight : MonoBehaviour
         lullabyAnchor.gameObject.SetActive(false);
     }
 
+    private void Start()
+    {
+        // Subscribe in Start so DialogueManager.Awake() has definitely run.
+        var manager = DialogueManager.Instance;
+        if (manager == null)
+        {
+            approachFinished = true; // no dialogue system: don't wait for an approach that can't play
+            return;
+        }
+
+        manager.DialogueStarted += HandleDialogueStarted;
+        manager.DialogueEnded += HandleDialogueEnded;
+    }
+
     private void OnDestroy()
     {
         if (lullabyAnchor != null) lullabyAnchor.Sung -= OnLullabySung;
+
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.DialogueStarted -= HandleDialogueStarted;
+            DialogueManager.Instance.DialogueEnded -= HandleDialogueEnded;
+        }
+    }
+
+    private void HandleDialogueStarted(DialogueSequence sequence)
+    {
+        // Approach dialogue: bubbles start spawning as part of the exposition, boss stays dormant.
+        if (approachDialogue == null || sequence != approachDialogue) return;
+        if (arenaEntered || approachStarted) return;
+
+        approachStarted = true;
+        BeginApproach();
+    }
+
+    private void HandleDialogueEnded(DialogueSequence sequence)
+    {
+        if (sequence == null) return;
+
+        if (sequence == approachDialogue && approachStarted && !approachFinished)
+        {
+            approachFinished = true;
+            TryBeginFight();
+        }
+
+        // The phase's start dialogue just finished: a bubble popped from now on can end the phase.
+        if (sequence == gateSequence)
+        {
+            gateSequence = null;
+            startGateOpen = true;
+        }
     }
 
     private static float AngleAround(Vector3 centre, CrumblingPlatform p)
@@ -220,10 +322,41 @@ public class SirNightmareFight : MonoBehaviour
 
     // ── Fight Flow ────────────────────────────────────────────────────────────
 
+    /// <summary>
+    /// Called by FightStartTrigger when the player enters the arena. The fight itself begins
+    /// once the approach dialogue has also finished (immediately, if it already has).
+    /// </summary>
     [ContextMenu("Start Fight")]
     public void StartFight()
     {
-        if (State != FightState.Dormant || !enabled) return;
+        if (arenaEntered || !enabled) return;
+        arenaEntered = true;
+
+        // The approach dialogue never started (no zone, already played, or the player skipped
+        // past it): don't wait for something that isn't coming. Bubbles begin now instead.
+        if (!approachStarted)
+        {
+            approachFinished = true;
+            BeginApproach();
+        }
+
+        TryBeginFight();
+    }
+
+    private void BeginApproach()
+    {
+        if (State != FightState.Dormant) return;
+
+        State = FightState.Approach;
+        PhaseIndex = 0;
+        StartBubbles();
+    }
+
+    private void TryBeginFight()
+    {
+        if (fightBegun || !arenaEntered || !approachFinished) return;
+        fightBegun = true;
+
         onFightStarted.Invoke();
         phaseRoutine = StartCoroutine(BeginPhase(0));
     }
@@ -233,9 +366,16 @@ public class SirNightmareFight : MonoBehaviour
         PhaseIndex = index;
         State = FightState.Transition;
         Phase phase = phases[index];
+        startGateOpen = false;
 
-        SetDrowsiness(0f);
-        Trigger("Wake");
+        // The heart can be sung before the previous phase's down dialogue has finished. Let it
+        // finish before anything else happens so nothing talks over it.
+        yield return WaitForDialogueIdle();
+
+        // Phase 1 keeps whatever bubbles were popped during the approach; later phases start fresh.
+        if (index > 0) SetDrowsiness(0f);
+
+        SetAsleep(false); // plays the wake-up animation, then Idle (no-op if he's already awake)
         if (index > 0) PlaySfx(wakeClip);
 
         if (phase.collapseOnStart != null)
@@ -246,32 +386,77 @@ public class SirNightmareFight : MonoBehaviour
 
         yield return new WaitForSeconds(index == 0 ? openingDelay : phaseTransitionTime);
 
-        // Attacks wait for these — the player reads at their own pace and isn't dodging while doing it
-        if (index == 0)
+        // Attacks begin together with this phase's dialogue; the player doesn't wait for it.
+        yield return WaitForDialogueIdle();
+        PlayStartDialogue(phase);
+        StartAttacking();
+    }
+
+    /// <summary>
+    /// Plays the phase's start dialogue and holds the gate shut until it ends. If there's nothing
+    /// to play (none assigned, or it can't start) the gate opens straight away so the phase can
+    /// never get stuck waiting on a dialogue that isn't running.
+    /// </summary>
+    private void PlayStartDialogue(Phase phase)
+    {
+        var manager = DialogueManager.Instance;
+        DialogueSequence sequence = phase.startDialogue;
+
+        if (sequence == null || manager == null)
         {
-            yield return PlaySequenceBlocking(introSequence);
-        }
-        else if (!shownRepeatHint)
-        {
-            shownRepeatHint = true;
-            yield return PlaySequenceBlocking(firstLullabySequence);
+            startGateOpen = true;
+            return;
         }
 
-        StartAttacking();
+        gateSequence = sequence;
+        if (!manager.PlayDialogue(sequence))
+        {
+            gateSequence = null;
+            startGateOpen = true;
+        }
+    }
+
+    private void PlayDownDialogue(Phase phase)
+    {
+        if (phase.downDialogue == null || DialogueManager.Instance == null) return;
+        if (!downDialoguePlayed.Add(PhaseIndex)) return; // only the first time he goes down this phase
+
+        DialogueManager.Instance.PlayDialogue(phase.downDialogue);
+    }
+
+    private IEnumerator WaitForDialogueIdle()
+    {
+        var manager = DialogueManager.Instance;
+        if (manager == null) yield break;
+
+        while (manager.IsPlaying) yield return null;
     }
 
     private void StartAttacking()
     {
         State = FightState.Attacking;
         attackRoutine = StartCoroutine(AttackLoop());
-        bubbleRoutine = StartCoroutine(BubbleLoop());
+        StartBubbles();
+    }
+
+    private void StartBubbles()
+    {
+        spawnBubbles = true;
+        if (bubbleRoutine == null) bubbleRoutine = StartCoroutine(BubbleLoop());
+    }
+
+    private void StopBubbles()
+    {
+        spawnBubbles = false;
+        if (bubbleRoutine != null) StopCoroutine(bubbleRoutine);
+        bubbleRoutine = null;
     }
 
     private void StopFightRoutines()
     {
         if (attackRoutine != null) StopCoroutine(attackRoutine);
-        if (bubbleRoutine != null) StopCoroutine(bubbleRoutine);
-        attackRoutine = bubbleRoutine = null;
+        attackRoutine = null;
+        StopBubbles();
     }
 
     private void SetDrowsiness(float value)
@@ -283,12 +468,21 @@ public class SirNightmareFight : MonoBehaviour
     private void OnBubblePopped(DreamBubble bubble)
     {
         activeBubbles.Remove(bubble);
-        if (State != FightState.Attacking) return;
+
+        // Pops count from the approach onward (bubbles are part of the opening exposition).
+        // Transition is included so a bubble popped during phase 1's opening delay isn't wasted.
+        if (State != FightState.Approach && State != FightState.Transition && State != FightState.Attacking)
+            return;
 
         SetDrowsiness(Drowsiness + 1f / phases[PhaseIndex].bubblesToDrowse);
-        Trigger("Flinch");
 
-        if (Drowsiness >= 0.999f) EnterDrowsy();
+        if (State != FightState.Attacking) return; // dormant / waking: no flinch, can't go down yet
+
+        Flinch();
+
+        // Only a pop made AFTER this phase's start dialogue has finished can put him down. If the
+        // meter was already full before then, the next pop after the dialogue does it.
+        if (Drowsiness >= 0.999f && startGateOpen) EnterDrowsy();
     }
 
     private void OnBubbleExpired(DreamBubble bubble) => activeBubbles.Remove(bubble);
@@ -301,23 +495,17 @@ public class SirNightmareFight : MonoBehaviour
         ClearOrbs();
         ClearBubbles();
 
-        Trigger("Drowsy");
+        SetAsleep(true); // wind-down -> sleep loop
         PlaySfx(drowsyClip);
         onDrowsy.Invoke();
 
+        // The heart appears at the same moment the down dialogue starts
+        PlayDownDialogue(phases[PhaseIndex]);
         drowsyRoutine = StartCoroutine(DrowsyWindow());
     }
 
     private IEnumerator DrowsyWindow()
     {
-        // Anchor only appears once the hint is done — otherwise a player looking at it while
-        // mashing the advance button can "sing" before they've even read what it does.
-        if (!shownDrowsyHint)
-        {
-            shownDrowsyHint = true;
-            yield return PlaySequenceBlocking(firstDrowsySequence);
-        }
-
         lullabyAnchor.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(drowsyWindow);
@@ -325,10 +513,14 @@ public class SirNightmareFight : MonoBehaviour
         // Missed it — he snaps awake, keeping part of his drowsiness
         player.ReleaseGrappleFrom(lullabyAnchor.transform);
         lullabyAnchor.gameObject.SetActive(false);
-        Trigger("Wake");
+        SetAsleep(false);
         PlaySfx(wakeClip);
         onWokeUp.Invoke();
         SetDrowsiness(drowsinessOnMiss);
+
+        // Let the wake-up animation play out before he starts attacking again
+        State = FightState.Transition;
+        yield return new WaitForSeconds(wakeUpAnimTime);
 
         StartAttacking();
     }
@@ -352,7 +544,17 @@ public class SirNightmareFight : MonoBehaviour
         StopFightRoutines();
         ClearOrbs();
         ClearBubbles();
-        Trigger("Defeated");
+
+        phaseRoutine = StartCoroutine(DefeatRoutine());
+    }
+
+    private IEnumerator DefeatRoutine()
+    {
+        // Let anything still talking finish, then the final dialogue, THEN the death sequence.
+        yield return WaitForDialogueIdle();
+        yield return PlaySequenceBlocking(finalDialogue);
+
+        SetAsleep(true); // already asleep from the lullaby; makes sure he stays that way
         onDefeated.Invoke();
     }
 
@@ -401,7 +603,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator AimedVolley(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         for (int i = 0; i < phase.volleyCount; i++)
         {
             FireOrb(AimDirection(phase.orbSpeed), phase.orbSpeed, phase, homing: false);
@@ -411,7 +613,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator Fan(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         Vector3 centre = AimDirection(phase.orbSpeed);
 
         for (int i = 0; i < phase.fanOrbs; i++)
@@ -426,7 +628,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator HomingOrb(Phase phase)
     {
-        Trigger("Throw");
+        yield return PlayAttackAnim();
         float slow = phase.orbSpeed * 0.55f; // slow enough to outmanoeuvre with a swing
         FireOrb(AimDirection(slow), slow, phase, homing: true);
         yield return new WaitForSeconds(0.6f);
@@ -434,7 +636,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformScatter(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         List<CrumblingPlatform> candidates = Strikeable();
         Shuffle(candidates);
@@ -448,7 +650,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformHunt(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         if (StrikeBudget() > 0)
         {
@@ -484,7 +686,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator PlatformSweep(Phase phase)
     {
-        Trigger("Slam");
+        yield return PlayAttackAnim();
 
         int count = Mathf.Min(phase.scatterCount + 2, StrikeBudget());
         int start = UnityEngine.Random.Range(0, platforms.Length);
@@ -563,7 +765,7 @@ public class SirNightmareFight : MonoBehaviour
 
     private IEnumerator BubbleLoop()
     {
-        while (State == FightState.Attacking)
+        while (spawnBubbles)
         {
             Phase phase = phases[PhaseIndex];
 
@@ -628,9 +830,38 @@ public class SirNightmareFight : MonoBehaviour
         if (audioSource != null && clip != null) audioSource.PlayOneShot(clip);
     }
 
-    private void Trigger(string trigger)
+    /// <summary>Sleep or wake. The Animator handles the wind-down / loop / wake-up chain itself.</summary>
+    private void SetAsleep(bool asleep)
     {
-        if (animator != null) animator.SetTrigger(trigger);
+        if (animator == null) return;
+
+        // An attack triggered a moment before he fell asleep must not fire when he wakes up
+        if (asleep) animator.ResetTrigger(AttackHash);
+        animator.SetBool(AsleepHash, asleep);
+    }
+
+    /// <summary>Starts the Attack animation and waits until its "impact" frame.</summary>
+    private IEnumerator PlayAttackAnim()
+    {
+        if (animator != null) animator.SetTrigger(AttackHash);
+        if (attackWindup > 0f) yield return new WaitForSeconds(attackWindup);
+    }
+
+    private void Flinch()
+    {
+        onFlinch.Invoke();
+        if (bossSprite == null) return;
+
+        if (flinchRoutine != null) StopCoroutine(flinchRoutine);
+        flinchRoutine = StartCoroutine(FlinchFlash());
+    }
+
+    private IEnumerator FlinchFlash()
+    {
+        bossSprite.color = flinchColor;
+        yield return new WaitForSeconds(flinchTime);
+        bossSprite.color = spriteBaseColor;
+        flinchRoutine = null;
     }
 
     private void OnDrawGizmosSelected()

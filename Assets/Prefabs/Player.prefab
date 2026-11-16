@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3534872, b: 0, a: 0.5882353}
+  m_Color: {r: 0.45882356, g: 0.7725491, b: 0.4666667, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: d4e3618086291174c8e2c3aaa4de89a4, type: 3}
+  m_Actions: {fileID: 0}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -1262,8 +1262,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   crosshairImage: {fileID: 6072314443007714800}
-  crosshairDefaultColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 0.78431374}
-  crosshairTargetColor: {r: 1, g: 0.86930424, b: 0.6556604, a: 1}
+  crosshairDefaultColor: {r: 0.7924528, g: 0.7353487, b: 0.6840513, a: 0.78431374}
+  crosshairTargetColor: {r: 0.45882356, g: 0.7725491, b: 0.4666667, a: 1}
   crosshairAnchorRotation: 45
   crosshairTransitionSpeed: 12
   grappleHighlightRange: 45
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5df3d77b4b52b94b9148a614a525270, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a0bb8883da72f7419c0c49d29a87e96, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2572,7 +2572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2924528, g: 0.27727836, b: 0.27727836, a: 1}
+  m_Color: {r: 0.40000004, g: 0.3254902, b: 0.24705884, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2814,10 +2814,11 @@ MonoBehaviour:
   speakerText: {fileID: 6225015142421620584}
   bodyText: {fileID: 635095764205087222}
   portraitImage: {fileID: 8298891226578331492}
-  advanceAction: {fileID: 3187397185154385983, guid: d4e3618086291174c8e2c3aaa4de89a4, type: 3}
   skipAction: {fileID: 3187397185154385983, guid: d4e3618086291174c8e2c3aaa4de89a4, type: 3}
   advanceHintRoot: {fileID: 98283824978787136}
   advanceHintText: {fileID: 1520954967359734383}
+  continueHintFormat: Press {0} to continue
+  skipHintFormat: Press {0} to skip
   charactersPerSecond: 40
 --- !u!1 &8904579241881600672
 GameObject:

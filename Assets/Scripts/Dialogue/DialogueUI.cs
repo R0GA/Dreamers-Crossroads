@@ -8,15 +8,15 @@ using UnityEngine.UI;
 /// Listens to DialogueManager and renders whatever is currently playing: speaker name,
 /// typewriter-revealed body text, and an optional portrait.
 ///
-/// Player-paced lines: pressing the "advance" action first fast-forwards the typewriter,
-/// then (once fully revealed) advances to the next line. A "Press X to continue" hint
-/// appears once the line is fully revealed.
+/// Input: a single dedicated "skip" action. Pressing it jumps straight to the next line (or
+/// ends the sequence on the last line). It is deliberately NOT shared with Interact, so
+/// dismissing dialogue can never also trigger whatever the player is looking at.
 ///
-/// Auto-advance lines: the line moves on by itself after its delay, so no "continue" hint
-/// is shown. Instead a "Press X to skip" hint is shown for as long as the line is running,
-/// and pressing the advance action skips straight to the next line.
+/// Auto-advance lines: the line moves on by itself after its delay. A "Press X to skip"
+/// hint is shown for as long as the line is running.
 ///
-/// An optional separate "skip" action can also jump straight to the next line on any line.
+/// Player-paced lines (autoAdvanceDelay = 0): the typewriter plays, then a "Press X to
+/// continue" hint appears once fully revealed. The skip action advances at any point.
 ///
 /// Drop this on your dialogue Canvas, wire up the fields, and it works with any
 /// DialogueSequence with no further per-conversation setup.
@@ -31,13 +31,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private Image portraitImage;
 
     [Header("Input")]
-    [Tooltip("Action used to skip the typewriter / advance to the next line. Bind this to "
-           + "the same key as Interact, or a dedicated 'Continue' action — your choice.")]
-    [SerializeField] private InputActionReference advanceAction;
-
-    [Header("Optional Skip")]
-    [Tooltip("Optional separate action that skips straight to the next line, with no "
-           + "typewriter-finish step. Leave empty if you don't want a dedicated skip key.")]
+    [Tooltip("Action that skips straight to the next line. Keep this on its own key, separate "
+           + "from Interact, so skipping dialogue can't also interact with the world.")]
     [SerializeField] private InputActionReference skipAction;
 
     [Header("Advance Hint")]
@@ -62,7 +57,6 @@ public class DialogueUI : MonoBehaviour
     private void OnEnable()
     {
         if (panelRoot != null) panelRoot.SetActive(false);
-        if (advanceAction != null) advanceAction.action.Enable();
         if (skipAction != null) skipAction.action.Enable();
         HideHint();
     }
@@ -83,7 +77,6 @@ public class DialogueUI : MonoBehaviour
 
     private void OnDisable()
     {
-        if (advanceAction != null) advanceAction.action.Disable();
         if (skipAction != null) skipAction.action.Disable();
     }
 
@@ -101,38 +94,12 @@ public class DialogueUI : MonoBehaviour
     {
         if (panelRoot != null && !panelRoot.activeSelf) return;
 
-        // Ignore the press that opened the dialogue (e.g. Interact bound to the same key)
+        // Ignore a press on the same frame the dialogue opened
         if (Time.frameCount == dialogueStartFrame) return;
 
-        // Hard skip: jump straight to the next line
+        // Skip: jump straight to the next line
         if (skipAction != null && skipAction.action.WasPressedThisFrame())
-        {
             DialogueManager.Instance.Advance();
-            return;
-        }
-
-        if (advanceAction == null || !advanceAction.action.WasPressedThisFrame()) return;
-
-        // Auto-advance lines: the press always means "skip this line". There's no
-        // reveal-first step, since the hint tells the player it will skip.
-        if (currentLineAutoAdvances)
-        {
-            DialogueManager.Instance.Advance();
-            return;
-        }
-
-        if (!lineFullyRevealed)
-        {
-            // First press just reveals the rest of the line instantly
-            if (typeRoutine != null) StopCoroutine(typeRoutine);
-            bodyText.maxVisibleCharacters = bodyText.text.Length;
-            lineFullyRevealed = true;
-            ShowHint(continueHintFormat);
-        }
-        else
-        {
-            DialogueManager.Instance.Advance();
-        }
     }
 
     // ── Event Handlers ───────────────────────────────────────────────────────
@@ -204,9 +171,9 @@ public class DialogueUI : MonoBehaviour
     {
         if (advanceHintRoot != null) advanceHintRoot.SetActive(true);
 
-        if (advanceHintText != null && advanceAction != null)
+        if (advanceHintText != null && skipAction != null)
         {
-            string key = advanceAction.action.GetBindingDisplayString();
+            string key = skipAction.action.GetBindingDisplayString();
             advanceHintText.text = string.Format(format, key);
         }
     }

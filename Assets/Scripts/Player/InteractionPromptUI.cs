@@ -26,7 +26,7 @@ public class InteractionPromptUI : MonoBehaviour
     [Header("Feel")]
     [SerializeField] private float fadeSpeed = 12f;
 
-    IInteractable _lastInteractable;
+    string _lastPrompt;   // what the UI is currently reflecting (null/empty = hidden)
     float _targetAlpha;
 
     void Reset()
@@ -47,13 +47,17 @@ public class InteractionPromptUI : MonoBehaviour
     {
         if (player == null || promptRoot == null) return;
 
+        // Ask the current interactable for its prompt EVERY frame, not just when the target
+        // changes. An object can become available (or unavailable) while the player is still
+        // looking at it, e.g. a puzzle unlocking after dialogue. The UI is only touched when
+        // the prompt text actually changes, so this stays cheap.
         IInteractable interactable = player.CurrentInteractable;
+        string prompt = interactable?.GetInteractionPrompt();
 
-        if (interactable != _lastInteractable)
+        if (prompt != _lastPrompt)
         {
-            _lastInteractable = interactable;
+            _lastPrompt = prompt;
 
-            string prompt = interactable?.GetInteractionPrompt();
             bool show = !string.IsNullOrEmpty(prompt);
 
             _targetAlpha = show ? 1f : 0f;
