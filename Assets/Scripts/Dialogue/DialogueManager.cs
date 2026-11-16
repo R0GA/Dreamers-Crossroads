@@ -113,6 +113,7 @@ public class DialogueManager : MonoBehaviour
         DialogueEnded?.Invoke(ended);
     }
 
+
     // ── Playback ─────────────────────────────────────────────────────────────
 
     private IEnumerator PlaySequenceRoutine(DialogueSequence sequence)
@@ -163,4 +164,6 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
         DialogueEnded?.Invoke(sequence);
     }
+
+    public bool HasPlayed(DialogueSequence sequence) => playedOnce.Contains(sequence);
 }
