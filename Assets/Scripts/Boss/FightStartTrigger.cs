@@ -1,12 +1,11 @@
 using UnityEngine;
 
-/// <summary>Trigger volume at the arena entrance. Starts the fight the first time the player walks in.</summary>
+/// <summary>Trigger volume at the arena entrance. Starts the fight the first time the player
+/// walks in, and crossfades the level music to the boss track.</summary>
 [RequireComponent(typeof(Collider))]
 public class FightStartTrigger : MonoBehaviour
 {
     [SerializeField] private SirNightmareFight fight;
-    [SerializeField] private AudioSource levelAudio;
-    [SerializeField] private AudioClip bossMusic;
 
     private bool used;
 
@@ -19,7 +18,8 @@ public class FightStartTrigger : MonoBehaviour
 
         used = true;
         fight.StartFight();
-        levelAudio.clip = bossMusic;
-        levelAudio.Play();
+
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.PlayTrack(MusicTrack.Boss);
     }
 }
