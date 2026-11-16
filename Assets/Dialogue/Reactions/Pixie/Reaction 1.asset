@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95859aad02c7e564ba46f760c532221b, type: 3}
+  m_Name: Reaction 1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speakerName: Pixie
+    text: "You\u2019re BACK!"
+    voiceClip: {fileID: 8300000, guid: 390efc34863de0c4c9c860af4a53e4e2, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 1.5
+  - speakerName: Sandman
+    text: "I wasn\u2019t gone. Just... briefly elsewhere."
+    voiceClip: {fileID: 8300000, guid: 196e62141c4724843be03e9d8541a5ce, type: 3}
+    portrait: {fileID: 1468311074, guid: aa0a489ea077dc44593563eeb62c541b, type: 3}
+    autoAdvanceDelay: 3.5
+  - speakerName: Pixie
+    text: That is NOT what that looked like from where I was standing.
+    voiceClip: {fileID: 8300000, guid: 1f976c84855db3b40bf90aa57c96e4f2, type: 3}
+    portrait: {fileID: 498091447, guid: 767384ce198e61a48aeac2c0b6186efa, type: 3}
+    autoAdvanceDelay: 3
+  playOnce: 0
