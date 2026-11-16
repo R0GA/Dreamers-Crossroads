@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,8 +36,6 @@ public class AbilityCrystal : MonoBehaviour, IInteractable
     [SerializeField] private GameObject visualToHide;
     [SerializeField] private ParticleSystem activateVfx;
     [SerializeField] private AudioSource activateSfx;
-    [SerializeField] private float animDelay = 2f;
-    [SerializeField] private Animator beam;
 
     [Header("Events")]
     [Tooltip("Invoked once, the moment this crystal successfully grants its ability. Hook up VFX, quest updates, dialogue, etc.")]
@@ -71,20 +68,9 @@ public class AbilityCrystal : MonoBehaviour, IInteractable
         {
             if (visualToHide != null) visualToHide.SetActive(false);
             GetComponent<Collider>().enabled = false;
-            StartCoroutine(visualAnim());
-
+            if (animator != null) animator.SetBool("Activate", true);
             //Destroy(gameObject, destroyDelay);
         }
-    }
-
-    private IEnumerator visualAnim()
-    {
-        if (animator != null) animator.SetBool("Activate", true);
-        yield return new WaitForSeconds(animDelay);
-        if (animator != null) animator.SetBool("Hover", true);
-        //Debug.Log(beam);
-        if (beam != null) beam.SetBool("Activate", true);
-        //Debug.Log("Beam activated");
     }
 
     // No InteractAlt behaviour needed — default no-op from the interface is fine.

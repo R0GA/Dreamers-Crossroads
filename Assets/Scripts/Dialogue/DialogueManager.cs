@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (voiceSource == null)
-            voiceSource = GetComponent<AudioSource>();
+            voiceSource = GetComponent<AudioSource>(); 
     }
 
     // ── Public API ───────────────────────────────────────────────────────────
@@ -84,20 +84,14 @@ public class DialogueManager : MonoBehaviour
         if (sequence.playOnce && playedOnce.Contains(sequence)) return false;
 
         playRoutine = StartCoroutine(PlaySequenceRoutine(sequence));
-        Debug.Log($"DialogueManager: playing sequence \"{sequence.name}\" with {sequence.lines.Length} lines.");
         return true;
     }
 
     /// <summary>
-    /// Advances past the current line early. Works for both player-paced lines and
-    /// auto-advance lines (skipping the remaining delay). Call this from UI input handling
-    /// (e.g. pressing Interact/Continue while dialogue is on screen). No effect if nothing
-    /// is playing.
+    /// Advances past the current line early. Call this from UI input handling (e.g. pressing
+    /// Interact/Continue while dialogue is on screen). No effect if nothing is playing.
     /// </summary>
-    public void Advance()
-    {
-        if (IsPlaying) advanceRequested = true;
-    }
+    public void Advance() => advanceRequested = true;
 
     /// <summary>Immediately halts whatever sequence is playing, firing DialogueEnded.</summary>
     public void Stop()
@@ -113,7 +107,6 @@ public class DialogueManager : MonoBehaviour
         DialogueEnded?.Invoke(ended);
     }
 
-
     // ── Playback ─────────────────────────────────────────────────────────────
 
     private IEnumerator PlaySequenceRoutine(DialogueSequence sequence)
@@ -126,35 +119,17 @@ public class DialogueManager : MonoBehaviour
         {
             currentLineIndex = i;
             DialogueLine line = sequence.lines[i];
-
-            // Reset before firing LineStarted so a stale request can't skip this line.
-            advanceRequested = false;
             LineStarted?.Invoke(line);
 
-            // Cut off any previous line's voice so skipped lines never overlap the new one.
-            voiceSource.Stop();
             if (line.voiceClip != null)
                 voiceSource.PlayOneShot(line.voiceClip);
 
-            if (line.autoAdvanceDelay > 0f)
-            {
-                // Wait out the delay, but allow the player to skip it early.
-                float elapsed = 0f;
-                while (elapsed < line.autoAdvanceDelay && !advanceRequested)
-                {
-                    elapsed += Time.deltaTime;
-                    yield return null;
-                }
-            }
-            else
-            {
-                yield return new WaitUntil(() => advanceRequested); // DialogueUI calls Advance()
-            }
+            advanceRequested = false;
 
-            // If the player skipped this line, cut its voice immediately. This also covers
-            // skipping the final line, where no next line exists to stop it.
-            if (advanceRequested)
-                voiceSource.Stop();
+            if (line.autoAdvanceDelay > 0f)
+                yield return new WaitForSeconds(line.autoAdvanceDelay);
+            else
+                yield return new WaitUntil(() => advanceRequested); // DialogueUI calls Advance()
         }
 
         if (sequence.playOnce)
@@ -164,6 +139,4 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
         DialogueEnded?.Invoke(sequence);
     }
-
-    public bool HasPlayed(DialogueSequence sequence) => playedOnce.Contains(sequence);
 }

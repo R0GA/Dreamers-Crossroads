@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 /// <summary>
 /// Bitflags for the player's traversal abilities. PlayerController gates input on these;
@@ -11,10 +10,10 @@ using UnityEngine.UI;
 [Flags]
 public enum PlayerAbility
 {
-    None = 0,
-    Jump = 1 << 0,
+    None    = 0,
+    Jump    = 1 << 0,
     Grapple = 1 << 1,
-    Launch = 1 << 2,
+    Launch  = 1 << 2,
 
     All = Jump | Grapple | Launch
 }
@@ -121,30 +120,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask grappleMask = ~0;
 
-    // ── Grapple Feedback UI ───────────────────────────────────────────────────
-
-    [Header("Grapple Feedback UI")]
-    [Tooltip("Crosshair image whose rotation/color reflects what the player is currently looking at.")]
-    [SerializeField] private Image crosshairImage;
-
-    [Tooltip("Crosshair color during normal gameplay — not looking at anything grappleable.")]
-    [SerializeField] private Color crosshairDefaultColor = new Color(0.7f, 0.7f, 0.7f, 0.6f);
-
-    [Tooltip("Crosshair color once within usable grapple range (maxGrappleDistance) — full opacity, white.")]
-    [SerializeField] private Color crosshairTargetColor = Color.white;
-
-    [Tooltip("How far (in degrees) the crosshair rotates when looking at a grapple anchor, "
-           + "whether or not it's currently in range.")]
-    [SerializeField] private float crosshairAnchorRotation = 45f;
-
-    [Tooltip("How quickly the crosshair's rotation and color ease toward their target each frame. Higher = snappier.")]
-    [SerializeField] private float crosshairTransitionSpeed = 12f;
-
-    [Tooltip("Grapple anchors only trigger the crosshair rotation within this distance. Keep this a "
-           + "bit larger than maxGrappleDistance so the crosshair gives some early warning as the "
-           + "player approaches, without reacting to anchors clear across the map.")]
-    [SerializeField] private float grappleHighlightRange = 45f;
-
     // ── Charge Launch ─────────────────────────────────────────────────────────
 
     [Header("Charge Launch")]
@@ -159,22 +134,6 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Movement speed multiplier while charging. Lower = more planted windup feel.")]
     [SerializeField][Range(0f, 1f)] private float chargeMoveScale = 0.25f;
-
-    [Tooltip("Whether the player gets one bonus launch charge while airborne, usable once per "
-           + "air-time and restored on landing (in addition to normal grounded charging).")]
-    [SerializeField] private bool allowAirLaunch = true;
-
-    // ── Launch Feedback UI ────────────────────────────────────────────────────
-
-    [Header("Launch Feedback UI")]
-    [Tooltip("Root object for the charge bar (e.g. its background panel). Enabled only while charging.")]
-    [SerializeField] private GameObject chargeBarRoot;
-
-    [Tooltip("Slider whose value (0-1) tracks charge progress. Using a Slider instead of a "
-           + "fillAmount Image lets the fill graphic use a 9-sliced sprite that resizes cleanly "
-           + "instead of stretching. Set the Slider's Min/Max Value to 0/1, and turn off its "
-           + "Interactable and Navigation since it's display-only.")]
-    [SerializeField] private Slider chargeBarSlider;
 
     // ── Interaction ───────────────────────────────────────────────────────────
 
@@ -201,26 +160,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Whatever the crosshair is currently over, if it implements IInteractable. Null otherwise.")]
     public IInteractable CurrentInteractable => currentInteractable;
 
-    /// <summary>True from the moment an interact animation is triggered until the Interact clip reports it's
-    /// finished (via an Animation Event calling OnInteractAnimationEnd). Useful for suppressing footstep audio,
-    /// interaction prompts, etc. while the one-shot plays. Purely informational — does not block re-triggering.</summary>
-    public bool IsInteracting => isInteracting;
-
-    /// <summary>What the crosshair is currently reporting for grapple targeting. Drives crosshairImage internally; exposed for any other UI that wants it too.</summary>
-    public GrappleTargetState CurrentGrappleTarget => grappleTargetState;
-
-    /// <summary>Whether the player still has their bonus in-air launch charge available (always true while grounded and allowAirLaunch is used up mid-air).</summary>
-    public bool AirLaunchAvailable => airLaunchAvailable;
-
-    /// <summary>True while grounded (per GroundCheck's most recent result). Used by footstep audio, landing VFX, etc.</summary>
-    public bool IsGrounded => isGrounded;
-
-    /// <summary>Horizontal (XZ) speed in m/s. Used for footstep cadence and wind-noise volume scaling.</summary>
-    public float HorizontalSpeed => new Vector3(velocity.x, 0f, velocity.z).magnitude;
-
-    /// <summary>Full 3D speed (includes vertical) in m/s. Wind noise reads this instead of HorizontalSpeed so it also kicks in on a straight-up launch or a fast fall.</summary>
-    public float Speed => velocity.magnitude;
-
     /// <summary>Currently unlocked abilities. Read-only from outside — grant abilities via UnlockAbility.</summary>
     public PlayerAbility UnlockedAbilities => unlockedAbilities;
 
@@ -228,7 +167,7 @@ public class PlayerController : MonoBehaviour
     public event Action<PlayerAbility> AbilityUnlocked;
 
     /// <summary>True if the player currently has every flag in <paramref name="ability"/> (can pass a single flag or a combination).</summary>
-    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ~suppressedAbilities & ability) == ability;
+    public bool HasAbility(PlayerAbility ability) => (unlockedAbilities & ability) == ability;
 
     /// <summary>Grants an ability (or combination of abilities) to the player. Safe to call repeatedly — already-unlocked flags are ignored and won't re-fire the event.</summary>
     public void UnlockAbility(PlayerAbility ability)
@@ -238,100 +177,6 @@ public class PlayerController : MonoBehaviour
 
         unlockedAbilities |= ability;
         AbilityUnlocked?.Invoke(newlyGranted);
-    }
-
-    // ── Temporary Suppression / Knockback (boss hits, curses, cutscenes) ──────
-
-    /// <summary>Abilities that are unlocked but currently disabled by SuppressAbilities. HasAbility() already accounts for these.</summary>
-    public PlayerAbility SuppressedAbilities => suppressedAbilities;
-
-    /// <summary>Fired when SuppressAbilities disables something — good hook for a screen tint, sputtering-sand VFX, or a sting.</summary>
-    public event Action<PlayerAbility> AbilitiesSuppressed;
-
-    /// <summary>Fired when suppression ends (timer ran out, or Respawn cleared it).</summary>
-    public event Action AbilitiesRestored;
-
-    /// <summary>
-    /// Temporarily disables abilities without revoking them. Suppressing Grapple drops any active
-    /// rope; suppressing Launch cancels an in-progress charge. All suppressed flags share one timer,
-    /// so a second hit extends the whole lockout to whichever duration is longer.
-    /// </summary>
-    public void SuppressAbilities(PlayerAbility abilities, float duration)
-    {
-        if (abilities == PlayerAbility.None || duration <= 0f) return;
-
-        suppressedAbilities |= abilities;
-        suppressTimer = Mathf.Max(suppressTimer, duration);
-        AbilitiesSuppressed?.Invoke(abilities);
-    }
-
-    /// <summary>
-    /// Hard interrupt: overwrites the player's velocity with a shove (horizontal direction + upward
-    /// pop), drops the grapple, and cancels any launch charge. Vertical component of
-    /// <paramref name="direction"/> is ignored — use <paramref name="upwardSpeed"/> instead.
-    /// </summary>
-    public void ApplyKnockback(Vector3 direction, float horizontalSpeed, float upwardSpeed)
-    {
-        if (grappleState == GrappleState.Attached)
-            ReleaseGrapple();
-
-        isCharging = false;
-        chargeAmount = 0f;
-
-        direction.y = 0f;
-        if (direction.sqrMagnitude < 0.0001f) direction = -transform.forward;
-        direction.Normalize();
-
-        velocity = direction * horizontalSpeed;
-        velocity.y = upwardSpeed;
-
-        // Same trick as ExecuteLaunch: stops GroundCheck re-grounding us next frame,
-        // which would clamp velocity.y to -2 and eat the knockback.
-        jumpGraceTimer = 0.2f;
-        isGrounded = false;
-        coyoteTimer = 0f;
-        jumpBufferTimer = 0f;
-    }
-
-    /// <summary>Seconds since the grapple last detached (0 while attached). Lets things like dream bubbles pop on "swing, release, fly through" rather than only while the rope is live.</summary>
-    public float SecondsSinceGrapple => IsGrappling ? 0f : Time.time - lastGrappleReleaseTime;
-
-    /// <summary>Drops the grapple only if it's latched onto <paramref name="root"/> or one of its children. Called by things that stop existing (crumbling platforms, lullaby anchor) so the rope doesn't stay pinned to empty space.</summary>
-    public void ReleaseGrappleFrom(Transform root)
-    {
-        if (grappleState == GrappleState.Attached && grappleAnchor != null && grappleAnchor.IsChildOf(root))
-            ReleaseGrapple();
-    }
-
-    private void TickSuppression()
-    {
-        if (suppressedAbilities == PlayerAbility.None) return;
-
-        suppressTimer -= Time.deltaTime;
-        if (suppressTimer <= 0f)
-        {
-            ClearSuppression();
-            return;
-        }
-
-        // Cut off anything that just got disabled mid-use
-        if (grappleState == GrappleState.Attached && !HasAbility(PlayerAbility.Grapple))
-            ReleaseGrapple();
-
-        if (isCharging && !HasAbility(PlayerAbility.Launch))
-        {
-            isCharging = false;
-            chargeAmount = 0f;
-        }
-    }
-
-    private void ClearSuppression()
-    {
-        if (suppressedAbilities == PlayerAbility.None) return;
-
-        suppressedAbilities = PlayerAbility.None;
-        suppressTimer = 0f;
-        AbilitiesRestored?.Invoke();
     }
 
     // ── Private: Components / Input ───────────────────────────────────────────
@@ -351,17 +196,9 @@ public class PlayerController : MonoBehaviour
 
     private IInteractable currentInteractable;
 
-    // Animator.StringToHash avoids re-hashing the parameter name string every call.
-    // The other params (IsWalking etc.) only get set once per frame from Update, so it's
-    // not worth the churn there, but Interact fires from a hot path (input), so it's cached.
-    private static readonly int InteractTriggerHash = Animator.StringToHash("Interact");
-    private bool isInteracting;
-
     // ── Private: Ability State ────────────────────────────────────────────────
 
     private PlayerAbility unlockedAbilities;
-    private PlayerAbility suppressedAbilities;
-    private float suppressTimer;
 
     // ── Private: Core Movement State ──────────────────────────────────────────
 
@@ -379,33 +216,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 grapplePoint;
     private float ropeLength;
 
-    /// <summary>Reported by UpdateGrappleTargeting each frame for crosshair coloring.</summary>
-    public enum GrappleTargetState { None, Highlighted, InRange }
-    private GrappleTargetState grappleTargetState = GrappleTargetState.None;
-
-    // Tracks a moving anchor: grapplePoint is recomputed from this each frame instead of
-    // staying fixed at the world position it was hit at. Null means the anchor doesn't move
-    // (or was hit by something with no transform worth tracking, which never happens in
-    // practice — every collider has one — so this is really just a "still attached?" guard).
-    private Transform grappleAnchor;
-    private float lastGrappleReleaseTime = float.NegativeInfinity;
-    private Vector3 grappleLocalOffset;
-
     // ── Private: Charge Launch State ─────────────────────────────────────────
 
     private float chargeAmount;
     private bool isCharging;
-
-    // True until spent by starting a charge in midair; restored the moment the player lands.
-    private bool airLaunchAvailable = true;
-
-    // ── Private: Moving Platform State ────────────────────────────────────────
-
-    // The platform currently under the player, tracked so its motion can be folded
-    // into our own Move() call each frame instead of leaving the player behind.
-    private Transform currentPlatform;
-    private Vector3 platformPrevPosition;
-    private Quaternion platformPrevRotation;
 
     // ═════════════════════════════════════════════════════════════════════════
 
@@ -437,72 +251,36 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        TickSuppression();      // Must run before input handling so a freshly-suppressed ability is cut off this frame
         HandleLook();
         HandleInteraction();    // Reads look-updated camera forward, so must run after HandleLook
         GroundCheck();          // Sets isGrounded / coyoteTimer
         TickJumpBuffer();
-        UpdateGrappleTargeting(); // Crosshair color feedback; uses look-updated camera forward
         HandleGrappleInput();   // Toggle grapple state
         HandleChargeLaunch();   // May call ExecuteLaunch() which overrides isGrounded — must run before HandleMovement
         HandleMovement();       // Reads all state set above, writes velocity
+       // UpdateGrappleLine();
 
         if (viewmodelAnimator != null)
         {
             // Only play walk if grounded and moving horizontally
-            bool isMoving = HorizontalSpeed > 0.3f;
+            bool isMoving = HorizontalSpeed() > 0.3f;
             viewmodelAnimator.SetBool("IsWalking", isGrounded && isMoving);
 
             // Pass ability holding states directly to the animator
             viewmodelAnimator.SetBool("IsGrappling", IsGrappling);
             viewmodelAnimator.SetBool("IsCharging", IsCharging);
         }
-    }
 
-    private void LateUpdate()
-    {
-        UpdateGrappleLine();
-
-        // Platform delta — how far the platform we're standing on moved/rotated since
-        // last frame. Computed here (after GroundCheck may have just re-anchored us
-        // onto a new platform this frame) so the first frame on a platform always
-        // yields zero delta instead of snapping the player.
-        Vector3 platformDelta = Vector3.zero;
-        if (currentPlatform != null && isGrounded)
-        {
-            Vector3 newPos = currentPlatform.position;
-            Quaternion newRot = currentPlatform.rotation;
-
-            platformDelta = newPos - platformPrevPosition;
-
-            // Carry rotation too: spin the player's horizontal offset from the
-            // platform's pivot by however much the platform turned this frame, and
-            // apply that as extra positional delta plus a matching facing turn.
-            Quaternion deltaRot = newRot * Quaternion.Inverse(platformPrevRotation);
-            Vector3 offsetFromPivot = (transform.position + platformDelta) - newPos;
-            Vector3 rotatedOffset = deltaRot * offsetFromPivot;
-            platformDelta += rotatedOffset - offsetFromPivot;
-            transform.Rotate(0f, deltaRot.eulerAngles.y, 0f);
-
-            platformPrevPosition = newPos;
-            platformPrevRotation = newRot;
-        }
-
-        Vector3 finalVelocity = velocity;
-
-        // If the platform is actively pushing us upward, don't fight it with the -2f grounding velocity.
-        // Doing so causes the player to sink into the collider and triggers depenetration jitter.
-        if (currentPlatform != null && isGrounded && platformDelta.y > 0f)
-        {
-            finalVelocity.y = Mathf.Max(0f, finalVelocity.y);
-        }
-
-        // Pass finalVelocity instead of velocity
-        CollisionFlags flags = cc.Move(platformDelta + finalVelocity * Time.deltaTime);
+        // Single authoritative Move() call — all systems write to velocity, one read here
+        CollisionFlags flags = cc.Move(velocity * Time.deltaTime);
 
         // Kill upward velocity on ceiling hits so the player drops immediately
         if ((flags & CollisionFlags.Above) != 0 && velocity.y > 0f)
             velocity.y = 0f;
+    }
+    private void LateUpdate()
+    {
+        UpdateGrappleLine();
     }
 
     // ── Look ──────────────────────────────────────────────────────────────────
@@ -527,45 +305,9 @@ public class PlayerController : MonoBehaviour
         if (currentInteractable == null) return;
 
         if (interactAction != null && interactAction.WasPressedThisFrame())
-        {
             currentInteractable.Interact(gameObject);
-            PlayInteractAnimation();
-        }
         else if (interactAltAction != null && interactAltAction.WasPressedThisFrame())
-        {
             currentInteractable.InteractAlt(gameObject);
-            PlayInteractAnimation();
-        }
-    }
-
-    private void PlayInteractAnimation()
-    {
-        if (viewmodelAnimator == null) return;
-
-        // Gameplay (Interact()/InteractAlt()) always fires on every press — this guard only
-        // stops a second Trigger from stacking up on top of one still playing. Without it, a
-        // press mid-animation leaves a Trigger armed that Unity holds onto and fires the
-        // moment the current Interact state exits, replaying the clip right after.
-        if (isInteracting) return;
-
-        isInteracting = true;
-        viewmodelAnimator.SetTrigger(InteractTriggerHash);
-    }
-
-    /// <summary>
-    /// Hook this up to an Animation Event on the last frame of the Interact clip (right-click
-    /// the clip in the Animation window → add event → drag this method in) so the controller
-    /// finds out when the one-shot has actually finished, rather than guessing off a timer.
-    /// </summary>
-    public void OnInteractAnimationEnd()
-    {
-        isInteracting = false;
-
-        // Defensive: clears a Trigger that could otherwise have gotten armed and consumed on
-        // the exact same frame the guard above would normally have blocked it (e.g. a press
-        // landing right as the clip ends). Harmless no-op the rest of the time.
-        if (viewmodelAnimator != null)
-            viewmodelAnimator.ResetTrigger(InteractTriggerHash);
     }
 
     private IInteractable FindInteractable()
@@ -594,7 +336,6 @@ public class PlayerController : MonoBehaviour
             jumpGraceTimer -= Time.deltaTime;
             isGrounded = false;
             coyoteTimer = 0f;
-            currentPlatform = null;
             return;
         }
 
@@ -602,58 +343,23 @@ public class PlayerController : MonoBehaviour
         Vector3 bottom = transform.position + cc.center + Vector3.down * (cc.height * 0.5f - cc.radius);
         Vector3 origin = bottom + Vector3.up * 0.1f;
 
-        // --- NEW FIX START ---
-        float dynamicCastDist = groundCheckDistance;
-
-        // If we are on a platform, check if it moved down since the last frame
-        if (currentPlatform != null)
-        {
-            float verticalDelta = currentPlatform.position.y - platformPrevPosition.y;
-            if (verticalDelta < 0f)
-            {
-                // Extend the raycast by exactly how far the platform fell, plus a tiny safety margin
-                dynamicCastDist += Mathf.Abs(verticalDelta) + 0.05f;
-            }
-        }
-
         bool hit = Physics.SphereCast(
-            origin, castRadius, Vector3.down, out RaycastHit groundHit,
-            0.1f + dynamicCastDist, groundMask, QueryTriggerInteraction.Ignore);
-        // --- NEW FIX END ---
+            origin, castRadius, Vector3.down, out _,
+            0.1f + groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);
 
         if (hit)
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
-            airLaunchAvailable = true; // Landing restores the bonus in-air launch charge
 
             // Landing while grappling detaches the hook — prevents awkward sliding
             if (grappleState == GrappleState.Attached)
                 ReleaseGrapple();
-
-            // GetComponentInParent so the platform's collider can live on a child mesh
-            // while MovingPlatform sits on the root — same pattern as FindInteractable.
-            MovingPlatform platform = groundHit.collider.GetComponentInParent<MovingPlatform>();
-            Transform platformRoot = platform != null ? platform.transform : null;
-
-            // Only re-anchor when we land on a *different* platform (or the ground).
-            // Re-grabbing the same transform every frame would reset platformPrevPosition
-            // to the current position and the delta would always compute to zero.
-            if (platformRoot != currentPlatform)
-            {
-                currentPlatform = platformRoot;
-                if (currentPlatform != null)
-                {
-                    platformPrevPosition = currentPlatform.position;
-                    platformPrevRotation = currentPlatform.rotation;
-                }
-            }
         }
         else
         {
             isGrounded = false;
             coyoteTimer -= Time.deltaTime;
-            currentPlatform = null;
         }
     }
 
@@ -670,12 +376,6 @@ public class PlayerController : MonoBehaviour
     private bool CanJump()
     {
         if (!HasAbility(PlayerAbility.Jump)) return false;
-
-        // Charging (right click / ChargeLaunch held) locks out jumping. Previously a jump
-        // fired mid-charge would knock isGrounded false for a couple of frames, and
-        // HandleChargeLaunch's release check never ran while airborne — so releasing the
-        // charge button mid-jump silently ate the charge instead of launching.
-        if (isCharging) return false;
 
         bool hasInput = jumpBufferTimer > 0f || (allowBunnyHop && jumpAction.IsPressed());
         bool nearGround = coyoteTimer > 0f;
@@ -694,61 +394,6 @@ public class PlayerController : MonoBehaviour
             ReleaseGrapple();
     }
 
-    /// <summary>
-    /// Separate from TryFireGrapple's raycast — this one runs every frame purely to drive
-    /// crosshair feedback, using a longer range so the player gets an early "something's
-    /// there" cue before they're actually close enough to fire at it.
-    /// </summary>
-    private void UpdateGrappleTargeting()
-    {
-        if (HasAbility(PlayerAbility.Grapple) && grappleState == GrappleState.Idle)
-        {
-            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, grappleHighlightRange,
-                                grappleMask, QueryTriggerInteraction.Ignore))
-            {
-                grappleTargetState = hit.distance <= maxGrappleDistance
-                    ? GrappleTargetState.InRange
-                    : GrappleTargetState.Highlighted;
-            }
-            else
-            {
-                grappleTargetState = GrappleTargetState.None;
-            }
-        }
-        else if (grappleState == GrappleState.Attached)
-        {
-            // Latched on — hold the rotated "highlighted" look rather than resetting to
-            // neutral or snapping to the full in-range tint, since the player isn't aiming
-            // at anything anymore while swinging.
-            grappleTargetState = GrappleTargetState.Highlighted;
-        }
-        else
-        {
-            grappleTargetState = GrappleTargetState.None;
-        }
-
-        if (crosshairImage == null) return;
-
-        // Rotated whenever an anchor is in view at all (Highlighted or InRange); only
-        // InRange swaps it to the full-opacity white "you can fire now" tint.
-        float targetRotationZ = grappleTargetState == GrappleTargetState.None ? 0f : crosshairAnchorRotation;
-        Color targetColor = grappleTargetState == GrappleTargetState.InRange
-            ? crosshairTargetColor
-            : crosshairDefaultColor;
-
-        // Framerate-independent ease toward the target rotation/color rather than snapping,
-        // so the crosshair doesn't pop jarringly as the player's look crosses an anchor edge.
-        float t = 1f - Mathf.Exp(-crosshairTransitionSpeed * Time.deltaTime);
-
-        float currentZ = crosshairImage.rectTransform.localEulerAngles.z;
-        float newZ = Mathf.LerpAngle(currentZ, targetRotationZ, t);
-        crosshairImage.rectTransform.localRotation = Quaternion.Euler(0f, 0f, newZ);
-
-        crosshairImage.color = Color.Lerp(crosshairImage.color, targetColor, t);
-    }
-
     private void TryFireGrapple()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
@@ -759,32 +404,16 @@ public class PlayerController : MonoBehaviour
             grapplePoint = hit.point;
             ropeLength = hit.distance;
             grappleState = GrappleState.Attached;
-
-            // Remember the point relative to the collider's own transform, so if that
-            // transform moves or rotates afterward, we can recompute where the hit point
-            // now is instead of staying pinned to the world position it was fired at.
-            grappleAnchor = hit.collider.transform;
-            grappleLocalOffset = grappleAnchor.InverseTransformPoint(hit.point);
         }
     }
 
     private void ReleaseGrapple()
     {
-        if (grappleState == GrappleState.Attached)
-            lastGrappleReleaseTime = Time.time;
-
         grappleState = GrappleState.Idle;
-        grappleAnchor = null;
     }
 
     private void ApplyGrapplePhysics()
     {
-        // Follow the anchor if it's moved/rotated since last frame (or since it was hit,
-        // for the very first frame). A static anchor just recomputes to the same point
-        // it already had, so there's no need to special-case "moving vs. not."
-        if (grappleAnchor != null)
-            grapplePoint = grappleAnchor.TransformPoint(grappleLocalOffset);
-
         Vector3 toAnchor = grapplePoint - transform.position;
         float dist = toAnchor.magnitude;
 
@@ -823,33 +452,16 @@ public class PlayerController : MonoBehaviour
 
     private void HandleChargeLaunch()
     {
-        if (grappleState == GrappleState.Attached)
+        if (grappleState == GrappleState.Attached || !isGrounded)
+            return; // Can't start charging while grappling — prevents awkward edge cases)
+
+        if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch))
         {
-            SyncChargeBarUI();
-            return; // Can't start or continue charging while grappling — prevents awkward edge cases
+            isCharging = true;
+            chargeAmount = 0f;
         }
 
-        if (!isCharging)
-        {
-            // Grounded charging always works; airborne charging only works if the player
-            // still has their one bonus air-launch charge (restored on landing).
-            bool canStartCharging = isGrounded || (allowAirLaunch && airLaunchAvailable);
-
-            if (chargeAction.WasPressedThisFrame() && HasAbility(PlayerAbility.Launch) && canStartCharging)
-            {
-                isCharging = true;
-                chargeAmount = 0f;
-
-                if (!isGrounded)
-                    airLaunchAvailable = false; // Spend the air charge the moment charging starts
-            }
-
-            if (!isCharging)
-            {
-                SyncChargeBarUI();
-                return;
-            }
-        }
+        if (!isCharging) return;
 
         chargeAmount = Mathf.MoveTowards(chargeAmount, 1f, Time.deltaTime / chargeTime);
 
@@ -859,14 +471,6 @@ public class PlayerController : MonoBehaviour
             isCharging = false;
             chargeAmount = 0f;
         }
-
-        SyncChargeBarUI();
-    }
-
-    private void SyncChargeBarUI()
-    {
-        if (chargeBarRoot != null) chargeBarRoot.SetActive(isCharging);
-        if (chargeBarSlider != null) chargeBarSlider.value = chargeAmount;
     }
 
     private void ExecuteLaunch()
@@ -1021,35 +625,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // ── Respawn ───────────────────────────────────────────────────────────────
-
-    /// <summary>
-    /// Teleports the player to a checkpoint and clears all momentum/mid-air state so they
-    /// don't land carrying grapple swing speed, launch charge, or fall velocity from before
-    /// they died. Called by PlayerRespawner — nothing else should move this transform
-    /// directly while a CharacterController is attached.
-    /// </summary>
-    public void Respawn(Vector3 position, Quaternion rotation)
-    {
-        if (grappleState == GrappleState.Attached)
-            ReleaseGrapple();
-
-        isCharging = false;
-        chargeAmount = 0f;
-        airLaunchAvailable = true;
-        ClearSuppression();
-        velocity = Vector3.zero;
-        coyoteTimer = 0f;
-        jumpBufferTimer = 0f;
-        jumpGraceTimer = 0f;
-
-        // CharacterController fights direct transform edits while enabled — it needs to be
-        // off for the teleport to actually stick instead of being resolved away next Move().
-        cc.enabled = false;
-        transform.SetPositionAndRotation(position, rotation);
-        cc.enabled = true;
-    }
-
     // ── Physics Helpers ───────────────────────────────────────────────────────
 
     private void Accelerate(Vector3 wishDir, float wishSpeed, float accel)
@@ -1065,7 +640,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyFriction()
     {
-        float speed = HorizontalSpeed;
+        float speed = HorizontalSpeed();
         if (speed < 0.001f) return;
 
         float control = Mathf.Max(speed, stopSpeed);
@@ -1078,4 +653,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity() =>
         velocity.y += Physics.gravity.y * Time.deltaTime;
+
+    private float HorizontalSpeed() =>
+        new Vector3(velocity.x, 0f, velocity.z).magnitude;
 }

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Icons
-  m_Shader: {fileID: -6465566751694194690, guid: 777c0c0d5d1140c40af284e7c63ae3f4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7a8d9e31d9ac58649af0763979379d93, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,9 +29,8 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -111,9 +110,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Border_Weight: 0
     - _BumpScale: 1
-    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -123,8 +120,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Environment_Light_Influence: 0
-    - _Environment_Shadow_Influence: 0
+    - _Environment_Light_Influence: 1
+    - _Environment_Shadow_Influence: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -137,28 +134,17 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Specular_BorderClip: 0
-    - _Specular_Intensity: 1
-    - _Specular_Push: 16
-    - _Specular_RimBias: 1
-    - _Specular_ViewSupress: 16
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Surface_Intensity: 0.15
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
-    - _ZTest: 4
     - _ZWrite: 1
-    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Accent: {r: 1, g: 0.92001164, b: 0, a: 1}
     - _Color_Base: {r: 1, g: 0.8801322, b: 0, a: 1}
-    - _Color_Border: {r: 1, g: 0.9238702, b: 0, a: 1}
-    - _Color_Specular: {r: 1, g: 0.9243814, b: 0, a: 1}
-    - _Color_Surface: {r: 1, g: 0.97048855, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
