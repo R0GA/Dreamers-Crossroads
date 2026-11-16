@@ -2425,14 +2425,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.47058824}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1001855091, guid: 25439b0221f7a93429c9f07ebdb2ed55, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2610,7 +2610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &386592168272877831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2759,15 +2759,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
-  m_sharedMaterial: {fileID: -6140817253285787970, guid: 21547e47b321961469340c4e6a5251f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a5eca2882a4a29a4ba1ee42a24419afe, type: 2}
+  m_sharedMaterial: {fileID: -6583396410318759678, guid: a5eca2882a4a29a4ba1ee42a24419afe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4285780185
+  m_fontColor: {r: 0.8490566, g: 0.8166964, b: 0.45256317, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

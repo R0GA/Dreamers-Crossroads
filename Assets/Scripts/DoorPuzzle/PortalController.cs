@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour
@@ -14,9 +15,28 @@ public class PortalController : MonoBehaviour
     [Tooltip("Controls the scaling animation. Try an Ease In Out curve.")]
     public AnimationCurve growCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("Dialogue Gate (optional)")]
+    [Tooltip("If ticked, the portal still reveals and grows as normal, but can't be entered "
+           + "until Required Dialogue has finished. Leave unticked for the original behaviour: "
+           + "enterable as soon as it has finished growing.")]
+    public bool waitForDialogue = false;
+
+    [Tooltip("The dialogue that must finish before the portal can be entered (e.g. the final "
+           + "Pixie conversation). Should have playOnce ticked, so the portal can tell it "
+           + "finished naturally rather than being cut off.")]
+    public DialogueSequence requiredDialogue;
+
+    [Header("Events")]
+    [Tooltip("Fires once at the moment the portal becomes enterable — after it has grown and, "
+           + "if waiting, after the dialogue has finished. Hook a glow, sound or particles here.")]
+    public UnityEvent onPortalReady;
+
     private Vector3 originalScale;
     private Collider portalCollider;
     private bool isRevealed = false;
+    private bool growFinished = false;
+    private bool dialogueSatisfied = true;
+    private bool isUsable = false;
 
     void Start()
     {
@@ -33,6 +53,16 @@ public class PortalController : MonoBehaviour
             portalCollider.enabled = false;
             portalCollider.isTrigger = true; // Ensure it's treated as a trigger
         }
+
+        // 4. Optionally start listening for the dialogue the portal is waiting on
+        dialogueSatisfied = !waitForDialogue;
+        if (waitForDialogue) SetUpDialogueWait();
+    }
+
+    private void OnDestroy()
+    {
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.DialogueEnded -= HandleDialogueEnded;
     }
 
     // Call this public method from your puzzle-solving script
@@ -68,17 +98,72 @@ public class PortalController : MonoBehaviour
         // Snap exactly to the final scale to prevent any floating point inaccuracies
         transform.localScale = originalScale;
 
-        // Enable the trigger now that the portal is visible
+        // Fully grown. Becomes enterable now, or as soon as the dialogue finishes if waiting.
+        growFinished = true;
+        TryBecomeUsable();
+    }
+
+    // ── Dialogue Gate ────────────────────────────────────────────────────────
+
+    private void SetUpDialogueWait()
+    {
+        // Misconfiguration should never trap the player in the level: if there's nothing
+        // valid to wait for, behave like an ordinary portal.
+        if (requiredDialogue == null)
+        {
+            Debug.LogWarning("PortalController: waitForDialogue is on but no requiredDialogue is assigned — not waiting.", this);
+            dialogueSatisfied = true;
+            return;
+        }
+
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogWarning("PortalController: waitForDialogue is on but there's no DialogueManager — not waiting.", this);
+            dialogueSatisfied = true;
+            return;
+        }
+
+        // Already completed earlier this session (playOnce sequences are remembered).
+        if (DialogueManager.Instance.HasPlayed(requiredDialogue))
+        {
+            dialogueSatisfied = true;
+            return;
+        }
+
+        DialogueManager.Instance.DialogueEnded += HandleDialogueEnded;
+    }
+
+    private void HandleDialogueEnded(DialogueSequence ended)
+    {
+        if (dialogueSatisfied || ended != requiredDialogue) return;
+
+        // playOnce sequences are only recorded as played when they run to the end, so this
+        // rejects one that was cut short by DialogueManager.Stop().
+        if (ended.playOnce && !DialogueManager.Instance.HasPlayed(ended)) return;
+
+        dialogueSatisfied = true;
+        DialogueManager.Instance.DialogueEnded -= HandleDialogueEnded;
+        TryBecomeUsable();
+    }
+
+    private void TryBecomeUsable()
+    {
+        if (isUsable || !growFinished || !dialogueSatisfied) return;
+        isUsable = true;
+
+        // Enable the trigger now that the portal is visible (and unlocked)
         if (portalCollider != null)
         {
             portalCollider.enabled = true;
         }
+
+        onPortalReady.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // Check if the object entering the portal is the player
-        if (other.CompareTag("Player") && isRevealed)
+        if (other.CompareTag("Player") && isRevealed && isUsable)
         {
             SceneManager.LoadScene(nextSceneName);
         }
