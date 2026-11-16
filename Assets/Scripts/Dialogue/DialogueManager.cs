@@ -166,4 +166,22 @@ public class DialogueManager : MonoBehaviour
     }
 
     public bool HasPlayed(DialogueSequence sequence) => playedOnce.Contains(sequence);
+
+    /// <summary>
+    /// Silently halts any dialogue (no DialogueEnded event) and forgets which playOnce sequences
+    /// have played. This manager persists across scenes, so call this when starting a fresh run,
+    /// e.g. when returning to the main menu.
+    /// </summary>
+    public void ResetAll()
+    {
+        if (playRoutine != null) StopCoroutine(playRoutine);
+        playRoutine = null;
+
+        if (voiceSource != null) voiceSource.Stop();
+
+        currentSequence = null;
+        currentLineIndex = 0;
+        advanceRequested = false;
+        playedOnce.Clear();
+    }
 }

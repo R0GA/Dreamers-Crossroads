@@ -1,3 +1,4 @@
+
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -93,6 +94,9 @@ public class DialogueUI : MonoBehaviour
     private void Update()
     {
         if (panelRoot != null && !panelRoot.activeSelf) return;
+
+        // Paused (Time.timeScale = 0): the skip key shouldn't advance dialogue behind the pause menu
+        if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
         // Ignore a press on the same frame the dialogue opened
         if (Time.frameCount == dialogueStartFrame) return;

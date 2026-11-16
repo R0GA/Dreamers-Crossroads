@@ -26,6 +26,13 @@ public class PortalController : MonoBehaviour
            + "finished naturally rather than being cut off.")]
     public DialogueSequence requiredDialogue;
 
+    [Header("Menu Return (optional)")]
+    [Tooltip("Tick this on a portal that sends the player back to the main menu (e.g. after the final "
+           + "level). Before loading, it resets the persistent DialogueManager, unfreezes time/audio and "
+           + "frees the cursor, so the next run starts clean. Set Next Scene Name to your menu scene. "
+           + "Leave unticked for ordinary level-to-level portals.")]
+    public bool returnToMainMenu = false;
+
     [Header("Events")]
     [Tooltip("Fires once at the moment the portal becomes enterable — after it has grown and, "
            + "if waiting, after the dialogue has finished. Hook a glow, sound or particles here.")]
@@ -37,6 +44,7 @@ public class PortalController : MonoBehaviour
     private bool growFinished = false;
     private bool dialogueSatisfied = true;
     private bool isUsable = false;
+    private bool isLoading = false;
 
     void Start()
     {
@@ -163,9 +171,33 @@ public class PortalController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check if the object entering the portal is the player
-        if (other.CompareTag("Player") && isRevealed && isUsable)
+        if (other.CompareTag("Player") && isRevealed && isUsable && !isLoading)
         {
+            isLoading = true; // the player may have several colliders; only load once
+
+            if (returnToMainMenu) PrepareForMainMenu();
             SceneManager.LoadScene(nextSceneName);
         }
+    }
+
+    // ── Main Menu Cleanup ────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Mirrors PauseMenu's "Back to Menu" so finishing the game and quitting to the menu leave
+    /// things in the same clean state.
+    /// </summary>
+    private void PrepareForMainMenu()
+    {
+        // DialogueManager persists across scenes: wipe any half-played sequence and the
+        // "already played" history so a new run's dialogue isn't broken or skipped.
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.ResetAll();
+
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        // The menu needs a usable cursor (PlayerController locks it in game scenes)
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
