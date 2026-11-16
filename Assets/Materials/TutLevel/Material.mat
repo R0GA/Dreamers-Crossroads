@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Material
-  m_Shader: {fileID: -6465566751694194690, guid: 61e2a68e2cecb2d44a03c96b458f52df, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e246ae1e3ee8a2d43b65781e3766f9c3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -126,6 +126,24 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Proc_Line_Break_Scale_Hor1: 1.694
+    - _Proc_Line_Break_Scale_Hor2: 1.519
+    - _Proc_Line_Break_Scale_Ver: 1.694
+    - _Proc_Line_Break_Threshold_Hor1: 0.247
+    - _Proc_Line_Break_Threshold_Hor2: 0.201
+    - _Proc_Line_Break_Threshold_Ver: 0.622
+    - _Proc_Line_Density_Hor1: 0.88
+    - _Proc_Line_Density_Hor2: 0.31
+    - _Proc_Line_Density_Ver: 0.24
+    - _Proc_Line_JitterScale_Hor1: 1.44
+    - _Proc_Line_JitterScale_Hor2: 0.27
+    - _Proc_Line_JitterScale_Ver: 0.03
+    - _Proc_Line_JitterStrength_Hor1: 0.31
+    - _Proc_Line_JitterStrength_Hor2: 0.28
+    - _Proc_Line_JitterStrength_Ver: 0.585
+    - _Proc_Line_Thickness_Hor1: 0.028
+    - _Proc_Line_Thickness_Hor2: 0.008
+    - _Proc_Line_Thickness_Ver: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -135,6 +153,9 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _TopMask_Add: 0
+    - _TopMask_ClipZ: 0
+    - _TopMask_Strength: 0
     - _UVSec: 0
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
@@ -142,9 +163,10 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9063354, g: 0.096523024, b: 0, a: 1}
     - _Color: {r: 0.9063354, g: 0.096522994, b: 0, a: 1}
-    - _Color_Accent: {r: 0, g: 0.43053007, b: 1, a: 1}
-    - _Color_Base: {r: 0.9622641, g: 0.631952, b: 0.4584372, a: 1}
+    - _Color_Accent: {r: 0.6603774, g: 0.5158691, b: 0.3582236, a: 1}
+    - _Color_Base: {r: 0.735849, g: 0.56445074, b: 0.37833747, a: 1}
     - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Top: {r: 0.73333335, g: 0.56078434, b: 0.37647063, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}

@@ -15,12 +15,12 @@ MonoBehaviour:
   lines:
   - speakerName: Sandman
     text: Thats the highway I remember.
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: b488fb9db1977cf46adba1facbaef3e1, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 2.5
   - speakerName: Sandman
     text: Really making me stretch my legs today arent you.
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 9db6b516403cf66438cf7645d54116d2, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 4
+    autoAdvanceDelay: 3.5
   playOnce: 1

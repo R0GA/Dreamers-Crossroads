@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Just like riding a bike.
-    voiceClip: {fileID: 0}
+    text: It's just like riding a bike.
+    voiceClip: {fileID: 8300000, guid: 85c98bbd56cf65e4dbdb46524eb9f6af, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 2.5
   - speakerName: Sandman
     text: Not that I've ever ridden one...
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: a33c86c5a48eeab4da02fa6225f0bda4, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 5
+    autoAdvanceDelay: 2.5
   playOnce: 1

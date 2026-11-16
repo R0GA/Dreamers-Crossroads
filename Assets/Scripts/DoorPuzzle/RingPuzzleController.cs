@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +18,7 @@ namespace PuzzlePlatformer.Puzzles
         [Header("Events")]
         public UnityEvent onPuzzleSolved;
         public UnityEvent onRingRotated;
+        [SerializeField] private DialogueSequence solvedDialogue;
 
         public bool IsSolved { get; private set; }
 
@@ -39,6 +42,8 @@ namespace PuzzlePlatformer.Puzzles
             }
 
             IsSolved = true;
+            if (DialogueManager.Instance != null && solvedDialogue != null)
+                DialogueManager.Instance.PlayDialogue(solvedDialogue);
             onPuzzleSolved?.Invoke();
         }
 

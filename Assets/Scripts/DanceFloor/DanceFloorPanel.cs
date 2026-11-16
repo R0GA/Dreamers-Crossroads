@@ -69,6 +69,9 @@ public class DanceFloorPanel : MonoBehaviour
         if (cooldownTimer > 0f) return;
         if (!other.CompareTag(playerTag)) return;
 
+        // Locked until the intro finishes. Hint dialogue doesn't lock the floor.
+        if (manager != null && !manager.AcceptingInput) return;
+
         AdvanceColor();
     }
 

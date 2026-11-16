@@ -20,5 +20,6 @@ public class FightStartTrigger : MonoBehaviour
         used = true;
         fight.StartFight();
         levelAudio.clip = bossMusic;
+        levelAudio.Play();
     }
 }

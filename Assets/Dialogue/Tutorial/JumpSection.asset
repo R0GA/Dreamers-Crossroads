@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speakerName: Sandman
-    text: Damn, the highway's seen better days...
-    voiceClip: {fileID: 0}
+    text: The highway has certainly seen better days...
+    voiceClip: {fileID: 8300000, guid: a8cf5fd50cdaf394693e4cf8ef832ae6, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 3.5
   - speakerName: Sandman
     text: Still got it though.
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: 20941f4162250e84494d20dee1bcaa16, type: 3}
     portrait: {fileID: 756335442, guid: d11ad3ad237b1bf41b01d214c16c70b5, type: 3}
-    autoAdvanceDelay: 3
+    autoAdvanceDelay: 2
   playOnce: 1

@@ -112,10 +112,6 @@ public class PixieFollower : MonoBehaviour
            + "so she floats over height changes instead of stepping with them.")]
     [SerializeField] private float heightSmoothTime = 0.5f;
 
-    [Tooltip("Gentle idle bob added on top of the hover height, for a magical/floaty feel.")]
-    [SerializeField] private float bobAmplitude = 0.15f;
-    [SerializeField] private float bobFrequency = 1.5f;
-
     // ── View Switching ───────────────────────────────────────────────────────
 
     [Header("View Switching")]
@@ -196,6 +192,8 @@ public class PixieFollower : MonoBehaviour
     private Transform holdAnchor;
     private float holdRadius;
     private float holdNoiseSeed;
+    private bool isCatchingUp;
+    private Vector3 catchUpDir;
 
     // ── Unity Lifecycle ──────────────────────────────────────────────────────
 
@@ -314,6 +312,7 @@ public class PixieFollower : MonoBehaviour
         IsFollowing = true;
         horizontalVelocity = Vector3.zero;
         heightVelocity = 0f;
+        isCatchingUp = false;
         FollowingBegan?.Invoke();
     }
 
@@ -356,6 +355,7 @@ public class PixieFollower : MonoBehaviour
         holdAnchor = null;
         horizontalVelocity = Vector3.zero;
         heightVelocity = 0f;
+        isCatchingUp = false;
         IsFollowing = true;
     }
 
@@ -379,29 +379,45 @@ public class PixieFollower : MonoBehaviour
             // place changes player.forward every frame, which used to drag her around in a
             // circle. Now she only moves once she's actually been left behind, and she closes
             // the gap from wherever she happens to be.
-            Vector3 dir = distanceFromPlayer > 0.0001f
-                ? offset / distanceFromPlayer
-                : -new Vector3(player.forward.x, 0f, player.forward.z).normalized; // degenerate case: she's exactly on top of the player
+            //
+            // The direction is cached once, right when she first falls out of range, rather
+            // than recomputed every frame from her live position. Recomputing it every frame
+            // created a feedback loop: as SmoothDamp nudged her toward the sideOffset catch-up
+            // point, her offset-from-player angle shifted a little, which shifted the target a
+            // little, which pulled her further sideways — a slow inward spiral toward the
+            // offset point instead of a straight approach. Locking the direction in for the
+            // duration of this catch-up removes that feedback: the target becomes a fixed
+            // point relative to the player, and she settles onto it in a straight line.
+            if (!isCatchingUp)
+            {
+                catchUpDir = distanceFromPlayer > 0.0001f
+                    ? offset / distanceFromPlayer
+                    : -new Vector3(player.forward.x, 0f, player.forward.z).normalized; // degenerate case: she's exactly on top of the player
+                isCatchingUp = true;
+            }
 
             Vector3 side = new Vector3(player.right.x, 0f, player.right.z).normalized;
-            targetFlat = playerFlat + dir * followDistance + side * sideOffset;
+            targetFlat = playerFlat + catchUpDir * followDistance + side * sideOffset;
         }
         else
         {
             // Within leash range — hold the spot she's already at. This is what stops her
-            // rotating around the player and ending up permanently behind/off-screen.
+            // rotating around the player and ending up permanently behind/off-screen. Clearing
+            // the flag here means the next time she falls behind, the direction gets
+            // re-cached fresh from wherever she's holding.
+            isCatchingUp = false;
             targetFlat = currentFlat;
         }
 
         float groundedY = FindGroundedHeight(targetFlat);
-        float bob = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
-        float targetHeight = groundedY + hoverHeight + bob;
+        float targetHeight = groundedY + hoverHeight;
 
         if (Vector3.Distance(currentFlat, targetFlat) > teleportDistance)
         {
             transform.position = new Vector3(targetFlat.x, targetHeight, targetFlat.z);
             horizontalVelocity = Vector3.zero;
             heightVelocity = 0f;
+            isCatchingUp = false;
             return;
         }
 
@@ -464,8 +480,7 @@ public class PixieFollower : MonoBehaviour
         }
 
         float groundedY = FindGroundedHeight(targetFlat);
-        float bob = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
-        float targetHeight = groundedY + hoverHeight + bob;
+        float targetHeight = groundedY + hoverHeight;
 
         Vector3 currentFlat = new Vector3(transform.position.x, 0f, transform.position.z);
 

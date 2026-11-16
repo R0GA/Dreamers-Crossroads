@@ -29,7 +29,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2005
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_Color:
-        m_Texture: {fileID: 2800000, guid: d0c5a2baddc0aba4ba8b698360edc581, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0c15d3cacc047545b258dbf075bee01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -100,7 +100,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AccentMask_Add: 1
-    - _AccentMask_Strength: 1
+    - _AccentMask_Strength: 0.07
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -116,18 +116,18 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Environment_Light_Influence: 1
-    - _Environment_Shadow_Influence: 1
+    - _Environment_Light_Influence: 0
+    - _Environment_Shadow_Influence: 0.389
     - _GlossMapScale: 1
     - _Glossiness: 0.59999996
     - _GlossyReflections: 1
-    - _Line_Sensitivity: 1.1
+    - _Line_Sensitivity: 0.54
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: 5
     - _ReceiveShadows: 1
     - _Smoothness: 0.59999996
     - _SmoothnessTextureChannel: 0
@@ -142,9 +142,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
-    - _Color_Accent: {r: 0, g: 0.43053007, b: 1, a: 1}
-    - _Color_Base: {r: 0.9622641, g: 0.631952, b: 0.4584372, a: 1}
-    - _Color_Line: {r: 0, g: 0, b: 0, a: 1}
+    - _Color_Accent: {r: 0.86415094, g: 0.86415094, b: 0.86415094, a: 1}
+    - _Color_Base: {r: 1, g: 0.073584795, b: 0.71379024, a: 1}
+    - _Color_Line: {r: 0.93962264, g: 0.7940145, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}

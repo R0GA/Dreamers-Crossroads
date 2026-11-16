@@ -1,5 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2562073412064115427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251511041819617030}
+  - component: {fileID: 8955941453111116485}
+  - component: {fileID: 6186450407269703028}
+  m_Layer: 0
+  m_Name: DialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251511041819617030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562073412064115427}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3008329119672257944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8955941453111116485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562073412064115427}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6186450407269703028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562073412064115427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6595840916a584a40a5525d0d5a72001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTriggerZone
+  sequence: {fileID: 11400000, guid: f078662e1f296704c8bd34066c4133b9, type: 2}
+  playerTag: Player
+  triggerOnce: 1
+  reTriggerCooldown: 3
 --- !u!1 &3009277817743885596
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,6 +109,7 @@ Transform:
   - {fileID: 6021609224524575152}
   - {fileID: 6122039322043014174}
   - {fileID: 5307483025457168413}
+  - {fileID: 6251511041819617030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8080747808674877676
@@ -68,6 +139,12 @@ MonoBehaviour:
   wrongPauseSeconds: 0.75
   extinguishStagger: 0.1
   afterResetPauseSeconds: 0.5
+  introDialogue: {fileID: 11400000, guid: f078662e1f296704c8bd34066c4133b9, type: 2}
+  firstFailDialogue: {fileID: 11400000, guid: 7406ce6f1ae9b944d84d098a568d0db0, type: 2}
+  failsBeforeFirstHint: 2
+  secondFailDialogue: {fileID: 11400000, guid: b8df70ac1838826459fd9a7ee1fe5af2, type: 2}
+  failsBeforeSecondHint: 3
+  solvedDialogue: {fileID: 11400000, guid: cafc8f3ec0c256547b18337045f179e4, type: 2}
   onCorrectCandle:
     m_PersistentCalls:
       m_Calls: []
